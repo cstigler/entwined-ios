@@ -1,0 +1,41 @@
+PODS:
+  - CocoaAsyncSocket (7.3.5)
+  - PKJSONSocket (0.0.2):
+    - CocoaAsyncSocket (~> 7.3.2)
+  - ReactiveCocoa (7.2.0):
+    - ReactiveSwift (~> 3.1)
+  - ReactiveSwift (3.1.0):
+    - Result (~> 3.2)
+  - Result (3.2.4)
+
+DEPENDENCIES:
+  - PKJSONSocket (from `https://github.com/kylefleming/PKJSONSocket.git`)
+  - ReactiveCocoa (~> 7.2)
+  - ReactiveSwift (~> 3.1)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - CocoaAsyncSocket
+    - ReactiveCocoa
+    - ReactiveSwift
+    - Result
+
+EXTERNAL SOURCES:
+  PKJSONSocket:
+    :git: https://github.com/kylefleming/PKJSONSocket.git
+
+CHECKOUT OPTIONS:
+  PKJSONSocket:
+    :commit: 7c0bc9bf9ac81296dd0109ed963313c08654ede5
+    :git: https://github.com/kylefleming/PKJSONSocket.git
+
+SPEC CHECKSUMS:
+  CocoaAsyncSocket: 94c582a5bef4bb0f51b6ebf3e1b561d9091a68ba
+  PKJSONSocket: 2e8d2d04bf01f2948e50cb92c13e581ce25b22b8
+  ReactiveCocoa: 476dae7ca790f40d30d186a1bd7ebae4290395d5
+  ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+
+PODFILE CHECKSUM: aa544815b719b57b723da4fdeac622340619d4de
+
+COCOAPODS: 1.8.4
