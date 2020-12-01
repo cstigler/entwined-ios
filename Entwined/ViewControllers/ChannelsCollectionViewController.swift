@@ -29,7 +29,9 @@ class ChannelsCollectionViewController: UICollectionViewController,UICollectionV
 
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Model.sharedInstance.channels.count
+        // for UI simplicity's sake, we'll never show more than 3 sliders
+        // even if the server tells us there are more channels than that
+        return min(Model.sharedInstance.channels.count, 3)
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
