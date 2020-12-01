@@ -256,7 +256,7 @@
 				TargetAttributes = {
 					27A3961F19FC8D4B0030B940 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 9B5WM3HL64;
+						DevelopmentTeam = L6W5L88KN7;
 						LastSwiftMigration = 0920;
 					};
 				};
@@ -490,7 +490,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9B5WM3HL64;
+				DEVELOPMENT_TEAM = L6W5L88KN7;
 				INFOPLIST_FILE = Entwined/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.charlesgadeken.Entwined;
@@ -508,7 +508,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9B5WM3HL64;
+				DEVELOPMENT_TEAM = L6W5L88KN7;
 				INFOPLIST_FILE = Entwined/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.charlesgadeken.Entwined;
