@@ -1,8 +1,8 @@
 {
   "images" : [
     {
+      "filename" : "entwined1.jpg",
       "idiom" : "universal",
-      "filename" : "image1.jpg",
       "scale" : "1x"
     },
     {
@@ -15,7 +15,7 @@
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

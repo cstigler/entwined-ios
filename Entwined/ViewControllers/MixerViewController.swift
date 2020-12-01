@@ -28,10 +28,9 @@ class MixerViewController: UIViewController ,UICollectionViewDelegateFlowLayout{
     
     @IBOutlet var sliders: [UISlider]!
     
-    var imagesArr = [UIImage(named: "image1"),
-                     UIImage(named: "image2"),
-                     UIImage(named: "image4"),
-                     UIImage(named: "image4")]
+    var imagesArr = [UIImage(named: "entwined1"),
+                     UIImage(named: "entwined2"),
+                     UIImage(named: "entwined3")]
     
     var timer:Timer? = nil
     

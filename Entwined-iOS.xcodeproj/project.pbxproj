@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01289F822576194200B3DCA4 /* entwined1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01289F7F2576194200B3DCA4 /* entwined1.jpg */; };
+		01289F832576194200B3DCA4 /* entwined3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01289F802576194200B3DCA4 /* entwined3.jpg */; };
+		01289F842576194200B3DCA4 /* entwined2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01289F812576194200B3DCA4 /* entwined2.jpg */; };
 		056358B580EFAE6AA9075E37 /* Pods_Entwined_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C4F6612D84592E03756E31 /* Pods_Entwined_iOS.framework */; };
 		271B8DDB19FF9B8F005C166C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271B8DD919FF9B8F005C166C /* Model.swift */; };
 		271B8DDC19FF9B8F005C166C /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271B8DDA19FF9B8F005C166C /* Pattern.swift */; };
@@ -29,10 +32,6 @@
 		27B556941A05D2FB00CEE159 /* MixerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B556931A05D2FB00CEE159 /* MixerViewController.swift */; };
 		27BB0A4B1A03A7C100D37664 /* DisplayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BB0A4A1A03A7C100D37664 /* DisplayState.swift */; };
 		27BB0A4F1A03CBB300D37664 /* EffectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BB0A4E1A03CBB300D37664 /* EffectCollectionViewCell.swift */; };
-		A97F07B322951F6E00EB9ED7 /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A97F07AF22951F6D00EB9ED7 /* image2.jpg */; };
-		A97F07B422951F6E00EB9ED7 /* image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A97F07B022951F6D00EB9ED7 /* image1.jpg */; };
-		A97F07B522951F6E00EB9ED7 /* image5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A97F07B122951F6D00EB9ED7 /* image5.jpg */; };
-		A97F07B622951F6E00EB9ED7 /* image4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A97F07B222951F6D00EB9ED7 /* image4.jpg */; };
 		A97F07B82295204800EB9ED7 /* image6.png in Resources */ = {isa = PBXBuildFile; fileRef = A97F07B72295204800EB9ED7 /* image6.png */; };
 		A97F07BD22952BBF00EB9ED7 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F07BC22952BBF00EB9ED7 /* CollectionViewCell.swift */; };
 		A97F07BF22953FC100EB9ED7 /* image7.png in Resources */ = {isa = PBXBuildFile; fileRef = A97F07BE22953FC000EB9ED7 /* image7.png */; };
@@ -41,7 +40,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2045C8322330A7466BE30499 /* Pods-Minitrees.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minitrees.release.xcconfig"; path = "Pods/Target Support Files/Pods-Minitrees/Pods-Minitrees.release.xcconfig"; sourceTree = "<group>"; };
+		01289F7F2576194200B3DCA4 /* entwined1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = entwined1.jpg; sourceTree = "<group>"; };
+		01289F802576194200B3DCA4 /* entwined3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = entwined3.jpg; sourceTree = "<group>"; };
+		01289F812576194200B3DCA4 /* entwined2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = entwined2.jpg; sourceTree = "<group>"; };
 		271B8DD919FF9B8F005C166C /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		271B8DDA19FF9B8F005C166C /* Pattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
 		271B8DDD1A005BED005C166C /* Effect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
@@ -71,14 +72,9 @@
 		34C4F6612D84592E03756E31 /* Pods_Entwined_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Entwined_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B2191DD729B739E320D83A /* Pods-Entwined-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Entwined-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Entwined-iOS/Pods-Entwined-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A52C5F5BD55C3C045455902E /* Pods-Entwined-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Entwined-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Entwined-iOS/Pods-Entwined-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		A97F07AF22951F6D00EB9ED7 /* image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpg; sourceTree = "<group>"; };
-		A97F07B022951F6D00EB9ED7 /* image1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpg; sourceTree = "<group>"; };
-		A97F07B122951F6D00EB9ED7 /* image5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image5.jpg; sourceTree = "<group>"; };
-		A97F07B222951F6D00EB9ED7 /* image4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image4.jpg; sourceTree = "<group>"; };
 		A97F07B72295204800EB9ED7 /* image6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image6.png; sourceTree = "<group>"; };
 		A97F07BC22952BBF00EB9ED7 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		A97F07BE22953FC000EB9ED7 /* image7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image7.png; sourceTree = "<group>"; };
-		BA3AA172CBABA9850C7CF367 /* Pods-Minitrees.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minitrees.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Minitrees/Pods-Minitrees.debug.xcconfig"; sourceTree = "<group>"; };
 		FF924DDB2276C82300F54879 /* TimerApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerApplication.swift; sourceTree = "<group>"; };
 		FF924DDD2276D6FD00F54879 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,8 +188,6 @@
 		87E458DFCE3A492F8CBB76BB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BA3AA172CBABA9850C7CF367 /* Pods-Minitrees.debug.xcconfig */,
-				2045C8322330A7466BE30499 /* Pods-Minitrees.release.xcconfig */,
 				41B2191DD729B739E320D83A /* Pods-Entwined-iOS.debug.xcconfig */,
 				A52C5F5BD55C3C045455902E /* Pods-Entwined-iOS.release.xcconfig */,
 			);
@@ -211,12 +205,11 @@
 		A97F07AE22951EE700EB9ED7 /* AutoPilotSilderImages */ = {
 			isa = PBXGroup;
 			children = (
+				01289F7F2576194200B3DCA4 /* entwined1.jpg */,
+				01289F812576194200B3DCA4 /* entwined2.jpg */,
+				01289F802576194200B3DCA4 /* entwined3.jpg */,
 				A97F07BE22953FC000EB9ED7 /* image7.png */,
 				A97F07B72295204800EB9ED7 /* image6.png */,
-				A97F07B022951F6D00EB9ED7 /* image1.jpg */,
-				A97F07AF22951F6D00EB9ED7 /* image2.jpg */,
-				A97F07B222951F6D00EB9ED7 /* image4.jpg */,
-				A97F07B122951F6D00EB9ED7 /* image5.jpg */,
 			);
 			path = AutoPilotSilderImages;
 			sourceTree = "<group>";
@@ -291,16 +284,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A97F07B422951F6E00EB9ED7 /* image1.jpg in Resources */,
-				A97F07B522951F6E00EB9ED7 /* image5.jpg in Resources */,
+				01289F842576194200B3DCA4 /* entwined2.jpg in Resources */,
 				27A3962B19FC8D4B0030B940 /* Main.storyboard in Resources */,
+				01289F822576194200B3DCA4 /* entwined1.jpg in Resources */,
 				27A3963019FC8D4B0030B940 /* LaunchScreen.xib in Resources */,
 				279872031AE0753900EF32D1 /* Podfile.lock in Resources */,
-				A97F07B622951F6E00EB9ED7 /* image4.jpg in Resources */,
+				01289F832576194200B3DCA4 /* entwined3.jpg in Resources */,
 				A97F07B82295204800EB9ED7 /* image6.png in Resources */,
 				27A3964619FC96BE0030B940 /* Podfile in Resources */,
 				A97F07BF22953FC100EB9ED7 /* image7.png in Resources */,
-				A97F07B322951F6E00EB9ED7 /* image2.jpg in Resources */,
 				27A3962D19FC8D4B0030B940 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
