@@ -42,42 +42,42 @@ class ChannelCollectionViewCell: UICollectionViewCell {
             if self.channel != nil {
                 if self.channel.currentPattern == nil {
                     self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGray"),
-                        for: UIControlState());
+                        for: UIControl.State());
                     self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGray"),
                         for: .highlighted);
                     self.visibilitySlider.setMinimumTrackImage(UIImage(named: "channelSliderBarGray"),
-                        for: UIControlState());
+                        for: UIControl.State());
                     self.visibilitySlider.setMaximumTrackImage(UIImage(named: "channelSliderBarGray"),
-                        for: UIControlState());
+                        for: UIControl.State());
                 } else {
                     switch self.channel.index {
                     case 0:
                         self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbBlue"),
-                            for: UIControlState());
+                            for: UIControl.State());
                         self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbBlue"),
                             for: .highlighted);
                         self.visibilitySlider.setMinimumTrackImage(UIImage(named: "channelSliderBarBlue"),
-                            for: UIControlState());
+                            for: UIControl.State());
                         self.visibilitySlider.setMaximumTrackImage(UIImage(named: "channelSliderBarDefault"),
-                            for: UIControlState());
+                            for: UIControl.State());
                     case 1:
                         self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbOrange"),
-                            for: UIControlState());
+                            for: UIControl.State());
                         self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbOrange"),
                             for: .highlighted);
                         self.visibilitySlider.setMinimumTrackImage(UIImage(named: "channelSliderBarOrange"),
-                            for: UIControlState());
+                            for: UIControl.State());
                         self.visibilitySlider.setMaximumTrackImage(UIImage(named: "channelSliderBarDefault"),
-                            for: UIControlState());
+                            for: UIControl.State());
                     case 2:
                         self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGreen"),
-                            for: UIControlState());
+                            for: UIControl.State());
                         self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGreen"),
                             for: .highlighted);
                         self.visibilitySlider.setMinimumTrackImage(UIImage(named: "channelSliderBarGreen"),
-                            for: UIControlState());
+                            for: UIControl.State());
                         self.visibilitySlider.setMaximumTrackImage(UIImage(named: "channelSliderBarDefault"),
-                            for: UIControlState());
+                            for: UIControl.State());
                     default:
                         break;
                     }

@@ -12,5 +12,5 @@ import UIKit
 
 CommandLine.unsafeArgv.withMemoryRebound(to: UnsafeMutablePointer<Int8>.self, capacity: Int(CommandLine.argc))
 {    argv in
-    _ = UIApplicationMain(CommandLine.argc, argv, NSStringFromClass(TimerApplication.self), NSStringFromClass(AppDelegate.self))
+    _ = UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, NSStringFromClass(TimerApplication.self), NSStringFromClass(AppDelegate.self))
 }

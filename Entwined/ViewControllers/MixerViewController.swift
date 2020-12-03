@@ -83,13 +83,13 @@ class MixerViewController: UIViewController ,UICollectionViewDelegateFlowLayout{
         
         for slider in self.sliders {
             slider.setThumbImage(UIImage(named: "channelSliderThumbNormal"),
-                                 for: UIControlState());
+                                 for: UIControl.State());
             slider.setThumbImage(UIImage(named: "channelSliderThumbNormal"),
                                  for: .highlighted);
             slider.setMinimumTrackImage(UIImage(named: "channelSliderBarNormalMin"),
-                                        for: UIControlState());
+                                        for: UIControl.State());
             slider.setMaximumTrackImage(UIImage(named: "channelSliderBarNormalMax"),
-                                        for: UIControlState());
+                                        for: UIControl.State());
         }
         
         NotificationCenter.default.addObserver(
@@ -149,7 +149,7 @@ class MixerViewController: UIViewController ,UICollectionViewDelegateFlowLayout{
         self.timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(MixerViewController.autoScrollImageSlider), userInfo: nil, repeats: true)
         
         //This will register the timer to the main run loop
-        RunLoop.main.add(self.timer!, forMode: .commonModes)
+        RunLoop.main.add(self.timer!, forMode: RunLoop.Mode.common)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize

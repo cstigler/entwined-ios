@@ -23,7 +23,7 @@ class ChannelsCollectionViewController: UICollectionViewController,UICollectionV
     func setSelectedItem() {
         let selectedItemIndex = DisplayState.sharedInstance.selectedChannelIndex
         if selectedItemIndex >= 0 && selectedItemIndex < self.collectionView!.numberOfItems(inSection: 0) {
-            self.collectionView!.selectItem(at: IndexPath(item: selectedItemIndex, section: 0), animated: false, scrollPosition: UICollectionViewScrollPosition())
+            self.collectionView!.selectItem(at: IndexPath(item: selectedItemIndex, section: 0), animated: false, scrollPosition: UICollectionView.ScrollPosition())
         }
     }
 

@@ -57,7 +57,7 @@ class TimerApplication: UIApplication {
         }
         
         if let touches = event.allTouches {
-            for touch in touches where touch.phase == UITouchPhase.began {
+            for touch in touches where touch.phase == UITouch.Phase.began {
                 self.resetIdleTimer()
             }
         }

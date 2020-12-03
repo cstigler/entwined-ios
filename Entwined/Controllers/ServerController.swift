@@ -130,7 +130,7 @@ class ServerController: NSObject, PKJSONSocketDelegate {
             }
             let currentPattern: Pattern? = currentPatternIndex == -1 ? nil : (channelIndex == 0 ? patterns[currentPatternIndex] : channels[0].patterns[currentPatternIndex])
             channels.append(Channel(index: channelIndex, patterns: patterns, currentPattern: currentPattern, visibility: visibility))
-            print("found channel \(channelIndex) playing pattern \(currentPattern?.name) + with visibility \(visibility)")
+            print("found channel \(channelIndex) playing pattern \(currentPattern?.name ?? "<< none >>") + with visibility \(visibility)")
         }
         return channels
     }

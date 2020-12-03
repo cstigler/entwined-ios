@@ -257,7 +257,7 @@
 					27A3961F19FC8D4B0030B940 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = L6W5L88KN7;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1220;
 					};
 				};
 			};
@@ -496,7 +496,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.charlesgadeken.Entwined;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -514,7 +515,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.charlesgadeken.Entwined;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
