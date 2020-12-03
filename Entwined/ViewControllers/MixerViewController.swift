@@ -106,7 +106,6 @@ class MixerViewController: UIViewController ,UICollectionViewDelegateFlowLayout{
         print("User In active")
         if !self.controllerView.isHidden && !self.autoplaySwitch.isOn {
             Model.sharedInstance.autoplay = !self.autoplaySwitch.isHidden
-            setControlsToZero()
         }
     }
     
@@ -136,32 +135,10 @@ class MixerViewController: UIViewController ,UICollectionViewDelegateFlowLayout{
     
     @IBAction func autoPilotInterActBt(_ sender: Any) {
         if self.connectingLabel.isHidden {
-            self.setControlsToZero()
              Model.sharedInstance.autoplay = self.autoplaySwitch.isHidden
         }
     }
     
-    func setControlsToZero(){
-        
-        Model.sharedInstance.brightness = 100.0
-        Model.sharedInstance.spin = 0.0
-        Model.sharedInstance.speed = 100.0
-        Model.sharedInstance.blur = 0.0
-        DisplayState.sharedInstance.selectedChannel?.currentPattern = nil
-        DisplayState.sharedInstance.selectedChannelIndex = 0
-        DisplayState.sharedInstance.selectedChannel = nil
-        
-        for (index,channel) in Model.sharedInstance.channels.enumerated(){
-            if index == 0{
-                DisplayState.sharedInstance.selectedChannel = channel
-                channel.visibility = 100.0
-            }else{
-                channel.visibility = 100.0
-            }
-        }
-        
-    }
-  
     func reloadCollectionView() {
         self.collectionView.reloadData()
         
@@ -221,7 +198,6 @@ extension MixerViewController : UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if self.connectingLabel.isHidden {
-            self.setControlsToZero()
             Model.sharedInstance.autoplay = self.autoplaySwitch.isHidden
         }
     }

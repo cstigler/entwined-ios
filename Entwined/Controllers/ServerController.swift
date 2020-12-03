@@ -66,7 +66,6 @@ class ServerController: NSObject, PKJSONSocketDelegate {
     }
     
     func socket(_ socket: PKJSONSocket, didReceive dictionary: PKJSONSocketMessage) {
-        print(dictionary.dictionaryRepresentation())
         if let method = dictionary.dictionaryRepresentation()["method"] as? String {
             if let params = dictionary.dictionaryRepresentation()["params"] as? Dictionary<String, AnyObject> {
                 switch method {
@@ -120,9 +119,9 @@ class ServerController: NSObject, PKJSONSocketDelegate {
     func parseChannelsArray(_ channelsArray: [Dictionary<String, AnyObject>]) -> [Channel] {
         var channels = [Channel]()
         for channelParams in channelsArray {
-            let channelIndex = channelParams["index"] as! Int
-            let currentPatternIndex = channelParams["currentPatternIndex"] as! Int
-            let visibility = channelParams["visibility"] as! Float
+            let channelIndex = (channelParams["index"] as! NSNumber).intValue
+            let currentPatternIndex = (channelParams["currentPatternIndex"] as! NSNumber).intValue
+            let visibility = (channelParams["visibility"] as! NSNumber).floatValue
             var patterns = [Pattern]()
             for (_, patternParams) in (channelParams["patterns"] as! [Dictionary<String, AnyObject>]).enumerated() {
                 let patternIndex = patternParams["index"] as! Int
@@ -131,6 +130,7 @@ class ServerController: NSObject, PKJSONSocketDelegate {
             }
             let currentPattern: Pattern? = currentPatternIndex == -1 ? nil : (channelIndex == 0 ? patterns[currentPatternIndex] : channels[0].patterns[currentPatternIndex])
             channels.append(Channel(index: channelIndex, patterns: patterns, currentPattern: currentPattern, visibility: visibility))
+            print("found channel \(channelIndex) playing pattern \(currentPattern?.name) + with visibility \(visibility)")
         }
         return channels
     }
