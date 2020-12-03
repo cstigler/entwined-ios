@@ -240,7 +240,7 @@
 			dependencies = (
 			);
 			name = "Entwined-iOS";
-			productName = Minitrees;
+			productName = Entwined-iOS;
 			productReference = 27A3962019FC8D4B0030B940 /* Entwined-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};

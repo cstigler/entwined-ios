@@ -2,16 +2,14 @@
 
 Based on the [Squared Mini app](https://github.com/squaredproject/minitreesios)
 How to download and build the Entwined iOS app.  
-Only do this if necessary, it is better to download it from the app store
-https://apps.apple.com/us/app/squared-mini/id1464956368?ls=1
+Only do this if necessary, it is better to download it from the App Store.
 
-## Ipad App Quick Start
-* Connect ipad to internet 
-* Install Entwine app from app store
-* https://apps.apple.com/us/app/squared-mini/id1464956368?ls=1
-* Turn on tree and wait for patterns to start 
-* Open Settings->Wifi on ipad and connect to entwined wifi
-* Open app and start interacting with the tree
+## iOS App Quick Start
+* Connect iOS device to internet 
+* Install Entwined app from app store
+* Turn on trees and wait for patterns to start 
+* Open Settings -> WiFi on iPad and connect to Entwined WiFi
+* Open app and start interacting with the trees
 
 ## How to build iOS App from source
 
@@ -36,7 +34,7 @@ https://apps.apple.com/us/app/squared-mini/id1464956368?ls=1
 * Open minitrees project in Xcode
   * File->Open
   * Navigate to entwined-ios dir
-  * Open Minitrees.xcworkspace
+  * Open Entwined-iOS.xcworkspace
   * Connect to the Ipad in the Build pulldown
   * Click top left arrow to "build" minitreees
   * If build succeeds, then connect ipad to computer
