@@ -7,6 +7,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="UniversLTStd-Bold.otf">
+            <string>UniversLTStd-Bold</string>
+        </array>
         <array key="UniversLTStd-Light.otf">
             <string>UniversLTStd-Light</string>
         </array>
@@ -85,7 +88,7 @@
                                                         </collectionViewFlowLayout>
                                                         <cells>
                                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="ok1-bT-cuG" customClass="CollectionViewCell" customModule="Entwined_iOS" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="22.5" width="411" height="416"/>
+                                                                <rect key="frame" x="0.0" y="22" width="411" height="416"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                     <rect key="frame" x="0.0" y="0.0" width="411" height="416"/>
@@ -294,13 +297,13 @@
                                                         </connections>
                                                     </containerView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IjB-OX-i8g">
-                                                        <rect key="frame" x="235.5" y="64" width="40" height="14"/>
-                                                        <fontDescription key="fontDescription" name="UniversLTStd-Light" family="Univers LT Std" pointSize="14"/>
+                                                        <rect key="frame" x="245" y="64" width="48.5" height="16"/>
+                                                        <fontDescription key="fontDescription" name="UniversLTStd-Bold" family="Univers LT Std" pointSize="16"/>
                                                         <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8L1-gr-fZd">
-                                                        <rect key="frame" x="301" y="56" width="164" height="31"/>
+                                                        <rect key="frame" x="319" y="57" width="164" height="31"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="160" id="GOh-ms-99m">
                                                                 <variation key="heightClass=regular-widthClass=compact" constant="80"/>
@@ -316,7 +319,7 @@
                                                         </connections>
                                                     </slider>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fbz-G7-Izi">
-                                                        <rect key="frame" x="300.5" y="126" width="164" height="31"/>
+                                                        <rect key="frame" x="317.5" y="129" width="164" height="31"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="160" id="sKt-Lf-x87">
                                                                 <variation key="heightClass=regular-widthClass=compact" constant="80"/>
@@ -341,7 +344,7 @@
                                                         </variation>
                                                     </label>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Atf-cp-rXB">
-                                                        <rect key="frame" x="586" y="56" width="164" height="31"/>
+                                                        <rect key="frame" x="586" y="57" width="164" height="31"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="160" id="chE-n6-0lU">
                                                                 <variation key="heightClass=regular-widthClass=compact" constant="80"/>
@@ -357,7 +360,7 @@
                                                         </connections>
                                                     </slider>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Cdk-Y2-ZdK">
-                                                        <rect key="frame" x="586" y="126" width="164" height="31"/>
+                                                        <rect key="frame" x="586" y="129" width="164" height="31"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="160" id="0kv-Z9-7wU">
                                                                 <variation key="heightClass=regular-widthClass=compact" constant="80"/>
@@ -382,20 +385,20 @@
                                                         </variation>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blur" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1n-Xy-NT5">
-                                                        <rect key="frame" x="511.5" y="64" width="25" height="14"/>
-                                                        <fontDescription key="fontDescription" name="UniversLTStd-Light" family="Univers LT Std" pointSize="14"/>
+                                                        <rect key="frame" x="505" y="64" width="31.5" height="16"/>
+                                                        <fontDescription key="fontDescription" name="UniversLTStd-Bold" family="Univers LT Std" pointSize="16"/>
                                                         <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uL3-d3-Bjq">
-                                                        <rect key="frame" x="502" y="134" width="67" height="14"/>
-                                                        <fontDescription key="fontDescription" name="UniversLTStd-Light" family="Univers LT Std" pointSize="14"/>
+                                                        <rect key="frame" x="487.5" y="136" width="81.5" height="16"/>
+                                                        <fontDescription key="fontDescription" name="UniversLTStd-Bold" family="Univers LT Std" pointSize="16"/>
                                                         <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spin" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6aJ-Nk-0ov">
-                                                        <rect key="frame" x="235.5" y="134" width="27.5" height="14"/>
-                                                        <fontDescription key="fontDescription" name="UniversLTStd-Light" family="Univers LT Std" pointSize="14"/>
+                                                        <rect key="frame" x="245" y="136" width="35" height="16"/>
+                                                        <fontDescription key="fontDescription" name="UniversLTStd-Bold" family="Univers LT Std" pointSize="16"/>
                                                         <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -423,7 +426,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="Atf-cp-rXB" secondAttribute="trailing" constant="20" id="FhL-ZU-14F">
                                                         <variation key="heightClass=regular-widthClass=compact" constant="12"/>
                                                     </constraint>
-                                                    <constraint firstItem="IjB-OX-i8g" firstAttribute="leading" secondItem="yKA-fy-IdX" secondAttribute="trailing" constant="9.5" id="IbY-Qu-sp7">
+                                                    <constraint firstItem="IjB-OX-i8g" firstAttribute="leading" secondItem="yKA-fy-IdX" secondAttribute="trailing" constant="19" id="IbY-Qu-sp7">
                                                         <variation key="heightClass=regular-widthClass=compact" constant="6"/>
                                                     </constraint>
                                                     <constraint firstItem="uL3-d3-Bjq" firstAttribute="centerY" secondItem="fbz-G7-Izi" secondAttribute="centerY" id="J5B-PP-fgT"/>
@@ -447,7 +450,7 @@
                                                     </constraint>
                                                     <constraint firstItem="8L1-gr-fZd" firstAttribute="width" secondItem="Atf-cp-rXB" secondAttribute="width" id="ZoT-W6-GQ9"/>
                                                     <constraint firstAttribute="bottom" secondItem="yKA-fy-IdX" secondAttribute="bottom" constant="8" id="a5m-vF-Og4"/>
-                                                    <constraint firstItem="6aJ-Nk-0ov" firstAttribute="leading" secondItem="yKA-fy-IdX" secondAttribute="trailing" constant="9.5" id="bDT-X6-Hh5">
+                                                    <constraint firstItem="6aJ-Nk-0ov" firstAttribute="leading" secondItem="yKA-fy-IdX" secondAttribute="trailing" constant="19" id="bDT-X6-Hh5">
                                                         <variation key="heightClass=regular-widthClass=compact" constant="6"/>
                                                     </constraint>
                                                     <constraint firstItem="Cdk-Y2-ZdK" firstAttribute="leading" secondItem="fbz-G7-Izi" secondAttribute="trailing" constant="20" id="bI9-2g-T8d"/>
@@ -455,9 +458,6 @@
                                                     <constraint firstItem="IjB-OX-i8g" firstAttribute="top" secondItem="9Bh-Mr-cXk" secondAttribute="bottom" constant="8" id="eMA-Gb-V09"/>
                                                     <constraint firstItem="6aJ-Nk-0ov" firstAttribute="centerX" secondItem="fbz-G7-Izi" secondAttribute="centerX" id="f36-P4-fXC"/>
                                                     <constraint firstItem="Atf-cp-rXB" firstAttribute="centerY" secondItem="f1n-Xy-NT5" secondAttribute="centerY" id="i19-TZ-aMa"/>
-                                                    <constraint firstItem="uL3-d3-Bjq" firstAttribute="leading" secondItem="fbz-G7-Izi" secondAttribute="trailing" constant="39.5" id="iGV-NY-JM0">
-                                                        <variation key="heightClass=regular-widthClass=compact" constant="12"/>
-                                                    </constraint>
                                                     <constraint firstItem="f1n-Xy-NT5" firstAttribute="centerY" secondItem="8L1-gr-fZd" secondAttribute="centerY" id="j7V-wh-LY2"/>
                                                     <constraint firstItem="8L1-gr-fZd" firstAttribute="top" secondItem="IjB-OX-i8g" secondAttribute="bottom" constant="8" id="oNJ-vh-2t4"/>
                                                     <constraint firstItem="fbz-G7-Izi" firstAttribute="leading" secondItem="6aJ-Nk-0ov" secondAttribute="trailing" constant="39.5" id="qGJ-Rr-BZp">
@@ -470,6 +470,7 @@
                                                     </constraint>
                                                     <constraint firstItem="8L1-gr-fZd" firstAttribute="leading" secondItem="yKA-fy-IdX" secondAttribute="trailing" constant="12" id="ua4-So-NBt"/>
                                                     <constraint firstItem="Atf-cp-rXB" firstAttribute="top" secondItem="f1n-Xy-NT5" secondAttribute="bottom" constant="8" id="uwm-OR-Uxx"/>
+                                                    <constraint firstItem="Cdk-Y2-ZdK" firstAttribute="leading" secondItem="uL3-d3-Bjq" secondAttribute="trailing" constant="19" id="wjX-6q-Ipd"/>
                                                 </constraints>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -516,7 +517,6 @@
                                                         <exclude reference="1Je-4e-hFF"/>
                                                         <include reference="86H-Sx-hYd"/>
                                                         <exclude reference="J5B-PP-fgT"/>
-                                                        <exclude reference="iGV-NY-JM0"/>
                                                         <exclude reference="LpA-PO-MvR"/>
                                                         <exclude reference="i19-TZ-aMa"/>
                                                         <include reference="s1C-Us-Bxj"/>
@@ -708,7 +708,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="xhm-hv-Kxt"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="UniversLTStd-Light" family="Univers LT Std" pointSize="9"/>
+                                            <fontDescription key="fontDescription" name="UniversLTStd-Bold" family="Univers LT Std" pointSize="9"/>
                                             <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
