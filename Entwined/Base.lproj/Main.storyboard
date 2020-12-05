@@ -482,10 +482,10 @@
                                                         <exclude reference="ua4-So-NBt"/>
                                                         <exclude reference="FPM-ff-fUe"/>
                                                         <exclude reference="da6-Lw-XxM"/>
-                                                        <exclude reference="EjW-MP-J3z"/>
-                                                        <exclude reference="FT1-qd-teX"/>
                                                         <exclude reference="1Je-4e-hFF"/>
                                                         <exclude reference="86H-Sx-hYd"/>
+                                                        <exclude reference="EjW-MP-J3z"/>
+                                                        <exclude reference="FT1-qd-teX"/>
                                                         <exclude reference="s1C-Us-Bxj"/>
                                                         <exclude reference="JYm-g0-0ec"/>
                                                         <exclude reference="NK4-4J-A0J"/>
@@ -511,12 +511,12 @@
                                                         <include reference="FPM-ff-fUe"/>
                                                         <include reference="da6-Lw-XxM"/>
                                                         <exclude reference="qGJ-Rr-BZp"/>
-                                                        <include reference="EjW-MP-J3z"/>
-                                                        <include reference="FT1-qd-teX"/>
-                                                        <exclude reference="j7V-wh-LY2"/>
                                                         <exclude reference="1Je-4e-hFF"/>
                                                         <include reference="86H-Sx-hYd"/>
                                                         <exclude reference="J5B-PP-fgT"/>
+                                                        <include reference="EjW-MP-J3z"/>
+                                                        <include reference="FT1-qd-teX"/>
+                                                        <exclude reference="j7V-wh-LY2"/>
                                                         <exclude reference="LpA-PO-MvR"/>
                                                         <exclude reference="i19-TZ-aMa"/>
                                                         <include reference="s1C-Us-Bxj"/>
@@ -674,41 +674,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="LPj-ln-XCl">
-                            <size key="itemSize" width="100" height="100"/>
+                            <size key="itemSize" width="140" height="140"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="m30-WT-sgN" customClass="PatternCollectionViewCell" customModule="Entwined_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PatternDeselected" translatesAutoresizingMaskIntoConstraints="NO" id="geK-of-OsS">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PatternSelectedBlue" translatesAutoresizingMaskIntoConstraints="NO" id="Kqy-l7-6KZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PatternSelectedGreen" translatesAutoresizingMaskIntoConstraints="NO" id="WKE-eZ-XJC">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PatternSelectedOrange" translatesAutoresizingMaskIntoConstraints="NO" id="rZj-a0-oct">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3o-cf-Atw">
-                                            <rect key="frame" x="25" y="45.5" width="50" height="9"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3o-cf-Atw">
+                                            <rect key="frame" x="45" y="63" width="50" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="xhm-hv-Kxt"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="UniversLTStd-Bold" family="Univers LT Std" pointSize="9"/>
+                                            <fontDescription key="fontDescription" name="UniversLTStd-Bold" family="Univers LT Std" pointSize="14"/>
                                             <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
