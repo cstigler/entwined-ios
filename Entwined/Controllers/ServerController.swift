@@ -39,7 +39,7 @@ class ServerController: NSObject, PKJSONSocketDelegate {
     
     @objc func connect() {
         self.autoconnect = true
-        self.socket.connect(toHost: "localhost", onPort: 5204, error: nil)
+        self.socket.connect(toHost: "192.168.4.19", onPort: 5204, error: nil)
     }
     
     func disconnect() {
