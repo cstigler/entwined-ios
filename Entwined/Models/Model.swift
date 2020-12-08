@@ -18,7 +18,7 @@ class Model: NSObject {
     }
     
     var isIniting = false
-    @objc dynamic var loaded = true
+    @objc dynamic var loaded = false
     
     @objc dynamic var autoplay: Bool = false {
         didSet {

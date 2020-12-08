@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MixerViewController: UIViewController ,UICollectionViewDelegateFlowLayout{
+class MixerViewController: UIViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var autoPilotInterActBt: UIButton!
@@ -43,6 +43,12 @@ class MixerViewController: UIViewController ,UICollectionViewDelegateFlowLayout{
         collectionView.dataSource = self
         reloadCollectionView()
         ServerController.sharedInstance.connect()
+        
+        // make connecting label tappable so users can change hostname
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(connectingLabelTapped(_:)))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        connectingLabel.addGestureRecognizer(tapGestureRecognizer)
+        connectingLabel.isUserInteractionEnabled = true
        
         Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.loaded)).startWithValues { [unowned self] (_) in
             //self.connectingView.isHidden = Model.sharedInstance.loaded
@@ -109,6 +115,34 @@ class MixerViewController: UIViewController ,UICollectionViewDelegateFlowLayout{
         }
     }
     
+    @objc func connectingLabelTapped(_ sender: AnyObject) {
+        let alert = UIAlertController(title: "Change Hostname", message: "What hostname is the Entwined server at?", preferredStyle: UIAlertController.Style.alert)
+        alert.addTextField { (textField : UITextField!) in
+            textField.placeholder = "\(ServerController.sharedInstance.serverHostname)"
+            textField.delegate = self
+        }
+        
+        let save = UIAlertAction(title: "Connect", style: UIAlertAction.Style.default, handler: { saveAction -> Void in
+            var newHostname = (alert.textFields![0] as UITextField).text
+            newHostname = newHostname?.trimmingCharacters(in: .whitespacesAndNewlines)
+            if (newHostname != nil && newHostname!.isEmpty) {
+                return;
+            }
+            
+            if let unwrappedHostname = newHostname {
+                ServerController.sharedInstance.serverHostname = unwrappedHostname
+                print("Connecting to new hostname \(unwrappedHostname)")
+            }
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {
+            (action : UIAlertAction!) -> Void in })
+
+        alert.addAction(save)
+        alert.addAction(cancel)
+
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func autoplayChanged(_ sender: AnyObject) {
         Model.sharedInstance.autoplay = self.autoplaySwitch.isOn
         //if self.autoplaySwitch.isOn{
@@ -155,6 +189,11 @@ class MixerViewController: UIViewController ,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         return CGSize(width:collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
@@ -207,4 +246,3 @@ extension MixerViewController : UICollectionViewDelegate
 {
     
 }
-

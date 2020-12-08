@@ -22,7 +22,6 @@
 		2721BA261A01A6D800B905B7 /* ServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2721BA251A01A6D800B905B7 /* ServerController.swift */; };
 		2721BA2B1A01A6DC00B905B7 /* PatternCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2721BA281A01A6DC00B905B7 /* PatternCollectionViewCell.swift */; };
 		2721BA2C1A01A6DC00B905B7 /* PatternsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2721BA291A01A6DC00B905B7 /* PatternsCollectionViewController.swift */; };
-		2721BA2D1A01A6DC00B905B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2721BA2A1A01A6DC00B905B7 /* ViewController.swift */; };
 		273018EA1A0ACA330048FA42 /* EffectsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273018E91A0ACA330048FA42 /* EffectsTableViewController.swift */; };
 		273018EC1A0ACA3F0048FA42 /* EffectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273018EB1A0ACA3E0048FA42 /* EffectTableViewCell.swift */; };
 		278800021A09AF0800B3BEB9 /* ChannelsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278800011A09AF0800B3BEB9 /* ChannelsCollectionViewController.swift */; };
@@ -57,7 +56,6 @@
 		2721BA251A01A6D800B905B7 /* ServerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerController.swift; sourceTree = "<group>"; };
 		2721BA281A01A6DC00B905B7 /* PatternCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternCollectionViewCell.swift; sourceTree = "<group>"; };
 		2721BA291A01A6DC00B905B7 /* PatternsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatternsCollectionViewController.swift; sourceTree = "<group>"; };
-		2721BA2A1A01A6DC00B905B7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		273018E61A0AAC410048FA42 /* UniversLTStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Bold.otf"; sourceTree = "<group>"; };
 		273018E71A0AAC410048FA42 /* UniversLTStd-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Light.otf"; sourceTree = "<group>"; };
 		273018E81A0AAC410048FA42 /* UniversLTStd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UniversLTStd.otf; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 				27BB0A4E1A03CBB300D37664 /* EffectCollectionViewCell.swift */,
 				273018E91A0ACA330048FA42 /* EffectsTableViewController.swift */,
 				273018EB1A0ACA3E0048FA42 /* EffectTableViewCell.swift */,
-				2721BA2A1A01A6DC00B905B7 /* ViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -384,7 +381,6 @@
 				2721BA2C1A01A6DC00B905B7 /* PatternsCollectionViewController.swift in Sources */,
 				273018EC1A0ACA3F0048FA42 /* EffectTableViewCell.swift in Sources */,
 				A97F07BD22952BBF00EB9ED7 /* CollectionViewCell.swift in Sources */,
-				2721BA2D1A01A6DC00B905B7 /* ViewController.swift in Sources */,
 				27BB0A4B1A03A7C100D37664 /* DisplayState.swift in Sources */,
 				271B8DDE1A005BED005C166C /* Effect.swift in Sources */,
 				271B8DDB19FF9B8F005C166C /* Model.swift in Sources */,

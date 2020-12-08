@@ -36,10 +36,16 @@ class ServerController: NSObject, PKJSONSocketDelegate {
             print(connected ? "Connected" : "Disconnected")
         }
     }
+    var serverHostname: String = "192.168.4.19" {
+        didSet {
+            disconnect()
+            connect()
+        }
+    }
     
     @objc func connect() {
         self.autoconnect = true
-        self.socket.connect(toHost: "192.168.4.19", onPort: 5204, error: nil)
+        self.socket.connect(toHost: serverHostname, onPort: 5204, error: nil)
     }
     
     func disconnect() {
