@@ -87,5 +87,19 @@ class Model: NSObject {
             }
         }
     }
-   
+    
+    // do NOT set from the client except for server-set values
+    @objc dynamic var breakTimeRemaining: Double = 0 {
+        didSet {
+            // we need to store WHEN we fetched the breakTimeRemaining
+            // so we can interpolate the break end date and know when it's over
+            breakTimeRemainingFetched = Date()
+        }
+    }
+    @objc dynamic var breakTimeRemainingFetched: Date?;
+    var breakEndDate: Date {
+        let fetchedDate = breakTimeRemainingFetched ?? Date()
+
+        return fetchedDate.addingTimeInterval(TimeInterval(breakTimeRemaining))
+    }
 }

@@ -15,6 +15,7 @@ class MixerViewController: UIViewController, UICollectionViewDelegateFlowLayout,
     @IBOutlet weak var controllerView: UIView!
     @IBOutlet weak var connectingView: UIView!
     @IBOutlet weak var connectingLabel: UIView!
+    @IBOutlet weak var startBreakButton: UIButton!
     @IBOutlet weak var connectedView: UIView!
     @IBOutlet weak var autoplayView: UIView!
     
@@ -49,11 +50,12 @@ class MixerViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         tapGestureRecognizer.numberOfTapsRequired = 1
         connectingLabel.addGestureRecognizer(tapGestureRecognizer)
         connectingLabel.isUserInteractionEnabled = true
-       
+        
         Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.loaded)).startWithValues { [unowned self] (_) in
             //self.connectingView.isHidden = Model.sharedInstance.loaded
             //self.connectedView.isHidden = !Model.sharedInstance.loaded
             self.connectingLabel.isHidden = Model.sharedInstance.loaded
+            self.startBreakButton.isHidden = false
             self.connectedView.isHidden = !Model.sharedInstance.loaded
             if (!self.connectingLabel.isHidden){
                 self.autoplayView.isHidden = false
@@ -141,6 +143,26 @@ class MixerViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         alert.addAction(cancel)
 
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func startFiveMinuteBreak(_ sender: AnyObject) {
+        let confirmationAlert = UIAlertController(title: "Confirm Break", message: "Are you sure you want to start a 5-minute lighting break? All LED patterns will stop and the sculpture will go dark.", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "Start Break", style: .default, handler: { (action) -> Void in
+            ServerController.sharedInstance.startBreak(300.0)
+        })
+        
+        let cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {
+            (action : UIAlertAction!) -> Void in })
+
+        confirmationAlert.addAction(ok)
+        confirmationAlert.addAction(cancel)
+        
+        // Present dialog message to user
+        self.present(confirmationAlert, animated: true, completion: nil)
+    }
+    @IBAction func stopBreak(_ sender: AnyObject) {
+        
     }
     
     @IBAction func autoplayChanged(_ sender: AnyObject) {
