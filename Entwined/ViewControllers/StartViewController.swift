@@ -7,10 +7,11 @@
 //
 
 import Foundation
-
 import UIKit
+import ReactiveSwift
 
 class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+    let disposables = CompositeDisposable.init()
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var autoPilotInterActBt: UIButton!
     @IBOutlet weak var connectingLabel: UIView!
@@ -23,6 +24,11 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
     var timer:Timer? = nil
     
     //var secondsCounter = 0
+    
+    deinit {
+        disposables.dispose()
+        self.timer?.invalidate()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,13 +44,14 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         connectingLabel.addGestureRecognizer(tapGestureRecognizer)
         connectingLabel.isUserInteractionEnabled = true
         
-        Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.loaded)).startWithValues { [unowned self] (_) in
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.loaded)).startWithValues { [unowned self] (_) in
             self.connectingLabel.isHidden = Model.sharedInstance.loaded
             self.startBreakButton.isHidden = !Model.sharedInstance.loaded
             self.autoPilotInterActBt.isHidden = !Model.sharedInstance.loaded
-        }
+        })
 
         //Set autoplay mode enable by default
+        print("StartViewController viewDidLoad, setting autoplay = true")
         Model.sharedInstance.autoplay = true;
     }
     
@@ -97,18 +104,20 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
     }
     
     @IBAction func autoPilotInterActBt(_ sender: Any) {
-        print("autopilot interact bt, loaded = \(Model.sharedInstance.loaded)")
+        print("autopilot interact bt, loaded = \(Model.sharedInstance.loaded). model \(Model.sharedInstance)")
         if Model.sharedInstance.loaded {
             startControlPanel()
         }
     }
     
     func startControlPanel() {
+        print("startControlPanel setting autoplay")
+        Model.sharedInstance.autoplay = false;
+
         print("performing segue")
         performSegue(withIdentifier: "show-controls-segue", sender: self)
         print("performed segue")
 
-        Model.sharedInstance.autoplay = false;
     }
     
     func reloadCollectionView() {
@@ -171,11 +180,5 @@ extension StartViewController : UICollectionViewDataSource{
    
     override func viewWillDisappear(_ animated: Bool) {
         self.timer?.invalidate()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if Model.sharedInstance.loaded {
-            startControlPanel()
-        }
     }
 }

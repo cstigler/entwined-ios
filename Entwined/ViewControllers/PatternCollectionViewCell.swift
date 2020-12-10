@@ -8,9 +8,10 @@
 
 import UIKit
 import ReactiveCocoa
+import ReactiveSwift
 
 class PatternCollectionViewCell: UICollectionViewCell {
-    
+    let disposables = CompositeDisposable.init()
     @objc dynamic var pattern: Pattern!
     var currentlySelected = false
     
@@ -23,13 +24,13 @@ class PatternCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.reactive.producer(forKeyPath: #keyPath(pattern.name)).startWithValues { [unowned self] (name: Any?) in
+        disposables.add(self.reactive.producer(forKeyPath: #keyPath(pattern.name)).startWithValues { [unowned self] (name: Any?) in
             if let name = name as? String {
                 self.nameLabel.text! = name
             }
-        }
+        })
         
-        self.reactive.producer(forKeyPath: #keyPath(pattern.channelSelectedOn.index)).startWithValues { [unowned self] (_) in
+        disposables.add(self.reactive.producer(forKeyPath: #keyPath(pattern.channelSelectedOn.index)).startWithValues { [unowned self] (_) in
             if self.pattern != nil {
                 self.deseletedImageView.isHidden = true
                 self.selectedBlueImageView.isHidden = true
@@ -51,7 +52,10 @@ class PatternCollectionViewCell: UICollectionViewCell {
                     self.deseletedImageView.isHidden = false
                 }
             }
-        }
+        })
     }
     
+    deinit {
+        disposables.dispose()
+    }
 }

@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class DisplayState: NSObject {
-    
+    let disposables = CompositeDisposable.init()
+
     class var sharedInstance : DisplayState {
         struct Static {
             static let instance = DisplayState()
@@ -19,9 +21,13 @@ class DisplayState: NSObject {
     
     override init() {
         super.init()
-        Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.channels)).startWithValues { [unowned self] (_) in
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.channels)).startWithValues { [unowned self] (_) in
             self.updateSelectedChannel()
-        }
+        })
+    }
+    
+    deinit {
+        disposables.dispose()
     }
     
     var selectedChannelIndex: Int = 0 {

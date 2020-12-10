@@ -132,9 +132,9 @@
 		2721BA271A01A6DC00B905B7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0177A0B52581C60E00C5DC5F /* StartViewController.swift */,
 				27BB0A4A1A03A7C100D37664 /* DisplayState.swift */,
 				27B556931A05D2FB00CEE159 /* MixerViewController.swift */,
-				0177A0B52581C60E00C5DC5F /* StartViewController.swift */,
 				2721BA291A01A6DC00B905B7 /* PatternsCollectionViewController.swift */,
 				2721BA281A01A6DC00B905B7 /* PatternCollectionViewCell.swift */,
 				278800011A09AF0800B3BEB9 /* ChannelsCollectionViewController.swift */,

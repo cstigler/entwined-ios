@@ -23,22 +23,24 @@ class ChannelCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var selectedOrangeImageView: UIImageView!
     @IBOutlet weak var selectedGreenImageView: UIImageView!
     
+    let disposables = CompositeDisposable.init()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+    
         self.visibilitySlider.transform = CGAffineTransform(rotationAngle: -.pi/2);
         
-        SignalProducer.merge([self.reactive.producer(forKeyPath: #keyPath(channel)), DisplayState.sharedInstance.reactive.producer(forKeyPath: #keyPath(DisplayState.selectedChannel))]).startWithValues { [unowned self] (_) in
+        disposables.add(SignalProducer.merge([self.reactive.producer(forKeyPath: #keyPath(channel)), DisplayState.sharedInstance.reactive.producer(forKeyPath: #keyPath(DisplayState.selectedChannel))]).startWithValues { [unowned self] (_) in
             self.currentlySelected = self.channel != nil && DisplayState.sharedInstance.selectedChannel != nil && self.channel == DisplayState.sharedInstance.selectedChannel
-        }
+        })
         
-        self.reactive.producer(forKeyPath: #keyPath(channel.index)).startWithValues { [unowned self] (_) in
+        disposables.add(self.reactive.producer(forKeyPath: #keyPath(channel.index)).startWithValues { [unowned self] (_) in
             if self.channel != nil {
                 self.channelLabel.text = "Channel \(self.channel.index + 1)"
             }
-        }
+        })
         
-        SignalProducer.merge([self.reactive.producer(forKeyPath: #keyPath(channel.index)), self.reactive.producer(forKeyPath: #keyPath(channel.currentPattern))]).startWithValues { [unowned self] (_) in
+        disposables.add(SignalProducer.merge([self.reactive.producer(forKeyPath: #keyPath(channel.index)), self.reactive.producer(forKeyPath: #keyPath(channel.currentPattern))]).startWithValues { [unowned self] (_) in
             if self.channel != nil {
                 if self.channel.currentPattern == nil {
                     self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGray"),
@@ -83,15 +85,15 @@ class ChannelCollectionViewCell: UICollectionViewCell {
                     }
                 }
             }
-        }
+        })
         
-        self.reactive.producer(forKeyPath: #keyPath(channel.currentPattern.name)).startWithValues { [unowned self] (_) in
+        disposables.add(self.reactive.producer(forKeyPath: #keyPath(channel.currentPattern.name)).startWithValues { [unowned self] (_) in
             if self.channel != nil {
                 self.nameLabel.text = self.channel.currentPattern?.name
             }
-        }
+        })
         
-        self.reactive.producer(forKeyPath: #keyPath(currentlySelected)).startWithValues { [unowned self] (_) in
+        disposables.add(self.reactive.producer(forKeyPath: #keyPath(currentlySelected)).startWithValues { [unowned self] (_) in
             if self.channel != nil {
                 self.selectedBlueImageView.isHidden = true
                 self.selectedOrangeImageView.isHidden = true
@@ -109,15 +111,15 @@ class ChannelCollectionViewCell: UICollectionViewCell {
                     }
                 }
             }
-        }
+        })
         
-        self.reactive.producer(forKeyPath: #keyPath(channel.visibility)).startWithValues { [unowned self] (_) in
+        disposables.add(self.reactive.producer(forKeyPath: #keyPath(channel.visibility)).startWithValues { [unowned self] (_) in
             if self.channel != nil {
                 self.visibilitySlider.value = self.channel.visibility
             }
-        }
+        })
         
-        SignalProducer.merge([self.reactive.producer(forKeyPath: #keyPath(channel.currentPattern.name)), self.reactive.producer(forKeyPath: #keyPath(currentlySelected)), self.reactive.producer(forKeyPath: #keyPath(channel.currentPattern))]).startWithValues { [unowned self] (_) in
+        disposables.add(SignalProducer.merge([self.reactive.producer(forKeyPath: #keyPath(channel.currentPattern.name)), self.reactive.producer(forKeyPath: #keyPath(currentlySelected)), self.reactive.producer(forKeyPath: #keyPath(channel.currentPattern))]).startWithValues { [unowned self] (_) in
             if self.channel != nil {
                 self.nameLabel.isHidden = true
                 self.channelLabel.isHidden = true
@@ -132,7 +134,11 @@ class ChannelCollectionViewCell: UICollectionViewCell {
                     self.channelLabel.isHidden = false
                 }
             }
-        }
+        })
+    }
+    
+    deinit {
+        disposables.dispose()
     }
     
     @IBAction func channelVisibilityChanged(_ sender: AnyObject) {
@@ -141,5 +147,4 @@ class ChannelCollectionViewCell: UICollectionViewCell {
             DisplayState.sharedInstance.selectedChannelIndex = channel.index
         }
     }
-    
 }

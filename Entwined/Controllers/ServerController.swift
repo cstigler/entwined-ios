@@ -61,6 +61,7 @@ class ServerController: NSObject, PKJSONSocketDelegate {
     }
     
     func socket(_ socket: PKJSONSocket!, didDisconnectWithError error: Error!) {
+        print("socket didDisConnectWIthError")
         self.connected = false
         Model.sharedInstance.loaded = false
         if timer == nil {
@@ -78,6 +79,7 @@ class ServerController: NSObject, PKJSONSocketDelegate {
                 case "model":
                     Model.sharedInstance.isIniting = true
                     if let autoplay = params["autoplay"] as? Bool {
+                        print("The server says autoplay = \(autoplay)")
                         Model.sharedInstance.autoplay = autoplay
                     }
                     if let brightness = params["brightness"] as? Float {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class MixerViewController: UIViewController {    
     @IBOutlet weak var autoplaySwitch: UISwitch!
@@ -18,39 +19,45 @@ class MixerViewController: UIViewController {
     
     @IBOutlet var sliders: [UISlider]!
     
+    let disposables = CompositeDisposable.init()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.loaded)).startWithValues { [unowned self] (_) in
-            
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.loaded)).startWithValues { [unowned self] (_) in
             if (!Model.sharedInstance.loaded) {
+                print("Model sharedInstance !loaded (\(Model.sharedInstance.loaded), so autoplay = true \(Model.sharedInstance)")
                 Model.sharedInstance.autoplay = true
             }
-        }
+        })
         
-        Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.autoplay)).startWithValues { [unowned self] (_) in
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.autoplay)).startWithValues { [unowned self] (_) in
             self.autoplaySwitch.isOn = Model.sharedInstance.autoplay
             
             if (Model.sharedInstance.autoplay) {
-                performSegue(withIdentifier: "hide-controls-segue", sender: self)
+                print("SET TO AUTOPLAY!")
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                    // performSegue(withIdentifier: "hide-controls-segue", sender: self)
+                }
             }
-        }
+        })
         
-        Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.brightness)).startWithValues { [unowned self] (_) in
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.brightness)).startWithValues { [unowned self] (_) in
             self.brightnessEffectSlider.value = Model.sharedInstance.brightness
-        }
+        })
         
-        Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.speed)).startWithValues { [unowned self] (_) in
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.speed)).startWithValues { [unowned self] (_) in
             self.speedSlider.value = Model.sharedInstance.speed
-        }
+        })
         
-        Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.spin)).startWithValues { [unowned self] (_) in
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.spin)).startWithValues { [unowned self] (_) in
             self.spinSlider.value = Model.sharedInstance.spin
-        }
+        })
         
-        Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.blur)).startWithValues { [unowned self] (_) in
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.blur)).startWithValues { [unowned self] (_) in
             self.blurSlider.value = Model.sharedInstance.blur
-        }
+        })
         
         for slider in self.sliders {
             slider.setThumbImage(UIImage(named: "channelSliderThumbNormal"),
@@ -70,8 +77,13 @@ class MixerViewController: UIViewController {
             object: nil)
     }
     
+    deinit {
+        disposables.dispose()
+        NotificationCenter.default.removeObserver(self, name: .appTimeout, object: nil)
+    }
+    
     @objc func userActivityTimeout(notification: NSNotification){
-        print("User In active")
+        print("User inactive, setting autoplay to true")
         Model.sharedInstance.autoplay = true
     }
     

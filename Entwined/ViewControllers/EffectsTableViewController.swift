@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class EffectsTableViewController: UITableViewController {
+    let disposables = CompositeDisposable.init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.colorEffects)).startWithValues { [unowned self] (_) in
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.colorEffects)).startWithValues { [unowned self] (_) in
             self.tableView.reloadData()
-        }
+        })
+    }
+    
+    deinit {
+        disposables.dispose()
     }
 
     // MARK: - Table view data source
