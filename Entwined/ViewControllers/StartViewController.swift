@@ -47,7 +47,16 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.loaded)).startWithValues { [unowned self] (_) in
             self.connectingLabel.isHidden = Model.sharedInstance.loaded
             self.startBreakButton.isHidden = !Model.sharedInstance.loaded
-            self.autoPilotInterActBt.isHidden = !Model.sharedInstance.loaded
+
+            if (Model.sharedInstance.loaded) {
+                self.autoPilotInterActBt.setTitle("START CONTROLLING", for: UIControl.State.normal)
+                self.autoPilotInterActBt.backgroundColor = UIColor(red: 0.656078, green: 0.382225, blue: 0.606485, alpha: 1)
+                self.autoPilotInterActBt.isEnabled = true
+            } else {
+                self.autoPilotInterActBt.setTitle("CONNECTING", for: UIControl.State.normal)
+                self.autoPilotInterActBt.backgroundColor = UIColor.lightGray
+                self.autoPilotInterActBt.isEnabled = false
+            }
         })
 
         //Set autoplay mode enable by default

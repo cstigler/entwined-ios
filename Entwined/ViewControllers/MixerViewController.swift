@@ -15,7 +15,7 @@ class MixerViewController: UIViewController {
     @IBOutlet weak var speedSlider: UISlider!
     @IBOutlet weak var spinSlider: UISlider!
     @IBOutlet weak var blurSlider: UISlider!
-    @IBOutlet weak var brightnessEffectSlider: UISlider!
+    @IBOutlet weak var brightnessSlider: UISlider!
     
     @IBOutlet var sliders: [UISlider]!
     
@@ -35,7 +35,6 @@ class MixerViewController: UIViewController {
             self.autoplaySwitch.isOn = Model.sharedInstance.autoplay
             
             if (Model.sharedInstance.autoplay) {
-                print("SET TO AUTOPLAY!")
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)
                     // performSegue(withIdentifier: "hide-controls-segue", sender: self)
@@ -44,7 +43,7 @@ class MixerViewController: UIViewController {
         })
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.brightness)).startWithValues { [unowned self] (_) in
-            self.brightnessEffectSlider.value = Model.sharedInstance.brightness
+            self.brightnessSlider.value = Model.sharedInstance.brightness
         })
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.speed)).startWithValues { [unowned self] (_) in
