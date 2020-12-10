@@ -7,16 +7,21 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class PatternsCollectionViewController: UICollectionViewController {
-    
+    let disposables = CompositeDisposable.init()
     let reuseIdentifier = "Cell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.patterns)).startWithValues { [unowned self] (_) in
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.patterns)).startWithValues { [unowned self] (_) in
             self.collectionView!.reloadData()
-        }
+        })
+    }
+    
+    deinit {
+        disposables.dispose()
     }
     
     // MARK: UICollectionViewDataSource

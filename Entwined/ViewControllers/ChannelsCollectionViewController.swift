@@ -7,19 +7,23 @@
 //
 
 import UIKit
-
+import ReactiveSwift
 class ChannelsCollectionViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
-
+    let disposables = CompositeDisposable.init()
     override func viewDidLoad() {
         super.viewDidLoad()
-        Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.channels)).startWithValues { [unowned self] (_) in
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.channels)).startWithValues { [unowned self] (_) in
             self.collectionView!.reloadData()
             if self.collectionView!.indexPathsForSelectedItems?.first == nil {
                 self.setSelectedItem()
             }
-        }
+        })
     }
    
+    deinit {
+        disposables.dispose()
+    }
+    
     func setSelectedItem() {
         let selectedItemIndex = DisplayState.sharedInstance.selectedChannelIndex
         if selectedItemIndex >= 0 && selectedItemIndex < self.collectionView!.numberOfItems(inSection: 0) {
