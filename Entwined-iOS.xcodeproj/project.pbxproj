@@ -15,6 +15,7 @@
 		0146D027257C977C001D10CF /* icon-167.png in Resources */ = {isa = PBXBuildFile; fileRef = 0146D023257C977C001D10CF /* icon-167.png */; };
 		0146D028257C977C001D10CF /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 0146D024257C977C001D10CF /* icon-76.png */; };
 		0146D029257C977C001D10CF /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 0146D025257C977C001D10CF /* icon-120.png */; };
+		0177A0B62581C60E00C5DC5F /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177A0B52581C60E00C5DC5F /* StartViewController.swift */; };
 		056358B580EFAE6AA9075E37 /* Pods_Entwined_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C4F6612D84592E03756E31 /* Pods_Entwined_iOS.framework */; };
 		271B8DDB19FF9B8F005C166C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271B8DD919FF9B8F005C166C /* Model.swift */; };
 		271B8DDC19FF9B8F005C166C /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271B8DDA19FF9B8F005C166C /* Pattern.swift */; };
@@ -50,6 +51,7 @@
 		0146D023257C977C001D10CF /* icon-167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-167.png"; sourceTree = "<group>"; };
 		0146D024257C977C001D10CF /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76.png"; sourceTree = "<group>"; };
 		0146D025257C977C001D10CF /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
+		0177A0B52581C60E00C5DC5F /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		271B8DD919FF9B8F005C166C /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		271B8DDA19FF9B8F005C166C /* Pattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
 		271B8DDD1A005BED005C166C /* Effect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				27BB0A4A1A03A7C100D37664 /* DisplayState.swift */,
 				27B556931A05D2FB00CEE159 /* MixerViewController.swift */,
+				0177A0B52581C60E00C5DC5F /* StartViewController.swift */,
 				2721BA291A01A6DC00B905B7 /* PatternsCollectionViewController.swift */,
 				2721BA281A01A6DC00B905B7 /* PatternCollectionViewCell.swift */,
 				278800011A09AF0800B3BEB9 /* ChannelsCollectionViewController.swift */,
@@ -384,6 +387,7 @@
 				27BB0A4B1A03A7C100D37664 /* DisplayState.swift in Sources */,
 				271B8DDE1A005BED005C166C /* Effect.swift in Sources */,
 				271B8DDB19FF9B8F005C166C /* Model.swift in Sources */,
+				0177A0B62581C60E00C5DC5F /* StartViewController.swift in Sources */,
 				27BB0A4F1A03CBB300D37664 /* EffectCollectionViewCell.swift in Sources */,
 				27A3962619FC8D4B0030B940 /* AppDelegate.swift in Sources */,
 				278800021A09AF0800B3BEB9 /* ChannelsCollectionViewController.swift in Sources */,
