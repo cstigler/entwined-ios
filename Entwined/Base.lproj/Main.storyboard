@@ -294,15 +294,15 @@
                                         <exclude reference="ua4-So-NBt"/>
                                         <exclude reference="FPM-ff-fUe"/>
                                         <exclude reference="da6-Lw-XxM"/>
-                                        <exclude reference="1Je-4e-hFF"/>
-                                        <exclude reference="86H-Sx-hYd"/>
                                         <exclude reference="EjW-MP-J3z"/>
                                         <exclude reference="FT1-qd-teX"/>
-                                        <exclude reference="s1C-Us-Bxj"/>
+                                        <exclude reference="1Je-4e-hFF"/>
+                                        <exclude reference="86H-Sx-hYd"/>
                                         <exclude reference="JYm-g0-0ec"/>
                                         <exclude reference="NK4-4J-A0J"/>
                                         <exclude reference="WRY-Td-Rhs"/>
                                         <exclude reference="bI9-2g-T8d"/>
+                                        <exclude reference="s1C-Us-Bxj"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -323,20 +323,20 @@
                                         <include reference="FPM-ff-fUe"/>
                                         <include reference="da6-Lw-XxM"/>
                                         <exclude reference="qGJ-Rr-BZp"/>
-                                        <exclude reference="1Je-4e-hFF"/>
-                                        <include reference="86H-Sx-hYd"/>
-                                        <exclude reference="J5B-PP-fgT"/>
                                         <include reference="EjW-MP-J3z"/>
                                         <include reference="FT1-qd-teX"/>
                                         <exclude reference="j7V-wh-LY2"/>
-                                        <exclude reference="LpA-PO-MvR"/>
-                                        <exclude reference="i19-TZ-aMa"/>
-                                        <include reference="s1C-Us-Bxj"/>
+                                        <exclude reference="1Je-4e-hFF"/>
+                                        <include reference="86H-Sx-hYd"/>
+                                        <exclude reference="J5B-PP-fgT"/>
                                         <exclude reference="63u-vl-EjQ"/>
                                         <include reference="JYm-g0-0ec"/>
                                         <include reference="NK4-4J-A0J"/>
                                         <include reference="WRY-Td-Rhs"/>
                                         <include reference="bI9-2g-T8d"/>
+                                        <exclude reference="LpA-PO-MvR"/>
+                                        <exclude reference="i19-TZ-aMa"/>
+                                        <include reference="s1C-Us-Bxj"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
@@ -641,23 +641,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="image6.png" translatesAutoresizingMaskIntoConstraints="NO" id="x3o-4n-BdC">
-                                <rect key="frame" x="302" y="112" width="100" height="68"/>
-                                <accessibility key="accessibilityConfiguration" label="dfadlkjda"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="68" id="0rk-s8-feP"/>
-                                    <constraint firstAttribute="width" constant="100" id="4u0-Ep-qxz"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image7" translatesAutoresizingMaskIntoConstraints="NO" id="2Y6-su-ak8">
-                                <rect key="frame" x="228" y="188" width="312" height="15"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="image7" translatesAutoresizingMaskIntoConstraints="NO" id="2Y6-su-ak8">
+                                <rect key="frame" x="228" y="314" width="312" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="312" id="FUs-E6-1OQ"/>
                                     <constraint firstAttribute="height" constant="15" id="MsZ-04-d9D"/>
                                 </constraints>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XMS-2L-3hT">
-                                <rect key="frame" x="91.5" y="281" width="585" height="437"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" ambiguous="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XMS-2L-3hT">
+                                <rect key="frame" x="91.5" y="407" width="585" height="437"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="437" id="FXf-A9-Ws5"/>
@@ -709,13 +701,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting to Entwined Meadow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrC-8v-AIA">
-                                <rect key="frame" x="211" y="958" width="346" height="22"/>
+                                <rect key="frame" x="220" y="954" width="328" height="26"/>
                                 <fontDescription key="fontDescription" name="UniversLTStd" family="Univers LT Std" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPV-pI-AAJ">
-                                <rect key="frame" x="257" y="788" width="254" height="53"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPV-pI-AAJ">
+                                <rect key="frame" x="257" y="914" width="254" height="53"/>
                                 <color key="backgroundColor" red="0.65607827900000004" green="0.38222464919999999" blue="0.60648506879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="ULP-yV-6c2"/>
@@ -730,13 +722,20 @@
                                     <action selector="autoPilotInterActBt:" destination="XkK-v0-9WK" eventType="touchUpInside" id="k9Q-dG-jP8"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="EntwinedLogo" translatesAutoresizingMaskIntoConstraints="NO" id="x3o-4n-BdC">
+                                <rect key="frame" x="273" y="20" width="222" height="151"/>
+                                <accessibility key="accessibilityConfiguration" label="dfadlkjda"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="194" id="0rk-s8-feP"/>
+                                    <constraint firstAttribute="width" constant="200" id="4u0-Ep-qxz"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="rPV-pI-AAJ" firstAttribute="top" secondItem="XMS-2L-3hT" secondAttribute="bottom" constant="70" id="1z7-jA-8SL"/>
                             <constraint firstItem="XMS-2L-3hT" firstAttribute="top" secondItem="2Y6-su-ak8" secondAttribute="bottom" constant="78" id="2Nu-a2-c5D"/>
                             <constraint firstItem="rPV-pI-AAJ" firstAttribute="centerX" secondItem="KE3-Ao-S3j" secondAttribute="centerX" id="9xJ-Xa-XlL"/>
-                            <constraint firstItem="2Y6-su-ak8" firstAttribute="centerX" secondItem="x3o-4n-BdC" secondAttribute="centerX" id="BB8-by-ybK"/>
                             <constraint firstItem="MpZ-eB-UXA" firstAttribute="centerX" secondItem="KE3-Ao-S3j" secondAttribute="centerX" id="EQj-ZR-2ZE"/>
                             <constraint firstItem="2Y6-su-ak8" firstAttribute="top" secondItem="x3o-4n-BdC" secondAttribute="bottom" constant="20" id="H68-Gm-8gp"/>
                             <constraint firstItem="x3o-4n-BdC" firstAttribute="centerX" secondItem="KE3-Ao-S3j" secondAttribute="centerX" id="P46-z3-2R3"/>
@@ -744,8 +743,7 @@
                             <constraint firstItem="oIc-vQ-9tX" firstAttribute="top" secondItem="nrC-8v-AIA" secondAttribute="bottom" constant="44" id="Tzr-8s-bfT"/>
                             <constraint firstItem="oIc-vQ-9tX" firstAttribute="top" secondItem="MpZ-eB-UXA" secondAttribute="bottom" constant="40" id="UsO-TA-tUo"/>
                             <constraint firstItem="XMS-2L-3hT" firstAttribute="centerX" secondItem="KE3-Ao-S3j" secondAttribute="centerX" id="bda-s9-799"/>
-                            <constraint firstItem="2Y6-su-ak8" firstAttribute="top" secondItem="x3o-4n-BdC" secondAttribute="bottom" constant="20" id="erk-5C-SnC"/>
-                            <constraint firstItem="x3o-4n-BdC" firstAttribute="top" secondItem="Epv-UQ-wTo" secondAttribute="bottom" constant="100" id="sY7-XY-O8t"/>
+                            <constraint firstItem="x3o-4n-BdC" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Epv-UQ-wTo" secondAttribute="bottom" constant="50" id="sY7-XY-O8t"/>
                             <constraint firstItem="nrC-8v-AIA" firstAttribute="centerX" secondItem="KE3-Ao-S3j" secondAttribute="centerX" id="t6p-m8-Vyp"/>
                         </constraints>
                     </view>
@@ -768,11 +766,11 @@
         <image name="ChannelSelectedBlue" width="256" height="272"/>
         <image name="ChannelSelectedGreen" width="256" height="272"/>
         <image name="ChannelSelectedOrange" width="256" height="272"/>
+        <image name="EntwinedLogo" width="2012" height="1948"/>
         <image name="PatternDeselected" width="100" height="100"/>
         <image name="PatternSelectedBlue" width="100" height="100"/>
         <image name="PatternSelectedGreen" width="100" height="100"/>
         <image name="PatternSelectedOrange" width="100" height="100"/>
-        <image name="image6.png" width="189" height="160"/>
         <image name="image7" width="567" height="28"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
