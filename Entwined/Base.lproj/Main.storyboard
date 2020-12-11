@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -87,6 +86,7 @@
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yKA-fy-IdX">
                                         <rect key="frame" x="8" y="33" width="137" height="184.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="Hhb-e7-3s0"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="WAj-bj-iTM">
@@ -426,6 +426,7 @@
                                         <constraint firstAttribute="centerY" secondItem="zIA-nG-KzF" secondAttribute="centerY" id="wpf-eN-4r2"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="enabledIndicatorView" destination="otf-1S-qfg" id="IAU-MG-aC3"/>
                                     <outlet property="nameLabel" destination="zIA-nG-KzF" id="GQg-z8-Ax0"/>
@@ -752,7 +753,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="x3o-4n-BdC" firstAttribute="top" secondItem="Epv-UQ-wTo" secondAttribute="bottom" constant="30" id="0Vc-yL-LDg"/>
                             <constraint firstItem="rPV-pI-AAJ" firstAttribute="top" secondItem="XMS-2L-3hT" secondAttribute="bottom" constant="70" id="1z7-jA-8SL"/>
@@ -797,8 +798,5 @@
         <image name="PatternSelectedGreen" width="100" height="100"/>
         <image name="PatternSelectedOrange" width="100" height="100"/>
         <image name="image7" width="567" height="28"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

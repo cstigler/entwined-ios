@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01186FA92582EB7B00126C63 /* EntwinedLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 01186FA82582EB7B00126C63 /* EntwinedLogo.png */; };
 		01289F822576194200B3DCA4 /* entwined1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01289F7F2576194200B3DCA4 /* entwined1.jpg */; };
 		01289F832576194200B3DCA4 /* entwined3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01289F802576194200B3DCA4 /* entwined3.jpg */; };
 		01289F842576194200B3DCA4 /* entwined2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01289F812576194200B3DCA4 /* entwined2.jpg */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01186FA82582EB7B00126C63 /* EntwinedLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EntwinedLogo.png; sourceTree = "<group>"; };
 		01289F7F2576194200B3DCA4 /* entwined1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = entwined1.jpg; sourceTree = "<group>"; };
 		01289F802576194200B3DCA4 /* entwined3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = entwined3.jpg; sourceTree = "<group>"; };
 		01289F812576194200B3DCA4 /* entwined2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = entwined2.jpg; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01186FA72582EB6200126C63 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				01186FA82582EB7B00126C63 /* EntwinedLogo.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		0146D020257C9686001D10CF /* Legacy Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +207,7 @@
 		27A3962319FC8D4B0030B940 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				01186FA72582EB6200126C63 /* Images */,
 				0146D020257C9686001D10CF /* Legacy Icons */,
 				27A3962419FC8D4B0030B940 /* Info.plist */,
 				27A3964519FC96BE0030B940 /* Podfile */,
@@ -317,6 +328,7 @@
 				27A3964619FC96BE0030B940 /* Podfile in Resources */,
 				A97F07BF22953FC100EB9ED7 /* image7.png in Resources */,
 				0146D027257C977C001D10CF /* icon-167.png in Resources */,
+				01186FA92582EB7B00126C63 /* EntwinedLogo.png in Resources */,
 				0146D028257C977C001D10CF /* icon-76.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
