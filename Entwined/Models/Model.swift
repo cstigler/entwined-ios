@@ -9,7 +9,7 @@
 import UIKit
 
 class Model: NSObject {
-    static let maxBrightness: Float = 0.8
+    static let maxBrightness: Float = 0.75
     
     class var sharedInstance : Model {
         struct Static {
