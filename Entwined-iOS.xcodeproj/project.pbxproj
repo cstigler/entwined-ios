@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01186FA92582EB7B00126C63 /* EntwinedLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 01186FA82582EB7B00126C63 /* EntwinedLogo.png */; };
 		01289F822576194200B3DCA4 /* entwined1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01289F7F2576194200B3DCA4 /* entwined1.jpg */; };
 		01289F832576194200B3DCA4 /* entwined3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01289F802576194200B3DCA4 /* entwined3.jpg */; };
 		01289F842576194200B3DCA4 /* entwined2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01289F812576194200B3DCA4 /* entwined2.jpg */; };
@@ -45,7 +44,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01186FA82582EB7B00126C63 /* EntwinedLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EntwinedLogo.png; sourceTree = "<group>"; };
 		01289F7F2576194200B3DCA4 /* entwined1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = entwined1.jpg; sourceTree = "<group>"; };
 		01289F802576194200B3DCA4 /* entwined3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = entwined3.jpg; sourceTree = "<group>"; };
 		01289F812576194200B3DCA4 /* entwined2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = entwined2.jpg; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 		01186FA72582EB6200126C63 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				01186FA82582EB7B00126C63 /* EntwinedLogo.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -328,7 +325,6 @@
 				27A3964619FC96BE0030B940 /* Podfile in Resources */,
 				A97F07BF22953FC100EB9ED7 /* image7.png in Resources */,
 				0146D027257C977C001D10CF /* icon-167.png in Resources */,
-				01186FA92582EB7B00126C63 /* EntwinedLogo.png in Resources */,
 				0146D028257C977C001D10CF /* icon-76.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,7 +535,6 @@
 			baseConfigurationReference = 41B2191DD729B739E320D83A /* Pods-Entwined-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 5;
@@ -560,7 +555,6 @@
 			baseConfigurationReference = A52C5F5BD55C3C045455902E /* Pods-Entwined-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 5;

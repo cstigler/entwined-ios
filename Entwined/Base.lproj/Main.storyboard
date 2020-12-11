@@ -675,7 +675,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image7" translatesAutoresizingMaskIntoConstraints="NO" id="2Y6-su-ak8" userLabel="CharlesGadeken.com Image">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CharlesGadeken.com" translatesAutoresizingMaskIntoConstraints="NO" id="2Y6-su-ak8" userLabel="CharlesGadeken.com Image">
                                 <rect key="frame" x="228" y="244" width="312" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="312" id="FUs-E6-1OQ"/>
@@ -696,7 +696,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="KH8-rg-ZyW" customClass="CollectionViewCell" customModule="Entwined_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="583" height="438"/>
+                                        <rect key="frame" x="0.0" y="-0.5" width="583" height="438"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="583" height="438"/>
@@ -734,7 +734,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting to Entwined Meadow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrC-8v-AIA">
-                                <rect key="frame" x="211" y="958" width="346" height="22"/>
+                                <rect key="frame" x="220" y="954" width="328" height="26"/>
                                 <fontDescription key="fontDescription" name="UniversLTStd" family="Univers LT Std" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -803,11 +803,11 @@
         <image name="ChannelSelectedBlue" width="256" height="272"/>
         <image name="ChannelSelectedGreen" width="256" height="272"/>
         <image name="ChannelSelectedOrange" width="256" height="272"/>
+        <image name="CharlesGadeken.com" width="567" height="28"/>
         <image name="EntwinedLogo" width="2012" height="1948"/>
         <image name="PatternDeselected" width="100" height="100"/>
         <image name="PatternSelectedBlue" width="100" height="100"/>
         <image name="PatternSelectedGreen" width="100" height="100"/>
         <image name="PatternSelectedOrange" width="100" height="100"/>
-        <image name="image7" width="567" height="28"/>
     </resources>
 </document>
