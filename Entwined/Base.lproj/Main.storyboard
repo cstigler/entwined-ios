@@ -465,27 +465,36 @@
                                     <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PatternDeselected" translatesAutoresizingMaskIntoConstraints="NO" id="geK-of-OsS">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="PatternDeselected" translatesAutoresizingMaskIntoConstraints="NO" id="geK-of-OsS">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="140" id="FBL-8u-bLC"/>
+                                                <constraint firstAttribute="height" constant="140" id="v4j-5M-xwB"/>
+                                            </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PatternSelectedBlue" translatesAutoresizingMaskIntoConstraints="NO" id="Kqy-l7-6KZ">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="PatternSelectedBlue" translatesAutoresizingMaskIntoConstraints="NO" id="Kqy-l7-6KZ">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="140" id="GAg-ee-AD8"/>
+                                                <constraint firstAttribute="height" constant="140" id="ZkE-WS-oxB"/>
+                                            </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PatternSelectedGreen" translatesAutoresizingMaskIntoConstraints="NO" id="WKE-eZ-XJC">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="PatternSelectedGreen" translatesAutoresizingMaskIntoConstraints="NO" id="WKE-eZ-XJC">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="140" id="0RW-3N-n2M"/>
+                                                <constraint firstAttribute="width" constant="140" id="b6L-tW-QGo"/>
+                                            </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PatternSelectedOrange" translatesAutoresizingMaskIntoConstraints="NO" id="rZj-a0-oct">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="PatternSelectedOrange" translatesAutoresizingMaskIntoConstraints="NO" id="rZj-a0-oct">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="140" id="EJ2-9m-L2Z"/>
+                                                <constraint firstAttribute="height" constant="140" id="JuJ-fF-Kdw"/>
+                                            </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3o-cf-Atw">
-                                            <rect key="frame" x="45" y="63" width="50" height="14"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="xhm-hv-Kxt"/>
-                                            </constraints>
+                                            <rect key="frame" x="20" y="63" width="100" height="14"/>
                                             <fontDescription key="fontDescription" name="UniversLTStd-Bold" family="Univers LT Std" pointSize="14"/>
                                             <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -493,6 +502,8 @@
                                     </subviews>
                                 </view>
                                 <constraints>
+                                    <constraint firstItem="G3o-cf-Atw" firstAttribute="leading" secondItem="geK-of-OsS" secondAttribute="leading" constant="20" id="L4y-eK-UYV"/>
+                                    <constraint firstItem="G3o-cf-Atw" firstAttribute="trailing" secondItem="geK-of-OsS" secondAttribute="trailing" constant="-20" id="LmF-vA-dKD"/>
                                     <constraint firstItem="G3o-cf-Atw" firstAttribute="centerX" secondItem="m30-WT-sgN" secondAttribute="centerX" id="Utv-5U-gpf"/>
                                     <constraint firstItem="G3o-cf-Atw" firstAttribute="centerY" secondItem="m30-WT-sgN" secondAttribute="centerY" id="eoS-B5-T2W"/>
                                 </constraints>
@@ -685,7 +696,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="KH8-rg-ZyW" customClass="CollectionViewCell" customModule="Entwined_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-0.5" width="583" height="438"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="583" height="438"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="583" height="438"/>
