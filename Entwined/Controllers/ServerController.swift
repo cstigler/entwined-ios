@@ -102,6 +102,9 @@ class ServerController: NSObject, PKJSONSocketDelegate {
                     if let blur = params["blur"] as? Float {
                         Model.sharedInstance.blur = blur
                     }
+                    if let hue = params["hue"] as? Float {
+                        Model.sharedInstance.hue = hue
+                    }
                     if let breakTimeRemaining = params["breakTimeRemaining"] as? Double {
                         Model.sharedInstance.breakTimeRemaining = breakTimeRemaining
                     }
@@ -189,9 +192,12 @@ class ServerController: NSObject, PKJSONSocketDelegate {
     func setBlur(_ amount: Float) {
         self.send("setBlur", params: ["amount": amount as AnyObject])
     }
+    
+    func setHue(_ amount: Float) {
+        self.send("setHue", params: ["amount": amount as AnyObject])
+    }
    
     func startBreak(_ duration: Float) {
-        print("SENDING STARTBREAK \(duration)")
         self.send("startBreak", params: ["duration": duration as AnyObject])
     }
     func stopBreak() {

@@ -91,6 +91,13 @@ class Model: NSObject {
             }
         }
     }
+    @objc dynamic var hue: Float = 0 {
+        didSet {
+            if !self.isIniting {
+                ServerController.sharedInstance.setHue(self.hue)
+            }
+        }
+    }
     
     // do NOT set from the client except for server-set values
     @objc dynamic var breakTimeRemaining: Double = 0 {
