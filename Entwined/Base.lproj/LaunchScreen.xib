@@ -13,15 +13,15 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="CharlesGadeken.com" translatesAutoresizingMaskIntoConstraints="NO" id="ZHR-FE-9b6" userLabel="CharlesGadeken.com Image">
-                    <rect key="frame" x="228" y="244" width="312" height="15"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CharlesGadeken.com" translatesAutoresizingMaskIntoConstraints="NO" id="ZHR-FE-9b6" userLabel="CharlesGadeken.com Image">
+                    <rect key="frame" x="228" y="264" width="312" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="u29-Qh-sfs"/>
                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="312" id="xMF-f2-J9I"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsD-hA-2DM" userLabel="Start Controlling Button">
-                    <rect key="frame" x="257" y="796" width="254" height="53"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsD-hA-2DM" userLabel="Start Controlling Button">
+                    <rect key="frame" x="257" y="816" width="254" height="53"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="53" id="0U8-2k-DVm"/>
@@ -32,16 +32,15 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="EntwinedLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Ghc-My-pbW">
-                    <rect key="frame" x="284" y="30" width="200" height="194"/>
-                    <accessibility key="accessibilityConfiguration" label="dfadlkjda"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EntwinedLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Ghc-My-pbW" userLabel="Entwined Logo">
+                    <rect key="frame" x="284" y="50" width="200" height="194"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="194" id="268-al-h16"/>
                         <constraint firstAttribute="width" constant="200" id="qdt-cN-k2Z"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="entwined1" translatesAutoresizingMaskIntoConstraints="NO" id="9CP-aN-haP" userLabel="Image Gallery Placeholder">
-                    <rect key="frame" x="40" y="312" width="688" height="386"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="entwined1" translatesAutoresizingMaskIntoConstraints="NO" id="9CP-aN-haP" userLabel="Image Gallery Placeholder">
+                    <rect key="frame" x="40" y="309" width="688" height="437"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="437" id="BDw-Xe-WyS"/>
                     </constraints>
@@ -55,6 +54,7 @@
                 <constraint firstItem="PsD-hA-2DM" firstAttribute="centerX" secondItem="YDD-Bv-oS1" secondAttribute="centerX" id="JQk-9F-GHx"/>
                 <constraint firstItem="9CP-aN-haP" firstAttribute="centerX" secondItem="YDD-Bv-oS1" secondAttribute="centerX" id="QEy-4V-m5y"/>
                 <constraint firstItem="9CP-aN-haP" firstAttribute="leading" secondItem="YDD-Bv-oS1" secondAttribute="leading" constant="40" id="YO1-XQ-jLP"/>
+                <constraint firstItem="Ghc-My-pbW" firstAttribute="top" secondItem="YDD-Bv-oS1" secondAttribute="top" constant="50" id="ZOx-En-IcZ"/>
                 <constraint firstItem="9CP-aN-haP" firstAttribute="top" secondItem="ZHR-FE-9b6" secondAttribute="bottom" constant="30" id="ik6-Oa-hXh"/>
                 <constraint firstAttribute="trailing" secondItem="9CP-aN-haP" secondAttribute="trailing" constant="40" id="mAf-bp-JPN"/>
                 <constraint firstItem="ZHR-FE-9b6" firstAttribute="centerX" secondItem="YDD-Bv-oS1" secondAttribute="centerX" id="tzy-Y9-Ros"/>
