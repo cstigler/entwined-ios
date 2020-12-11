@@ -69,6 +69,8 @@ class MixerViewController: UIViewController {
                                         for: UIControl.State());
         }
         
+        brightnessSlider.maximumValue = Model.maxBrightness
+        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.userActivityTimeout(notification:)),

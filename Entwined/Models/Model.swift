@@ -9,6 +9,7 @@
 import UIKit
 
 class Model: NSObject {
+    static let maxBrightness: Float = 0.8
     
     class var sharedInstance : Model {
         struct Static {
@@ -44,10 +45,13 @@ class Model: NSObject {
         }
     }
     
-    @objc dynamic var brightness: Float = 100 {
+    @objc dynamic var brightness: Float = Model.maxBrightness {
         didSet {
             if !self.isIniting {
-                ServerController.sharedInstance.setBrightness(brightness)
+                ServerController.sharedInstance.setBrightness(min(brightness, Model.maxBrightness))
+            } else if (brightness > Model.maxBrightness) {
+                // if ARE init'ing and the brightness is over max, set it down
+                self.brightness = Model.maxBrightness
             }
         }
     }

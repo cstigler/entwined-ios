@@ -696,7 +696,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="KH8-rg-ZyW" customClass="CollectionViewCell" customModule="Entwined_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="583" height="438"/>
+                                        <rect key="frame" x="0.0" y="-0.5" width="583" height="438"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="583" height="438"/>
