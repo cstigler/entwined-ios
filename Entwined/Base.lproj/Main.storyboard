@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -752,7 +753,7 @@
                                 </state>
                                 <connections>
                                     <action selector="autoPilotInterActBt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fey-Dl-asC"/>
-                                    <action selector="autoPilotInterActBt:" destination="XkK-v0-9WK" eventType="touchUpInside" id="k9Q-dG-jP8"/>
+                                    <action selector="startControllingButtonPressed:" destination="XkK-v0-9WK" eventType="touchUpInside" id="k9Q-dG-jP8"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EntwinedLogo" translatesAutoresizingMaskIntoConstraints="NO" id="x3o-4n-BdC">
@@ -786,17 +787,79 @@
                     </view>
                     <navigationItem key="navigationItem" id="KgN-0e-7we"/>
                     <connections>
-                        <outlet property="autoPilotInterActBt" destination="rPV-pI-AAJ" id="zKO-vy-su4"/>
                         <outlet property="collectionView" destination="XMS-2L-3hT" id="6WC-3h-FR5"/>
                         <outlet property="connectingLabel" destination="nrC-8v-AIA" id="bkI-UE-koT"/>
                         <outlet property="startBreakButton" destination="MpZ-eB-UXA" id="qEL-Jy-XWt"/>
+                        <outlet property="startControllingButton" destination="rPV-pI-AAJ" id="zKO-vy-su4"/>
                         <outlet property="view" destination="KE3-Ao-S3j" id="mAl-iB-QPy"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="show-controls-segue" modalPresentationStyle="fullScreen" id="sbB-9z-SDq"/>
+                        <segue destination="nQn-Hj-ZTH" kind="presentation" identifier="show-break-timer-segue" modalPresentationStyle="fullScreen" id="2o5-D5-X9c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpz-fQ-RVl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-204.6875" y="-434.1796875"/>
+        </scene>
+        <!--Break View Controller-->
+        <scene sceneID="WAa-B6-RPn">
+            <objects>
+                <viewController id="nQn-Hj-ZTH" customClass="BreakViewController" customModule="Entwined_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LAA-2n-SVc"/>
+                        <viewControllerLayoutGuide type="bottom" id="QXr-22-zQk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nod-3s-zXf">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Entwined is taking a break." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqC-ed-ujH">
+                                <rect key="frame" x="131.5" y="138" width="505" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="until light patterns start again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOB-lQ-wZg">
+                                <rect key="frame" x="109" y="567" width="551" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kfv-ac-plT">
+                                <rect key="frame" x="169.5" y="841" width="429" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <state key="normal" title="Restart Patterns Now"/>
+                                <connections>
+                                    <action selector="stopBreak:" destination="nQn-Hj-ZTH" eventType="touchUpInside" id="Zli-Hg-GjR"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJl-6f-eif">
+                                <rect key="frame" x="222" y="454" width="325" height="116"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mJl-6f-eif" firstAttribute="centerY" secondItem="nod-3s-zXf" secondAttribute="centerY" id="3fw-2w-Xib"/>
+                            <constraint firstItem="Kfv-ac-plT" firstAttribute="centerX" secondItem="nod-3s-zXf" secondAttribute="centerX" id="6jp-2Z-rDF"/>
+                            <constraint firstItem="dqC-ed-ujH" firstAttribute="centerX" secondItem="nod-3s-zXf" secondAttribute="centerX" id="Ooc-uf-Wvi"/>
+                            <constraint firstItem="QXr-22-zQk" firstAttribute="top" secondItem="Kfv-ac-plT" secondAttribute="bottom" constant="113" id="SVt-vM-Ib7"/>
+                            <constraint firstItem="dqC-ed-ujH" firstAttribute="top" secondItem="LAA-2n-SVc" secondAttribute="bottom" constant="138" id="VsB-hP-DEE"/>
+                            <constraint firstItem="TOB-lQ-wZg" firstAttribute="top" secondItem="mJl-6f-eif" secondAttribute="bottom" constant="30" id="bLl-0n-JnX"/>
+                            <constraint firstItem="mJl-6f-eif" firstAttribute="centerX" secondItem="nod-3s-zXf" secondAttribute="centerX" id="eb1-RA-iWY"/>
+                            <constraint firstItem="TOB-lQ-wZg" firstAttribute="centerX" secondItem="mJl-6f-eif" secondAttribute="centerX" id="sGk-xJ-PVX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="stopBreakButton" destination="Kfv-ac-plT" id="Gcq-5s-HPd"/>
+                        <outlet property="timeRemainingLabel" destination="mJl-6f-eif" id="OVP-eo-3QC"/>
+                        <outlet property="view" destination="nod-3s-zXf" id="VJZ-rb-czH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ve1-gR-8za" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-840.625" y="-14.062499999999998"/>
         </scene>
     </scenes>
     <resources>
@@ -809,5 +872,8 @@
         <image name="PatternSelectedBlue" width="100" height="100"/>
         <image name="PatternSelectedGreen" width="100" height="100"/>
         <image name="PatternSelectedOrange" width="100" height="100"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

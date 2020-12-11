@@ -3,7 +3,7 @@
 //  Entwined-iOS
 //
 //  Created by Charlie Stigler on 12/9/20.
-//  Copyright © 2020 Charlie Stigler. All rights reserved.
+//  Copyright © 2020 Charles Gadeken. All rights reserved.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ import ReactiveSwift
 class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     let disposables = CompositeDisposable.init()
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var autoPilotInterActBt: UIButton!
+    @IBOutlet weak var startControllingButton: UIButton!
     @IBOutlet weak var connectingLabel: UIView!
     @IBOutlet weak var startBreakButton: UIButton!
 
@@ -49,18 +49,23 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
             self.startBreakButton.isHidden = !Model.sharedInstance.loaded
 
             if (Model.sharedInstance.loaded) {
-                self.autoPilotInterActBt.setTitle("START CONTROLLING", for: UIControl.State.normal)
-                self.autoPilotInterActBt.backgroundColor = UIColor(red: 0.656078, green: 0.382225, blue: 0.606485, alpha: 1)
-                self.autoPilotInterActBt.isEnabled = true
+                self.startControllingButton.setTitle("START CONTROLLING", for: UIControl.State.normal)
+                self.startControllingButton.backgroundColor = UIColor(red: 0.656078, green: 0.382225, blue: 0.606485, alpha: 1)
+                self.startControllingButton.isEnabled = true
             } else {
-                self.autoPilotInterActBt.setTitle("CONNECTING", for: UIControl.State.normal)
-                self.autoPilotInterActBt.backgroundColor = UIColor.lightGray
-                self.autoPilotInterActBt.isEnabled = false
+                self.startControllingButton.setTitle("CONNECTING", for: UIControl.State.normal)
+                self.startControllingButton.backgroundColor = UIColor.lightGray
+                self.startControllingButton.isEnabled = false
+            }
+        })
+        
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.breakTimeRemaining)).startWithValues { [unowned self] (_) in
+            if (Model.sharedInstance.breakEndDate.timeIntervalSinceNow > 0) {
+                performSegue(withIdentifier: "show-break-timer-segue", sender: self)
             }
         })
 
         //Set autoplay mode enable by default
-        print("StartViewController viewDidLoad, setting autoplay = true")
         Model.sharedInstance.autoplay = true;
     }
     
@@ -96,7 +101,7 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         let confirmationAlert = UIAlertController(title: "Confirm Break", message: "Are you sure you want to start a 5-minute lighting break? All LED patterns will stop and the sculpture will go dark.", preferredStyle: .alert)
         
         let ok = UIAlertAction(title: "Start Break", style: .default, handler: { (action) -> Void in
-            ServerController.sharedInstance.startBreak(300.0)
+            ServerController.sharedInstance.startBreak(300)
         })
         
         let cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {
@@ -112,21 +117,16 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         
     }
     
-    @IBAction func autoPilotInterActBt(_ sender: Any) {
-        print("autopilot interact bt, loaded = \(Model.sharedInstance.loaded). model \(Model.sharedInstance)")
+    @IBAction func startControllingButtonPressed(_ sender: Any) {
         if Model.sharedInstance.loaded {
             startControlPanel()
         }
     }
     
     func startControlPanel() {
-        print("startControlPanel setting autoplay")
         Model.sharedInstance.autoplay = false;
 
-        print("performing segue")
         performSegue(withIdentifier: "show-controls-segue", sender: self)
-        print("performed segue")
-
     }
     
     func reloadCollectionView() {

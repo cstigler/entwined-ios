@@ -197,10 +197,12 @@ class ServerController: NSObject, PKJSONSocketDelegate {
         self.send("setHue", params: ["amount": amount as AnyObject])
     }
    
-    func startBreak(_ duration: Float) {
+    func startBreak(_ duration: Double) {
+        Model.sharedInstance.breakTimeRemaining = duration
         self.send("startBreak", params: ["duration": duration as AnyObject])
     }
     func stopBreak() {
+        Model.sharedInstance.breakTimeRemaining = 0
         self.send("stopBreak")
     }
 }

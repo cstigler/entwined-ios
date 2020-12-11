@@ -108,7 +108,7 @@ class Model: NSObject {
         }
     }
     @objc dynamic var breakTimeRemainingFetched: Date?;
-    var breakEndDate: Date {
+    @objc dynamic var breakEndDate: Date {
         let fetchedDate = breakTimeRemainingFetched ?? Date()
 
         return fetchedDate.addingTimeInterval(TimeInterval(breakTimeRemaining))
