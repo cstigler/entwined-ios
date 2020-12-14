@@ -740,7 +740,7 @@
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPV-pI-AAJ" userLabel="Start Controlling Button">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPV-pI-AAJ" userLabel="Start Controlling Button">
                                 <rect key="frame" x="257" y="796" width="254" height="53"/>
                                 <color key="backgroundColor" red="0.65607827900000004" green="0.38222464919999999" blue="0.60648506879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

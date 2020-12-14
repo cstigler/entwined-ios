@@ -49,6 +49,11 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
             self.startBreakButton.isHidden = !Model.sharedInstance.loaded
 
             if (Model.sharedInstance.loaded) {
+                if (!self.startControllingButton.isEnabled && !Model.sharedInstance.autoplay) {
+                    // when we connect, immediately turn on autoplay if it was off
+                    Model.sharedInstance.autoplay = true;
+                }
+
                 self.startControllingButton.setTitle("START CONTROLLING", for: UIControl.State.normal)
                 self.startControllingButton.backgroundColor = UIColor(red: 0.656078, green: 0.382225, blue: 0.606485, alpha: 1)
                 self.startControllingButton.isEnabled = true
