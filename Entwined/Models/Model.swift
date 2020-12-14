@@ -52,6 +52,7 @@ class Model: NSObject {
             } else if (brightness > Model.maxBrightness) {
                 // if ARE init'ing and the brightness is over max, set it down
                 self.brightness = Model.maxBrightness
+                ServerController.sharedInstance.setBrightness(Model.maxBrightness)
             }
         }
     }
