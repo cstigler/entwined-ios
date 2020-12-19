@@ -23,7 +23,7 @@ class PatternCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+                
         disposables.add(self.reactive.producer(forKeyPath: #keyPath(pattern.name)).startWithValues { [unowned self] (name: Any?) in
             if let name = name as? String {
                 self.nameLabel.text! = name

@@ -9,7 +9,7 @@
 import UIKit
 import ReactiveSwift
 
-class PatternsCollectionViewController: UICollectionViewController {
+class PatternsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let disposables = CompositeDisposable.init()
     let reuseIdentifier = "Cell"
 
@@ -44,4 +44,15 @@ class PatternsCollectionViewController: UICollectionViewController {
             DisplayState.sharedInstance.selectedChannel?.currentPattern = pattern
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let height = view.frame.size.height
+        let width = view.frame.size.width
+        
+        print("width \(width) height \(height)")
+        // in case you you want the cell to be 40% of your controllers view
+        return CGSize(width: 100, height: 100)
+    }
+
 }
