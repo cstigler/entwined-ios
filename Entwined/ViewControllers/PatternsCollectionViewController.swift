@@ -9,12 +9,13 @@
 import UIKit
 import ReactiveSwift
 
-class PatternsCollectionViewController: UICollectionViewController {
+class PatternsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let disposables = CompositeDisposable.init()
     let reuseIdentifier = "Cell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.patterns)).startWithValues { [unowned self] (_) in
             self.collectionView!.reloadData()
         })
@@ -44,4 +45,13 @@ class PatternsCollectionViewController: UICollectionViewController {
             DisplayState.sharedInstance.selectedChannel?.currentPattern = pattern
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let sideLength = min(view.frame.size.width / 4, 140)
+        
+        // in case you you want the cell to be 40% of your controllers view
+        return CGSize(width: sideLength, height: sideLength)
+    }
+
 }

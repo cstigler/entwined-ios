@@ -46,12 +46,14 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.loaded)).startWithValues { [unowned self] (_) in
             self.connectingLabel.isHidden = Model.sharedInstance.loaded
-            self.startBreakButton.isHidden = !Model.sharedInstance.loaded
+            // hide start break button for now since it doesn't work yet with the server
+            self.startBreakButton.isHidden = true
+            // self.startBreakButton.isHidden = !Model.sharedInstance.loaded
 
             if (Model.sharedInstance.loaded) {
                 if (!self.startControllingButton.isEnabled && !Model.sharedInstance.autoplay) {
                     // when we connect, immediately turn on autoplay if it was off
-                    Model.sharedInstance.autoplay = true;
+                    Model.sharedInstance.autoplay = true
                 }
 
                 self.startControllingButton.setTitle("START CONTROLLING", for: UIControl.State.normal)
