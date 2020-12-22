@@ -49,7 +49,6 @@ class PatternsCollectionViewController: UICollectionViewController, UICollection
 
         let sideLength = min(view.frame.size.width / 4, 140)
         
-        print("sideLength \(sideLength)")
         // in case you you want the cell to be 40% of your controllers view
         return CGSize(width: sideLength, height: sideLength)
     }

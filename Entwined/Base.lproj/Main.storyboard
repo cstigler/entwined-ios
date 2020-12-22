@@ -551,27 +551,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="256" height="272"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="ChannelSelectedBlue" translatesAutoresizingMaskIntoConstraints="NO" id="6mA-Ro-gCU">
-                                            <rect key="frame" x="0.0" y="0.0" width="256" height="272"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="256" id="7GX-bi-Mi1"/>
-                                                <constraint firstAttribute="height" constant="272" id="Zyy-X7-FHH"/>
-                                            </constraints>
-                                        </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="ChannelSelectedOrange" translatesAutoresizingMaskIntoConstraints="NO" id="Oyp-ws-dnR">
-                                            <rect key="frame" x="0.0" y="0.0" width="256" height="272"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="256" id="Hgq-u7-15x"/>
-                                                <constraint firstAttribute="height" constant="272" id="YNF-Mh-rvX"/>
-                                            </constraints>
-                                        </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="ChannelSelectedGreen" translatesAutoresizingMaskIntoConstraints="NO" id="GNW-ei-YOU">
-                                            <rect key="frame" x="0.0" y="0.0" width="256" height="272"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="256" id="JsH-en-mKa"/>
-                                                <constraint firstAttribute="height" constant="272" id="gw8-M1-78H"/>
-                                            </constraints>
-                                        </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ygf-HX-z74" userLabel="Contents View">
                                             <rect key="frame" x="0.0" y="0.0" width="256" height="65"/>
                                             <subviews>
@@ -633,24 +612,13 @@
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="Ygf-HX-z74" firstAttribute="top" secondItem="Oyp-ws-dnR" secondAttribute="top" id="0cm-XG-H89"/>
                                     <constraint firstItem="Ygf-HX-z74" firstAttribute="leading" secondItem="eeJ-wM-Z21" secondAttribute="leading" id="8iS-qO-1vj"/>
-                                    <constraint firstItem="Ygf-HX-z74" firstAttribute="top" secondItem="GNW-ei-YOU" secondAttribute="top" id="Pkw-vx-bhc"/>
-                                    <constraint firstItem="Ygf-HX-z74" firstAttribute="top" secondItem="6mA-Ro-gCU" secondAttribute="top" id="UBU-Ob-WiJ"/>
-                                    <constraint firstItem="6mA-Ro-gCU" firstAttribute="width" secondItem="eeJ-wM-Z21" secondAttribute="width" id="f9Z-tj-XSo"/>
-                                    <constraint firstItem="Ygf-HX-z74" firstAttribute="leading" secondItem="GNW-ei-YOU" secondAttribute="leading" id="k5H-ui-ScF"/>
-                                    <constraint firstItem="6mA-Ro-gCU" firstAttribute="height" secondItem="eeJ-wM-Z21" secondAttribute="height" id="nzM-bZ-rvq"/>
                                     <constraint firstAttribute="trailing" secondItem="Ygf-HX-z74" secondAttribute="trailing" id="of9-1F-9zX"/>
                                     <constraint firstItem="Ygf-HX-z74" firstAttribute="top" secondItem="eeJ-wM-Z21" secondAttribute="top" id="rAq-wl-Fie"/>
-                                    <constraint firstItem="Ygf-HX-z74" firstAttribute="leading" secondItem="Oyp-ws-dnR" secondAttribute="leading" id="x8y-i4-zxi"/>
-                                    <constraint firstItem="Ygf-HX-z74" firstAttribute="leading" secondItem="6mA-Ro-gCU" secondAttribute="leading" id="z7h-GP-yj6"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="channelLabel" destination="zDJ-RC-skj" id="J1u-sx-BiD"/>
                                     <outlet property="nameLabel" destination="6pR-zS-lAd" id="zFo-vQ-eF3"/>
-                                    <outlet property="selectedBlueImageView" destination="6mA-Ro-gCU" id="rwo-5O-fcL"/>
-                                    <outlet property="selectedGreenImageView" destination="GNW-ei-YOU" id="IyD-tI-j7U"/>
-                                    <outlet property="selectedOrangeImageView" destination="Oyp-ws-dnR" id="TQZ-OQ-3YG"/>
                                     <outlet property="tapAPatternLabel" destination="dt5-QD-mQm" id="rHk-W7-6qA"/>
                                     <outlet property="visibilitySlider" destination="eW0-bb-k4I" id="rdu-ug-GdN"/>
                                 </connections>
@@ -865,9 +833,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ChannelSelectedBlue" width="256" height="272"/>
-        <image name="ChannelSelectedGreen" width="256" height="272"/>
-        <image name="ChannelSelectedOrange" width="256" height="272"/>
         <image name="CharlesGadeken.com" width="567" height="28"/>
         <image name="EntwinedLogo" width="2012" height="1948"/>
         <image name="PatternDeselected" width="100" height="100"/>

@@ -29,6 +29,7 @@ class ChannelCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     
         self.visibilitySlider.transform = CGAffineTransform(rotationAngle: -.pi/2);
+        self.contentView.layer.borderWidth = 10
         
         disposables.add(SignalProducer.merge([self.reactive.producer(forKeyPath: #keyPath(channel)), DisplayState.sharedInstance.reactive.producer(forKeyPath: #keyPath(DisplayState.selectedChannel))]).startWithValues { [unowned self] (_) in
             self.currentlySelected = self.channel != nil && DisplayState.sharedInstance.selectedChannel != nil && self.channel == DisplayState.sharedInstance.selectedChannel
@@ -54,6 +55,7 @@ class ChannelCollectionViewCell: UICollectionViewCell {
                 } else {
                     switch self.channel.index {
                     case 0:
+                        self.contentView.layer.borderColor = UIColor.init(red: 0, green: 174.0 / 255.0, blue: 239.0 / 255.0, alpha: 1).cgColor
                         self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbBlue"),
                             for: UIControl.State());
                         self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbBlue"),
@@ -63,6 +65,7 @@ class ChannelCollectionViewCell: UICollectionViewCell {
                         self.visibilitySlider.setMaximumTrackImage(UIImage(named: "channelSliderBarDefault"),
                             for: UIControl.State());
                     case 1:
+                        self.contentView.layer.borderColor = UIColor.init(red: 247.0 / 255.0, green: 111.0 / 255.0, blue: 75.0 / 255.0, alpha: 1).cgColor
                         self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbOrange"),
                             for: UIControl.State());
                         self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbOrange"),
@@ -72,6 +75,7 @@ class ChannelCollectionViewCell: UICollectionViewCell {
                         self.visibilitySlider.setMaximumTrackImage(UIImage(named: "channelSliderBarDefault"),
                             for: UIControl.State());
                     case 2:
+                        self.contentView.layer.borderColor = UIColor.init(red: 37.0 / 255.0, green: 179.0 / 255.0, blue: 75.0 / 255.0, alpha: 1).cgColor
                         self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGreen"),
                             for: UIControl.State());
                         self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGreen"),
@@ -94,22 +98,12 @@ class ChannelCollectionViewCell: UICollectionViewCell {
         })
         
         disposables.add(self.reactive.producer(forKeyPath: #keyPath(currentlySelected)).startWithValues { [unowned self] (_) in
-            if self.channel != nil {
-                self.selectedBlueImageView.isHidden = true
-                self.selectedOrangeImageView.isHidden = true
-                self.selectedGreenImageView.isHidden = true
-                if self.currentlySelected {
-                    switch self.channel.index {
-                    case 0:
-                        self.selectedBlueImageView.isHidden = false
-                    case 1:
-                        self.selectedOrangeImageView.isHidden = false
-                    case 2:
-                        self.selectedGreenImageView.isHidden = false
-                    default:
-                        break;
-                    }
-                }
+            if self.channel != nil && self.currentlySelected {
+                print("index \(self.channel.index) currently selected")
+                self.contentView.layer.borderWidth = 5
+            } else {
+                print("index not selected")
+                self.contentView.layer.borderWidth = 0
             }
         })
         
