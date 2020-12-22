@@ -47,12 +47,11 @@ class PatternsCollectionViewController: UICollectionViewController, UICollection
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let height = view.frame.size.height
-        let width = view.frame.size.width
+        let sideLength = min(view.frame.size.width / 4, 140)
         
-        print("width \(width) height \(height)")
+        print("sideLength \(sideLength)")
         // in case you you want the cell to be 40% of your controllers view
-        return CGSize(width: 100, height: 100)
+        return CGSize(width: sideLength, height: sideLength)
     }
 
 }
