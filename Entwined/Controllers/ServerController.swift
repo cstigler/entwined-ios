@@ -36,7 +36,7 @@ class ServerController: NSObject, PKJSONSocketDelegate {
             print(connected ? "Connected" : "Disconnected")
         }
     }
-    var serverHostname: String = "10.0.1.140" {
+    var serverHostname: String = "10.0.0.3" {
         didSet {
             disconnect()
             connect()
