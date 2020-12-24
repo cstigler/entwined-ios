@@ -529,9 +529,9 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="A1D-nH-tdA"/>
                                                     <exclude reference="kQC-7L-hgd"/>
                                                     <exclude reference="hpb-5Y-oFi"/>
-                                                    <exclude reference="A1D-nH-tdA"/>
                                                 </mask>
                                             </variation>
                                         </view>
