@@ -15,6 +15,7 @@ class PatternsCollectionViewController: UICollectionViewController, UICollection
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.patterns)).startWithValues { [unowned self] (_) in
             self.collectionView!.reloadData()
         })

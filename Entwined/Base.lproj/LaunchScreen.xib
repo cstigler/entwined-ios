@@ -42,7 +42,7 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="entwined1" translatesAutoresizingMaskIntoConstraints="NO" id="9CP-aN-haP" userLabel="Image Gallery Placeholder">
                     <rect key="frame" x="40" y="309" width="688" height="437"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="437" id="BDw-Xe-WyS"/>
+                        <constraint firstAttribute="width" secondItem="9CP-aN-haP" secondAttribute="height" multiplier="688:437" id="h7K-GG-Nkr"/>
                     </constraints>
                 </imageView>
             </subviews>
