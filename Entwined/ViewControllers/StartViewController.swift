@@ -46,9 +46,7 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.loaded)).startWithValues { [unowned self] (_) in
             self.connectingLabel.isHidden = Model.sharedInstance.loaded
-            // hide start break button for now since it doesn't work yet with the server
-            self.startBreakButton.isHidden = true
-            // self.startBreakButton.isHidden = !Model.sharedInstance.loaded
+             self.startBreakButton.isHidden = !Model.sharedInstance.loaded
 
             if (Model.sharedInstance.loaded) {
                 if (!self.startControllingButton.isEnabled && !Model.sharedInstance.autoplay) {
@@ -66,8 +64,8 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
             }
         })
         
-        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.breakTimeRemaining)).startWithValues { [unowned self] (_) in
-            if (Model.sharedInstance.breakEndDate.timeIntervalSinceNow > 0) {
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.timeRemaining)).startWithValues { [unowned self] (_) in
+            if (Model.sharedInstance.nextStateChangeDate.timeIntervalSinceNow > 0) {
                 performSegue(withIdentifier: "show-break-timer-segue", sender: self)
             }
         })
@@ -108,7 +106,7 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         let confirmationAlert = UIAlertController(title: "Confirm Break", message: "Are you sure you want to start a 5-minute lighting break? All LED patterns will stop and the sculpture will go dark.", preferredStyle: .alert)
         
         let ok = UIAlertAction(title: "Start Break", style: .default, handler: { (action) -> Void in
-            ServerController.sharedInstance.startBreak(300)
+            ServerController.sharedInstance.resetTimerToPause()
         })
         
         let cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {

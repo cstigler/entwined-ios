@@ -40,7 +40,7 @@ class BreakViewController: UIViewController {
     }
     
     @objc func updateTimeRemaining() {
-        let endDate = Model.sharedInstance.breakEndDate
+        let endDate = Model.sharedInstance.nextStateChangeDate
         
         var secondsRemaining = endDate.timeIntervalSince(Date())
         
@@ -63,6 +63,6 @@ class BreakViewController: UIViewController {
     
     @IBAction func stopBreak(_ sender: AnyObject) {
         Model.sharedInstance.autoplay = true
-        ServerController.sharedInstance.stopBreak()
+        ServerController.sharedInstance.resetTimerToRun()
     }
 }

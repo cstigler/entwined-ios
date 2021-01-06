@@ -36,7 +36,7 @@ class ServerController: NSObject, PKJSONSocketDelegate {
             print(connected ? "Connected" : "Disconnected")
         }
     }
-    var serverHostname: String = "10.0.0.3" {
+    var serverHostname: String = "localhost" {
         didSet {
             disconnect()
             connect()
@@ -105,8 +105,21 @@ class ServerController: NSObject, PKJSONSocketDelegate {
                     if let hue = params["hue"] as? Float {
                         Model.sharedInstance.hue = hue
                     }
-                    if let breakTimeRemaining = params["breakTimeRemaining"] as? Double {
-                        Model.sharedInstance.breakTimeRemaining = breakTimeRemaining
+                    if let runSeconds = params["runSeconds"] as? Float {
+                        print("SET RUNSECONDS TO \(runSeconds)")
+                        Model.sharedInstance.runSeconds = runSeconds
+                    }
+                    if let pauseSeconds = params["pauseSeconds"] as? Float {
+                        print("SET PAUSESECONDS TO \(pauseSeconds)")
+                        Model.sharedInstance.pauseSeconds = pauseSeconds
+                    }
+                    if let timeRemaining = params["timeRemaining"] as? Float {
+                        print("SET TIMEREMAINING TO \(timeRemaining)")
+                        Model.sharedInstance.timeRemaining = timeRemaining
+                    }
+                    if let state = params["state"] as? String {
+                        print("SET STATE TO \(state)")
+                        Model.sharedInstance.state = state
                     }
                     DisplayState.sharedInstance.selectedChannelIndex = 0
                     Model.sharedInstance.isIniting = false
@@ -197,12 +210,12 @@ class ServerController: NSObject, PKJSONSocketDelegate {
         self.send("setHue", params: ["amount": amount as AnyObject])
     }
    
-    func startBreak(_ duration: Double) {
-        Model.sharedInstance.breakTimeRemaining = duration
-        self.send("startBreak", params: ["duration": duration as AnyObject])
+    func resetTimerToPause() {
+        Model.sharedInstance.timeRemaining = Model.sharedInstance.pauseSeconds
+        self.send("resetTimerPause")
     }
-    func stopBreak() {
-        Model.sharedInstance.breakTimeRemaining = 0
-        self.send("stopBreak")
+    func resetTimerToRun() {
+        Model.sharedInstance.timeRemaining = 0
+        self.send("resetTimerRun")
     }
 }

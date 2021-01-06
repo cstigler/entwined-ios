@@ -100,18 +100,23 @@ class Model: NSObject {
         }
     }
     
-    // do NOT set from the client except for server-set values
-    @objc dynamic var breakTimeRemaining: Double = 0 {
+    // these vars (related to the timer) should NOT be set from the client
+    // only server-set values
+    @objc dynamic var runSeconds: Float = 0
+    @objc dynamic var pauseSeconds: Float = 0
+    @objc dynamic var state: String = "run"
+    
+    @objc dynamic var timeRemaining: Float = 0 {
         didSet {
-            // we need to store WHEN we fetched the breakTimeRemaining
+            // we need to store WHEN we fetched the timeRemaining
             // so we can interpolate the break end date and know when it's over
-            breakTimeRemainingFetched = Date()
+            timeRemainingFetched = Date()
         }
     }
-    @objc dynamic var breakTimeRemainingFetched: Date?;
-    @objc dynamic var breakEndDate: Date {
-        let fetchedDate = breakTimeRemainingFetched ?? Date()
+    @objc dynamic var timeRemainingFetched: Date?;
+    @objc dynamic var nextStateChangeDate: Date {
+        let fetchedDate = timeRemainingFetched ?? Date()
 
-        return fetchedDate.addingTimeInterval(TimeInterval(breakTimeRemaining))
+        return fetchedDate.addingTimeInterval(TimeInterval(timeRemaining))
     }
 }
