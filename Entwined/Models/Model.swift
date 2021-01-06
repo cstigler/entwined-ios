@@ -21,6 +21,13 @@ class Model: NSObject {
     var isIniting = false
     @objc dynamic var loaded = false
     
+    var stateChangeTimer:Timer? = nil
+    
+    deinit {
+        self.stateChangeTimer?.invalidate()
+        self.stateChangeTimer = nil
+    }
+    
     @objc dynamic var autoplay: Bool = false {
         didSet {
             if !self.isIniting {
@@ -112,7 +119,9 @@ class Model: NSObject {
             // so we can interpolate the break end date and know when it's over
             timeRemainingFetched = Date()
             
-            let timer = Timer.scheduledTimer(withTimeInterval: secondsToNextStateChange + 0.1, repeats: false) {_ in
+            // reset the state change timer so we remember to check when the state's supposed to change next
+            stateChangeTimer?.invalidate()
+            stateChangeTimer = Timer.scheduledTimer(withTimeInterval: secondsToNextStateChange + 0.1, repeats: false) {_ in
                 print("things may have happened - refreshing pause timer!")
                 ServerController.sharedInstance.loadModel()
             }

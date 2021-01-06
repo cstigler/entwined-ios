@@ -23,6 +23,8 @@ class MixerViewController: UIViewController {
     var labelUpdateTimer: Timer? = nil
     let disposables = CompositeDisposable.init()
     
+    var breakPromptShown:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,10 +39,19 @@ class MixerViewController: UIViewController {
             self.autoplaySwitch.isOn = Model.sharedInstance.autoplay
             
             if (Model.sharedInstance.autoplay) {
+                breakPromptShown = false
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)
                     // performSegue(withIdentifier: "hide-controls-segue", sender: self)
                 }
+            }
+        })
+        
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.state)).startWithValues { [unowned self] (_) in
+            if (Model.sharedInstance.state == "run") {
+                breakPromptShown = false
+            } else if (Model.sharedInstance.state == "pause" && !breakPromptShown) {
+                promptForBreak()
             }
         })
         
@@ -94,17 +105,44 @@ class MixerViewController: UIViewController {
     @objc func updateTimerLabel() {
         let timeRemainingFormatted = formatCountdown(Float(Model.sharedInstance.secondsToNextStateChange))
 
+        let compactFormatting = (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClass.compact)
+        
         var periodLengthFormatted: String
         var runState: String
         if (Model.sharedInstance.state == "run") {
-            runState = "RUNNING"
+            runState = compactFormatting ? "RUN" : "RUNNING"
             periodLengthFormatted = formatCountdown(Model.sharedInstance.runSeconds)
         } else {
             runState = "BREAK"
             periodLengthFormatted = formatCountdown(Model.sharedInstance.pauseSeconds)
         }
 
-        timerLabel.text = "\(runState) - \(timeRemainingFormatted) of \(periodLengthFormatted) remaining"
+        if (compactFormatting) {
+            timerLabel.text = "\(runState) - \(timeRemainingFormatted) of \(periodLengthFormatted) remaining"
+        } else {
+            timerLabel.text = "\(runState): \(timeRemainingFormatted) of \(periodLengthFormatted)"
+        }
+    }
+    
+    @objc func promptForBreak(){
+        breakPromptShown = true
+        let breakLengthMins = Int(round(Model.sharedInstance.pauseSeconds / 60.0))
+        
+        let confirmationAlert = UIAlertController(title: "Time for a Break", message: "It's time for our scheduled \(breakLengthMins)-minute lighting break. Would you like to stop controlling and start the break now?", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "Start Break", style: .default, handler: { (action) -> Void in
+            Model.sharedInstance.autoplay = true
+            ServerController.sharedInstance.resetTimerToPause()
+        })
+        
+        let cancel = UIAlertAction(title: "Keep Controlling", style: UIAlertAction.Style.default, handler: {
+            (action : UIAlertAction!) -> Void in })
+
+        confirmationAlert.addAction(ok)
+        confirmationAlert.addAction(cancel)
+        
+        // Present dialog message to user
+        self.present(confirmationAlert, animated: true, completion: nil)
     }
     
     @objc func userActivityTimeout(notification: NSNotification){

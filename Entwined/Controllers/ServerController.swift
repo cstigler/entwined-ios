@@ -109,19 +109,15 @@ class ServerController: NSObject, PKJSONSocketDelegate {
                         print("received pauseTimer \(pauseTimer)")
 
                         if let runSeconds = pauseTimer["runSeconds"] as? Float {
-                            print("SET RUNSECONDS TO \(runSeconds)")
                             Model.sharedInstance.runSeconds = runSeconds
                         }
                         if let pauseSeconds = pauseTimer["pauseSeconds"] as? Float {
-                            print("SET PAUSESECONDS TO \(pauseSeconds)")
                             Model.sharedInstance.pauseSeconds = pauseSeconds
                         }
                         if let timeRemaining = pauseTimer["timeRemaining"] as? Float {
-                            print("SET TIMEREMAINING TO \(timeRemaining)")
                             Model.sharedInstance.timeRemaining = timeRemaining
                         }
                         if let state = pauseTimer["state"] as? String {
-                            print("SET STATE TO \(state)")
                             Model.sharedInstance.state = state
                         }
                     }

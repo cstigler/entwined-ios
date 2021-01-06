@@ -24,6 +24,16 @@ class BreakViewController: UIViewController {
         self.labelUpdateTimer = nil
     }
     
+    override func viewDidLoad() {
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.state)).startWithValues { [unowned self] (_) in
+            if (Model.sharedInstance.state == "run") {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        })
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -40,15 +50,7 @@ class BreakViewController: UIViewController {
     }
     
     @objc func updateTimeRemaining() {
-        var secondsRemaining = Model.sharedInstance.secondsToNextStateChange
-
-        // when the break's over, go back to the start screen
-        if (secondsRemaining <= 0) {
-            DispatchQueue.main.async {
-                Model.sharedInstance.autoplay = true
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
+        let secondsRemaining = Model.sharedInstance.secondsToNextStateChange
         
         timeRemainingLabel.text = "\(formatCountdown(Float(secondsRemaining)))"
     }
