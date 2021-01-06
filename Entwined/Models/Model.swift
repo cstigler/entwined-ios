@@ -111,6 +111,11 @@ class Model: NSObject {
             // we need to store WHEN we fetched the timeRemaining
             // so we can interpolate the break end date and know when it's over
             timeRemainingFetched = Date()
+            
+            let timer = Timer.scheduledTimer(withTimeInterval: secondsToNextStateChange + 0.1, repeats: false) {_ in
+                print("things may have happened - refreshing pause timer!")
+                ServerController.sharedInstance.loadModel()
+            }
         }
     }
     @objc dynamic var timeRemainingFetched: Date?;
@@ -118,5 +123,9 @@ class Model: NSObject {
         let fetchedDate = timeRemainingFetched ?? Date()
 
         return fetchedDate.addingTimeInterval(TimeInterval(timeRemaining))
+    }
+    @objc dynamic var secondsToNextStateChange: Double {
+        let endDate = nextStateChangeDate
+        return endDate.timeIntervalSince(Date())
     }
 }

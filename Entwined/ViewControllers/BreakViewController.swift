@@ -40,10 +40,8 @@ class BreakViewController: UIViewController {
     }
     
     @objc func updateTimeRemaining() {
-        let endDate = Model.sharedInstance.nextStateChangeDate
-        
-        var secondsRemaining = endDate.timeIntervalSince(Date())
-        
+        var secondsRemaining = Model.sharedInstance.secondsToNextStateChange
+
         // when the break's over, go back to the start screen
         if (secondsRemaining <= 0) {
             DispatchQueue.main.async {
@@ -51,14 +49,8 @@ class BreakViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             }
         }
-
-        let minutesRemaining = floor(secondsRemaining / 60)
-        secondsRemaining = secondsRemaining - (minutesRemaining * 60)
         
-        let formattedMinutes = String(format: "%02d", Int(round(minutesRemaining)))
-        let formattedSeconds = String(format: "%02d", Int(round(secondsRemaining)))
-        
-        timeRemainingLabel.text = "\(formattedMinutes):\(formattedSeconds)"
+        timeRemainingLabel.text = "\(formatCountdown(Float(secondsRemaining)))"
     }
     
     @IBAction func stopBreak(_ sender: AnyObject) {

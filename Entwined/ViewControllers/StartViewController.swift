@@ -65,7 +65,7 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         })
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.timeRemaining)).startWithValues { [unowned self] (_) in
-            if (Model.sharedInstance.nextStateChangeDate.timeIntervalSinceNow > 0) {
+            if (Model.sharedInstance.state == "break") {
                 performSegue(withIdentifier: "show-break-timer-segue", sender: self)
             }
         })

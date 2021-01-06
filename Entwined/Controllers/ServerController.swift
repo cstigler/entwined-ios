@@ -105,21 +105,25 @@ class ServerController: NSObject, PKJSONSocketDelegate {
                     if let hue = params["hue"] as? Float {
                         Model.sharedInstance.hue = hue
                     }
-                    if let runSeconds = params["runSeconds"] as? Float {
-                        print("SET RUNSECONDS TO \(runSeconds)")
-                        Model.sharedInstance.runSeconds = runSeconds
-                    }
-                    if let pauseSeconds = params["pauseSeconds"] as? Float {
-                        print("SET PAUSESECONDS TO \(pauseSeconds)")
-                        Model.sharedInstance.pauseSeconds = pauseSeconds
-                    }
-                    if let timeRemaining = params["timeRemaining"] as? Float {
-                        print("SET TIMEREMAINING TO \(timeRemaining)")
-                        Model.sharedInstance.timeRemaining = timeRemaining
-                    }
-                    if let state = params["state"] as? String {
-                        print("SET STATE TO \(state)")
-                        Model.sharedInstance.state = state
+                    if let pauseTimer = params["pauseTimer"] {
+                        print("received pauseTimer \(pauseTimer)")
+
+                        if let runSeconds = pauseTimer["runSeconds"] as? Float {
+                            print("SET RUNSECONDS TO \(runSeconds)")
+                            Model.sharedInstance.runSeconds = runSeconds
+                        }
+                        if let pauseSeconds = pauseTimer["pauseSeconds"] as? Float {
+                            print("SET PAUSESECONDS TO \(pauseSeconds)")
+                            Model.sharedInstance.pauseSeconds = pauseSeconds
+                        }
+                        if let timeRemaining = pauseTimer["timeRemaining"] as? Float {
+                            print("SET TIMEREMAINING TO \(timeRemaining)")
+                            Model.sharedInstance.timeRemaining = timeRemaining
+                        }
+                        if let state = pauseTimer["state"] as? String {
+                            print("SET STATE TO \(state)")
+                            Model.sharedInstance.state = state
+                        }
                     }
                     DisplayState.sharedInstance.selectedChannelIndex = 0
                     Model.sharedInstance.isIniting = false
@@ -175,6 +179,7 @@ class ServerController: NSObject, PKJSONSocketDelegate {
     
     func setAutoplay(_ autoplay: Bool) {
         self.send("setAutoplay", params: ["autoplay": autoplay as AnyObject])
+        loadModel()
     }
     
     func setBrightness(_ brightness: Float) {
@@ -213,9 +218,15 @@ class ServerController: NSObject, PKJSONSocketDelegate {
     func resetTimerToPause() {
         Model.sharedInstance.timeRemaining = Model.sharedInstance.pauseSeconds
         self.send("resetTimerPause")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            self.loadModel()
+        }
     }
     func resetTimerToRun() {
         Model.sharedInstance.timeRemaining = 0
         self.send("resetTimerRun")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            self.loadModel()
+        }
     }
 }

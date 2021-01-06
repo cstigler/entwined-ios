@@ -54,12 +54,19 @@
                                         <color key="textColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RUNNING - 00:00 of 00:00 remaining" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRZ-Sx-Bl0">
+                                        <rect key="frame" x="525" y="10" width="287" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="centerY" secondItem="ZOD-lL-eGG" secondAttribute="centerY" id="FQG-XB-bBR"/>
                                     <constraint firstAttribute="bottom" secondItem="ZOD-lL-eGG" secondAttribute="bottom" constant="9" id="FUH-YG-c9J"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZOD-lL-eGG" secondAttribute="trailing" constant="20" symbolic="YES" id="Hbb-QJ-H8d"/>
+                                    <constraint firstAttribute="trailing" secondItem="WRZ-Sx-Bl0" secondAttribute="trailing" constant="8" id="Kxw-Rt-kX7"/>
                                     <constraint firstAttribute="height" constant="37" id="Ta4-tx-9R1"/>
                                     <constraint firstItem="b5w-gg-12l" firstAttribute="centerY" secondItem="BEb-CA-AAA" secondAttribute="centerY" id="Yo6-Pl-hlG"/>
                                     <constraint firstItem="ZOD-lL-eGG" firstAttribute="leading" secondItem="b5w-gg-12l" secondAttribute="trailing" constant="28" id="YpE-u3-FeM"/>
@@ -67,6 +74,7 @@
                                     <constraint firstItem="BEb-CA-AAA" firstAttribute="leading" secondItem="zY0-0U-HSw" secondAttribute="leading" constant="21" id="hEu-eO-D3o"/>
                                     <constraint firstItem="BEb-CA-AAA" firstAttribute="top" secondItem="zY0-0U-HSw" secondAttribute="top" constant="3" id="kKY-J4-gN4"/>
                                     <constraint firstItem="ZOD-lL-eGG" firstAttribute="top" secondItem="zY0-0U-HSw" secondAttribute="top" constant="9" id="l1a-nA-m5G"/>
+                                    <constraint firstItem="WRZ-Sx-Bl0" firstAttribute="centerY" secondItem="zY0-0U-HSw" secondAttribute="centerY" id="l9I-J6-vmh"/>
                                     <constraint firstAttribute="bottom" secondItem="BEb-CA-AAA" secondAttribute="bottom" constant="3" id="pND-n7-zsK"/>
                                 </constraints>
                             </view>
@@ -308,6 +316,7 @@
                         <outlet property="brightnessSlider" destination="Cdk-Y2-ZdK" id="OH6-h9-o3X"/>
                         <outlet property="speedSlider" destination="8L1-gr-fZd" id="5JE-c7-iFM"/>
                         <outlet property="spinSlider" destination="fbz-G7-Izi" id="I5Q-J1-bD1"/>
+                        <outlet property="timerLabel" destination="WRZ-Sx-Bl0" id="ub6-AC-Sda"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="qDk-Oc-ftf"/>
                         <outletCollection property="sliders" destination="Atf-cp-rXB" collectionClass="NSMutableArray" id="JB9-gy-U6c"/>
                         <outletCollection property="sliders" destination="8L1-gr-fZd" collectionClass="NSMutableArray" id="qmR-bH-w9N"/>
@@ -318,7 +327,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="114.49275362318842" y="229.6875"/>
+            <point key="canvasLocation" x="114.14634146341463" y="229.32203389830511"/>
         </scene>
         <!--Effects Table View Controller-->
         <scene sceneID="f0q-04-xFr">

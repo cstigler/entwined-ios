@@ -11,6 +11,7 @@ import ReactiveSwift
 
 class MixerViewController: UIViewController {    
     @IBOutlet weak var autoplaySwitch: UISwitch!
+    @IBOutlet weak var timerLabel: UILabel!
 
     @IBOutlet weak var speedSlider: UISlider!
     @IBOutlet weak var spinSlider: UISlider!
@@ -19,6 +20,7 @@ class MixerViewController: UIViewController {
     
     @IBOutlet var sliders: [UISlider]!
     
+    var labelUpdateTimer: Timer? = nil
     let disposables = CompositeDisposable.init()
     
     override func viewDidLoad() {
@@ -71,6 +73,9 @@ class MixerViewController: UIViewController {
         
         brightnessSlider.maximumValue = Model.maxBrightness
         
+        labelUpdateTimer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(MixerViewController.updateTimerLabel), userInfo: nil, repeats: true)
+        updateTimerLabel()
+        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.userActivityTimeout(notification:)),
@@ -79,8 +84,27 @@ class MixerViewController: UIViewController {
     }
     
     deinit {
+        self.labelUpdateTimer?.invalidate()
+        self.labelUpdateTimer = nil
+
         disposables.dispose()
         NotificationCenter.default.removeObserver(self, name: .appTimeout, object: nil)
+    }
+    
+    @objc func updateTimerLabel() {
+        let timeRemainingFormatted = formatCountdown(Float(Model.sharedInstance.secondsToNextStateChange))
+
+        var periodLengthFormatted: String
+        var runState: String
+        if (Model.sharedInstance.state == "run") {
+            runState = "RUNNING"
+            periodLengthFormatted = formatCountdown(Model.sharedInstance.runSeconds)
+        } else {
+            runState = "BREAK"
+            periodLengthFormatted = formatCountdown(Model.sharedInstance.pauseSeconds)
+        }
+
+        timerLabel.text = "\(runState) - \(timeRemainingFormatted) of \(periodLengthFormatted) remaining"
     }
     
     @objc func userActivityTimeout(notification: NSNotification){
