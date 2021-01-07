@@ -116,9 +116,9 @@ class MixerViewController: UIViewController {
         }
 
         if (compactFormatting) {
-            timerLabel.text = "\(runState) - \(timeRemainingFormatted) of \(periodLengthFormatted) remaining"
-        } else {
             timerLabel.text = "\(runState): \(timeRemainingFormatted) of \(periodLengthFormatted)"
+        } else {
+            timerLabel.text = "\(runState) - \(timeRemainingFormatted) of \(periodLengthFormatted) remaining"
         }
     }
     
