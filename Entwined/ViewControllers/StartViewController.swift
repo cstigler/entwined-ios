@@ -113,9 +113,14 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         }
 
         if (compactFormatting) {
-            timerLabel.text = "\(runState) - \(timeRemainingFormatted) of \(periodLengthFormatted) remaining"
-        } else {
             timerLabel.text = "\(runState): \(timeRemainingFormatted) of \(periodLengthFormatted)"
+        } else {
+            timerLabel.text = "\(runState) - \(timeRemainingFormatted) of \(periodLengthFormatted) remaining"
+        }
+        
+        // if the seconds to next state change was negative, we're overdue for a refresh. so do that
+        if (Model.sharedInstance.secondsToNextStateChange < 0) {
+            ServerController.sharedInstance.loadPauseTimer()
         }
     }
     

@@ -11,7 +11,7 @@ import Foundation
 // taken from StackOverflow: https://stackoverflow.com/a/35215847/1206009
 func formatCountdown(_ duration: Float) -> String {
 //    let hours = Int(duration) / 3600
-    var roundedDuration: Int = Int(round(duration))
+    var roundedDuration: Int = Int(round(max(duration, 0)))
     let minutes: Int = roundedDuration / 60
     let seconds: Int = roundedDuration % 60
     return String(format:"%02i:%02i", minutes, seconds)

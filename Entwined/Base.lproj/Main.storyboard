@@ -637,14 +637,14 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0h3-Dd-ofS">
-                                <rect key="frame" x="335" y="1124" width="150" height="30"/>
+                                <rect key="frame" x="335" y="1012" width="150" height="30"/>
                                 <state key="normal" title="Stop scheduled break"/>
                                 <connections>
                                     <action selector="resetToRun:" destination="XkK-v0-9WK" eventType="touchUpInside" id="9Zr-ly-fSt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MpZ-eB-UXA">
-                                <rect key="frame" x="290.5" y="1090" width="239" height="30"/>
+                                <rect key="frame" x="290.5" y="978" width="239" height="30"/>
                                 <state key="normal" title="Start scheduled break immediately"/>
                                 <connections>
                                     <action selector="resetToPause:" destination="XkK-v0-9WK" eventType="touchUpInside" id="hqJ-pU-lkc"/>
@@ -672,7 +672,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RUNNING - 00:00 of 00:00 remaining" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJu-X5-zq6">
-                                <rect key="frame" x="266.5" y="857" width="287" height="21"/>
+                                <rect key="frame" x="266.5" y="857" width="287" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -692,6 +692,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="MpZ-eB-UXA" firstAttribute="top" secondItem="FJu-X5-zq6" secondAttribute="bottom" constant="100" id="1Qk-Zf-r7w"/>
                             <constraint firstItem="rPV-pI-AAJ" firstAttribute="top" secondItem="XMS-2L-3hT" secondAttribute="bottom" constant="70" id="1z7-jA-8SL"/>
                             <constraint firstItem="XMS-2L-3hT" firstAttribute="top" secondItem="2Y6-su-ak8" secondAttribute="bottom" constant="30" id="2Nu-a2-c5D"/>
                             <constraint firstItem="oIc-vQ-9tX" firstAttribute="top" secondItem="nrC-8v-AIA" secondAttribute="bottom" constant="44" id="6jI-28-3bv"/>
@@ -708,25 +709,27 @@
                             <constraint firstItem="oIc-vQ-9tX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0h3-Dd-ofS" secondAttribute="bottom" constant="20" id="TBX-pE-rAM"/>
                             <constraint firstItem="MpZ-eB-UXA" firstAttribute="top" secondItem="0h3-Dd-ofS" secondAttribute="bottom" constant="4" identifier="stop-break-above-reset-break" id="bIm-6C-Zz6"/>
                             <constraint firstItem="XMS-2L-3hT" firstAttribute="centerX" secondItem="KE3-Ao-S3j" secondAttribute="centerX" id="bda-s9-799"/>
-                            <constraint firstItem="rPV-pI-AAJ" firstAttribute="centerY" secondItem="KE3-Ao-S3j" secondAttribute="centerY" id="c4w-oh-EbS"/>
                             <constraint firstItem="XMS-2L-3hT" firstAttribute="leading" secondItem="KE3-Ao-S3j" secondAttribute="leading" constant="40" id="e4K-63-5Zq"/>
                             <constraint firstItem="FJu-X5-zq6" firstAttribute="top" secondItem="rPV-pI-AAJ" secondAttribute="bottom" constant="8" id="fI8-OX-Emf"/>
                             <constraint firstItem="nrC-8v-AIA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rPV-pI-AAJ" secondAttribute="bottom" constant="20" id="hTB-8d-1F2"/>
                             <constraint firstItem="x3o-4n-BdC" firstAttribute="top" secondItem="Epv-UQ-wTo" secondAttribute="bottom" constant="30" id="j01-Ku-enD"/>
+                            <constraint firstItem="MpZ-eB-UXA" firstAttribute="top" secondItem="FJu-X5-zq6" secondAttribute="bottom" constant="100" id="qgc-5f-CeH"/>
                             <constraint firstItem="nrC-8v-AIA" firstAttribute="centerX" secondItem="KE3-Ao-S3j" secondAttribute="centerX" id="t6p-m8-Vyp"/>
                             <constraint firstItem="oIc-vQ-9tX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rPV-pI-AAJ" secondAttribute="bottom" constant="80" id="tPu-nx-M9b"/>
                             <constraint firstItem="FJu-X5-zq6" firstAttribute="centerX" secondItem="rPV-pI-AAJ" secondAttribute="centerX" id="ti1-9H-dAs"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="c4w-oh-EbS"/>
+                                <exclude reference="1Qk-Zf-r7w"/>
                                 <exclude reference="bIm-6C-Zz6"/>
+                                <exclude reference="qgc-5f-CeH"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="constraints">
                                 <exclude reference="1z7-jA-8SL"/>
-                                <include reference="c4w-oh-EbS"/>
+                                <include reference="1Qk-Zf-r7w"/>
+                                <include reference="qgc-5f-CeH"/>
                             </mask>
                         </variation>
                     </view>
@@ -747,7 +750,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpz-fQ-RVl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204.6875" y="-434.1796875"/>
+            <point key="canvasLocation" x="-204.8780487804878" y="-434.23728813559325"/>
         </scene>
         <!--Break View Controller-->
         <scene sceneID="WAa-B6-RPn">

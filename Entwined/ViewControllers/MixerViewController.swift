@@ -120,6 +120,11 @@ class MixerViewController: UIViewController {
         } else {
             timerLabel.text = "\(runState) - \(timeRemainingFormatted) of \(periodLengthFormatted) remaining"
         }
+        
+        // if the seconds to next state change was negative, we're overdue for a refresh. so do that
+        if (Model.sharedInstance.secondsToNextStateChange < 0) {
+            ServerController.sharedInstance.loadPauseTimer()
+        }
     }
     
     @objc func promptForBreak(){
