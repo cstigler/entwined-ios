@@ -10,7 +10,6 @@ import UIKit
 import ReactiveSwift
 
 class MixerViewController: UIViewController {    
-    @IBOutlet weak var autoplaySwitch: UISwitch!
     @IBOutlet weak var timerLabel: UILabel!
 
     @IBOutlet weak var speedSlider: UISlider!
@@ -36,8 +35,7 @@ class MixerViewController: UIViewController {
         })
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.autoplay)).startWithValues { [unowned self] (_) in
-            self.autoplaySwitch.isOn = Model.sharedInstance.autoplay
-            
+            print("AUTOPLAY CHANGED to \(Model.sharedInstance.autoplay)")
             if (Model.sharedInstance.autoplay) {
                 breakPromptShown = false
                 DispatchQueue.main.async {
@@ -150,8 +148,8 @@ class MixerViewController: UIViewController {
         Model.sharedInstance.autoplay = true
     }
     
-    @IBAction func autoplayChanged(_ sender: AnyObject) {
-        Model.sharedInstance.autoplay = self.autoplaySwitch.isOn
+    @IBAction func enableAutoplay(_ sender: AnyObject) {
+        Model.sharedInstance.autoplay = true
     }
     
     @IBAction func brightnessChanged(_ sender: UISlider) {

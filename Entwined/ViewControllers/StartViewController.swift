@@ -16,8 +16,11 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
     @IBOutlet weak var startControllingButton: UIButton!
     @IBOutlet weak var connectingLabel: UIView!
     @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var startBreakButton: UIButton!
-    @IBOutlet weak var stopBreakButton: UIButton!
+
+    @IBOutlet weak var resetToPauseButton: UIButton!
+    @IBOutlet weak var resetToRunButton: UIButton!
+    @IBOutlet var startBreakAboveResetRunConstraint: NSLayoutConstraint!
+    @IBOutlet var stopBreakAboveResetBreakConstraint: NSLayoutConstraint!
 
     var imagesArr = [UIImage(named: "entwined1"),
                      UIImage(named: "entwined2"),
@@ -52,8 +55,8 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.loaded)).startWithValues { [unowned self] (_) in
             self.connectingLabel.isHidden = Model.sharedInstance.loaded
-            self.startBreakButton.isHidden = !Model.sharedInstance.loaded
-            self.stopBreakButton.isHidden = !Model.sharedInstance.loaded
+            self.resetToPauseButton.isHidden = !Model.sharedInstance.loaded
+            self.resetToRunButton.isHidden = !Model.sharedInstance.loaded
 
             if (Model.sharedInstance.loaded) {
                 if (!self.startControllingButton.isEnabled && !Model.sharedInstance.autoplay) {
@@ -72,8 +75,18 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         })
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.state)).startWithValues { [unowned self] (_) in
-            if (Model.sharedInstance.state == "pause") {
-                performSegue(withIdentifier: "show-break-timer-segue", sender: self)
+            if (Model.sharedInstance.state == "run") {
+                self.resetToPauseButton.setTitle("Start Break Immediately", for: .normal)
+                self.resetToRunButton.setTitle("Reset Run Timer", for: .normal)
+
+                self.stopBreakAboveResetBreakConstraint.isActive = false
+                self.startBreakAboveResetRunConstraint.isActive = true
+            } else {
+                self.resetToRunButton.setTitle("End Break Immediately", for: .normal)
+                self.resetToPauseButton.setTitle("Reset Break Timer", for: .normal)
+    
+                self.stopBreakAboveResetBreakConstraint.isActive = true
+                self.startBreakAboveResetRunConstraint.isActive = false
             }
         })
         
@@ -134,12 +147,25 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func startBreak(_ sender: AnyObject) {
+    @IBAction func resetToPause(_ sender: AnyObject) {
         let breakLengthMins = Int(round(Model.sharedInstance.pauseSeconds / 60.0))
         
-        let confirmationAlert = UIAlertController(title: "Confirm Break", message: "Are you sure you want to start a \(breakLengthMins)-minute lighting break? All LED patterns will stop and the sculpture will go dark, and the break timer will reset.", preferredStyle: .alert)
+        var confirmationTitle: String
+        var confirmationMessage: String
+        var actionTitle: String
+        if (Model.sharedInstance.state == "run") {
+            confirmationTitle = "Confirm Break"
+            confirmationMessage = "Are you sure you want to start a \(breakLengthMins)-minute lighting break? All patterns will stop, the sculpture will go dark, and the break timer will reset."
+            actionTitle = "Start Break"
+        } else {
+            confirmationTitle = "Confirm Timer Reset"
+            confirmationMessage = "Are you sure you want to reset the break timer? This will extend the current break period, and the break will end in \(breakLengthMins) minutes."
+            actionTitle = "Reset Timer"
+        }
         
-        let ok = UIAlertAction(title: "Start Break", style: .default, handler: { (action) -> Void in
+        let confirmationAlert = UIAlertController(title: confirmationTitle, message: confirmationMessage, preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: actionTitle, style: .default, handler: { (action) -> Void in
             ServerController.sharedInstance.resetTimerToPause()
         })
         
@@ -152,12 +178,25 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         // Present dialog message to user
         self.present(confirmationAlert, animated: true, completion: nil)
     }
-    @IBAction func stopBreak(_ sender: AnyObject) {
+    @IBAction func resetToRun(_ sender: AnyObject) {
         let runLengthMins = Int(round(Model.sharedInstance.runSeconds / 60.0))
+
+        var confirmationTitle: String
+        var confirmationMessage: String
+        var actionTitle: String
+        if (Model.sharedInstance.state == "pause") {
+            confirmationTitle = "Confirm End Break"
+            confirmationMessage = "Are you sure you want to end the lighting break? The sculpture will light up again, and the timer will reset for another \(runLengthMins)-minute light show."
+            actionTitle = "End Break"
+        } else {
+            confirmationTitle = "Confirm Timer Reset"
+            confirmationMessage = "Are you sure you want to reset the run timer? This will extend the current run period, and the next break will occur in \(runLengthMins) minutes."
+            actionTitle = "Reset Timer"
+        }
         
-        let confirmationAlert = UIAlertController(title: "Confirm Stop Break", message: "Are you sure you want to stop the lighting break? The sculpture will light up again, and the break timer will reset for another \(runLengthMins)-minute light show.", preferredStyle: .alert)
+        let confirmationAlert = UIAlertController(title: confirmationTitle, message: confirmationMessage, preferredStyle: .alert)
         
-        let ok = UIAlertAction(title: "Stop Break", style: .default, handler: { (action) -> Void in
+        let ok = UIAlertAction(title: actionTitle, style: .default, handler: { (action) -> Void in
             ServerController.sharedInstance.resetTimerToRun()
         })
         

@@ -121,10 +121,11 @@ class Model: NSObject {
             
             // reset the state change timer so we remember to check when the state's supposed to change next
             stateChangeTimer?.invalidate()
-            stateChangeTimer = Timer.scheduledTimer(withTimeInterval: secondsToNextStateChange + 0.1, repeats: false) {_ in
+            stateChangeTimer = Timer.scheduledTimer(withTimeInterval: secondsToNextStateChange, repeats: false) {_ in
                 print("things may have happened - refreshing pause timer!")
-                ServerController.sharedInstance.loadModel()
+                ServerController.sharedInstance.loadPauseTimer()
             }
+            print("cut a new timer for \(secondsToNextStateChange) seconds...")
         }
     }
     @objc dynamic var timeRemainingFetched: Date?;

@@ -73,6 +73,7 @@ class ServerController: NSObject, PKJSONSocketDelegate {
     
     func socket(_ socket: PKJSONSocket, didReceive dictionary: PKJSONSocketMessage) {
         if let method = dictionary.dictionaryRepresentation()["method"] as? String {
+            print("Received response with method \(method)")
             if let params = dictionary.dictionaryRepresentation()["params"] as? Dictionary<String, AnyObject> {
                 switch method {
                 case "model":
@@ -105,29 +106,35 @@ class ServerController: NSObject, PKJSONSocketDelegate {
                     if let hue = params["hue"] as? Float {
                         Model.sharedInstance.hue = hue
                     }
-                    if let pauseTimer = params["pauseTimer"] {
-                        print("received pauseTimer \(pauseTimer)")
-
-                        if let runSeconds = pauseTimer["runSeconds"] as? Float {
-                            Model.sharedInstance.runSeconds = runSeconds
-                        }
-                        if let pauseSeconds = pauseTimer["pauseSeconds"] as? Float {
-                            Model.sharedInstance.pauseSeconds = pauseSeconds
-                        }
-                        if let timeRemaining = pauseTimer["timeRemaining"] as? Float {
-                            Model.sharedInstance.timeRemaining = timeRemaining
-                        }
-                        if let state = pauseTimer["state"] as? String {
-                            Model.sharedInstance.state = state
-                        }
+                    if let pauseTimer = params["pauseTimer"] as? Dictionary<String, AnyObject> {
+                        print("received pauseTimer (in model method): \(pauseTimer)")
+                        parsePauseTimerDictionary(pauseTimer)
                     }
                     DisplayState.sharedInstance.selectedChannelIndex = 0
                     Model.sharedInstance.isIniting = false
                     Model.sharedInstance.loaded = true
+                case "pauseTimer":
+                    print("received pauseTimer (in pauseTimer method): \(params)")
+                    parsePauseTimerDictionary(params)
                 default:
                     break
                 }
             }
+        }
+    }
+    
+    func parsePauseTimerDictionary(_ pauseTimer:Dictionary<String, AnyObject>) {
+        if let runSeconds = pauseTimer["runSeconds"] as? Float {
+            Model.sharedInstance.runSeconds = runSeconds
+        }
+        if let pauseSeconds = pauseTimer["pauseSeconds"] as? Float {
+            Model.sharedInstance.pauseSeconds = pauseSeconds
+        }
+        if let timeRemaining = pauseTimer["timeRemaining"] as? Float {
+            Model.sharedInstance.timeRemaining = timeRemaining
+        }
+        if let state = pauseTimer["state"] as? String {
+            Model.sharedInstance.state = state
         }
     }
     
@@ -161,7 +168,7 @@ class ServerController: NSObject, PKJSONSocketDelegate {
     }
     
     func send(_ method: String, params: Dictionary<String, AnyObject>? = nil) {
-        print("sending method \(method) with params \(String(describing: params))")
+        print("Sent request with method \(method)")
         if let params = params {
             socket.send(PKJSONSocketMessage(dictionary: ["method": method, "params": params]))
         } else {
@@ -173,9 +180,13 @@ class ServerController: NSObject, PKJSONSocketDelegate {
         self.send("loadModel")
     }
     
+    func loadPauseTimer() {
+        self.send("getTimer")
+    }
+    
     func setAutoplay(_ autoplay: Bool) {
         self.send("setAutoplay", params: ["autoplay": autoplay as AnyObject])
-        loadModel()
+        self.loadPauseTimer()
     }
     
     func setBrightness(_ brightness: Float) {
@@ -214,15 +225,19 @@ class ServerController: NSObject, PKJSONSocketDelegate {
     func resetTimerToPause() {
         Model.sharedInstance.timeRemaining = Model.sharedInstance.pauseSeconds
         self.send("resetTimerPause")
+
+        // get the new values after our request goes through
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            self.loadModel()
+            self.loadPauseTimer()
         }
     }
     func resetTimerToRun() {
         Model.sharedInstance.timeRemaining = 0
         self.send("resetTimerRun")
+        
+        // get the new values after our request goes through
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            self.loadModel()
+            self.loadPauseTimer()
         }
     }
 }
