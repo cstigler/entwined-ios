@@ -27,9 +27,11 @@ class MixerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // they made the choice to start during this period willingly - don't prompt them again
+        breakPromptShown = true
+
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.loaded)).startWithValues { [unowned self] (_) in
             if (!Model.sharedInstance.loaded) {
-                print("Model sharedInstance !loaded (\(Model.sharedInstance.loaded), so autoplay = true \(Model.sharedInstance)")
                 Model.sharedInstance.autoplay = true
             }
         })
@@ -41,12 +43,10 @@ class MixerViewController: UIViewController {
         })
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.autoplay)).startWithValues { [unowned self] (_) in
-            print("AUTOPLAY CHANGED to \(Model.sharedInstance.autoplay)")
             if (Model.sharedInstance.autoplay) {
                 breakPromptShown = false
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)
-                    // performSegue(withIdentifier: "hide-controls-segue", sender: self)
                 }
             }
         })
@@ -105,7 +105,7 @@ class MixerViewController: UIViewController {
             name: .appTimeout,
             object: nil)
     }
-    
+
     deinit {
         self.labelUpdateTimer?.invalidate()
         self.labelUpdateTimer = nil
@@ -115,32 +115,11 @@ class MixerViewController: UIViewController {
     }
     
     @objc func updateTimerLabel() {
-        DispatchQueue.main.async {
-            let timeRemainingFormatted = formatCountdown(Float(Model.sharedInstance.secondsToNextStateChange))
-
-            let compactFormatting = (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClass.compact)
-            
-            var periodLengthFormatted: String
-            var runState: String
-            if (Model.sharedInstance.state == "run") {
-                runState = compactFormatting ? "RUN" : "RUNNING"
-                periodLengthFormatted = formatCountdown(Model.sharedInstance.runSeconds)
-            } else {
-                runState = "BREAK"
-                periodLengthFormatted = formatCountdown(Model.sharedInstance.pauseSeconds)
-            }
-
-            if (compactFormatting) {
-                self.timerLabel.text = "\(runState): \(timeRemainingFormatted) of \(periodLengthFormatted)"
-            } else {
-                self.timerLabel.text = "\(runState) - \(timeRemainingFormatted) of \(periodLengthFormatted) remaining"
-            }
-            
-            // if the seconds to next state change was negative, we're overdue for a refresh. so do that
-            if (Model.sharedInstance.secondsToNextStateChange < 0 && Model.sharedInstance.loaded) {
-                ServerController.sharedInstance.loadPauseTimer()
-            }
-        }
+        updateBreakTimerLabel(
+            label: self.timerLabel,
+            compactFormatting: (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClass.compact),
+            useLineBreaks: false
+        )
     }
     
     @objc func promptForBreak(){

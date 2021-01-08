@@ -107,14 +107,12 @@ class ServerController: NSObject, PKJSONSocketDelegate {
                         Model.sharedInstance.hue = hue
                     }
                     if let pauseTimer = params["pauseTimer"] as? Dictionary<String, AnyObject> {
-                        print("received pauseTimer (in model method): \(pauseTimer)")
                         parsePauseTimerDictionary(pauseTimer)
                     }
                     DisplayState.sharedInstance.selectedChannelIndex = 0
                     Model.sharedInstance.isIniting = false
                     Model.sharedInstance.loaded = true
                 case "pauseTimer":
-                    print("received pauseTimer (in pauseTimer method): \(params)")
                     parsePauseTimerDictionary(params)
                 default:
                     break
@@ -162,7 +160,6 @@ class ServerController: NSObject, PKJSONSocketDelegate {
             }
             let currentPattern: Pattern? = currentPatternIndex == -1 ? nil : (channelIndex == 0 ? patterns[currentPatternIndex] : channels[0].patterns[currentPatternIndex])
             channels.append(Channel(index: channelIndex, patterns: patterns, currentPattern: currentPattern, visibility: visibility))
-            print("found channel \(channelIndex) playing pattern \(currentPattern?.name ?? "<< none >>") + with visibility \(visibility)")
         }
         return channels
     }

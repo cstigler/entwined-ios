@@ -106,10 +106,8 @@ class ChannelCollectionViewCell: UICollectionViewCell {
         disposables.add(self.reactive.producer(forKeyPath: #keyPath(currentlySelected)).startWithValues { [unowned self] (_) in
             DispatchQueue.main.async {
                 if self.channel != nil && self.currentlySelected {
-                    print("index \(self.channel.index) currently selected")
                     self.contentView.layer.borderWidth = 5
                 } else {
-                    print("index not selected")
                     self.contentView.layer.borderWidth = 0
                 }
             }

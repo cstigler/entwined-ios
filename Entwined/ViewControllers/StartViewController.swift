@@ -110,33 +110,11 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
     }
     
     @objc func updateTimerLabel() {
-        DispatchQueue.main.async {
-            let timeRemainingFormatted = formatCountdown(Float(Model.sharedInstance.secondsToNextStateChange))
-
-            let compactFormatting = (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClass.compact)
-            
-            var periodLengthFormatted: String
-            var runState: String
-            if (Model.sharedInstance.state == "run") {
-                runState = compactFormatting ? "RUN" : "RUNNING"
-                periodLengthFormatted = formatCountdown(Model.sharedInstance.runSeconds)
-            } else {
-                runState = "BREAK"
-                periodLengthFormatted = formatCountdown(Model.sharedInstance.pauseSeconds)
-            }
-
-            if (compactFormatting) {
-                self.timerLabel.text = "\(runState): \(timeRemainingFormatted) of \(periodLengthFormatted)"
-            } else {
-                self.timerLabel.text = "\(runState) - \(timeRemainingFormatted) of \(periodLengthFormatted) remaining"
-            }
-            
-            // if the seconds to next state change was negative, we're overdue for a refresh. so do that
-            if (Model.sharedInstance.secondsToNextStateChange < 0 && Model.sharedInstance.loaded) {
-                print("sec to next state change less than 0 so load pause timer")
-                ServerController.sharedInstance.loadPauseTimer()
-            }
-        }
+        updateBreakTimerLabel(
+            label: self.timerLabel,
+            compactFormatting: (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClass.compact),
+            useLineBreaks: true
+        )
     }
     
     @objc func connectingLabelTapped(_ sender: AnyObject) {
