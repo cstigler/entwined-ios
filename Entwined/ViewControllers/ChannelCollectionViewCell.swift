@@ -36,96 +36,108 @@ class ChannelCollectionViewCell: UICollectionViewCell {
         })
         
         disposables.add(self.reactive.producer(forKeyPath: #keyPath(channel.index)).startWithValues { [unowned self] (_) in
-            if self.channel != nil {
-                self.channelLabel.text = "Channel \(self.channel.index + 1)"
+            DispatchQueue.main.async {
+                if self.channel != nil {
+                    self.channelLabel.text = "Channel \(self.channel.index + 1)"
+                }
             }
         })
         
         disposables.add(SignalProducer.merge([self.reactive.producer(forKeyPath: #keyPath(channel.index)), self.reactive.producer(forKeyPath: #keyPath(channel.currentPattern))]).startWithValues { [unowned self] (_) in
-            if self.channel != nil {
-                if self.channel.currentPattern == nil {
-                    self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGray"),
-                        for: UIControl.State());
-                    self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGray"),
-                        for: .highlighted);
-                    self.visibilitySlider.setMinimumTrackImage(UIImage(named: "channelSliderBarGray"),
-                        for: UIControl.State());
-                    self.visibilitySlider.setMaximumTrackImage(UIImage(named: "channelSliderBarGray"),
-                        for: UIControl.State());
-                } else {
-                    switch self.channel.index {
-                    case 0:
-                        self.contentView.layer.borderColor = UIColor.init(red: 0, green: 174.0 / 255.0, blue: 239.0 / 255.0, alpha: 1).cgColor
-                        self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbBlue"),
+            DispatchQueue.main.async {
+                if self.channel != nil {
+                    if self.channel.currentPattern == nil {
+                        self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGray"),
                             for: UIControl.State());
-                        self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbBlue"),
+                        self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGray"),
                             for: .highlighted);
-                        self.visibilitySlider.setMinimumTrackImage(UIImage(named: "channelSliderBarBlue"),
+                        self.visibilitySlider.setMinimumTrackImage(UIImage(named: "channelSliderBarGray"),
                             for: UIControl.State());
-                        self.visibilitySlider.setMaximumTrackImage(UIImage(named: "channelSliderBarDefault"),
+                        self.visibilitySlider.setMaximumTrackImage(UIImage(named: "channelSliderBarGray"),
                             for: UIControl.State());
-                    case 1:
-                        self.contentView.layer.borderColor = UIColor.init(red: 247.0 / 255.0, green: 111.0 / 255.0, blue: 75.0 / 255.0, alpha: 1).cgColor
-                        self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbOrange"),
-                            for: UIControl.State());
-                        self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbOrange"),
-                            for: .highlighted);
-                        self.visibilitySlider.setMinimumTrackImage(UIImage(named: "channelSliderBarOrange"),
-                            for: UIControl.State());
-                        self.visibilitySlider.setMaximumTrackImage(UIImage(named: "channelSliderBarDefault"),
-                            for: UIControl.State());
-                    case 2:
-                        self.contentView.layer.borderColor = UIColor.init(red: 37.0 / 255.0, green: 179.0 / 255.0, blue: 75.0 / 255.0, alpha: 1).cgColor
-                        self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGreen"),
-                            for: UIControl.State());
-                        self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGreen"),
-                            for: .highlighted);
-                        self.visibilitySlider.setMinimumTrackImage(UIImage(named: "channelSliderBarGreen"),
-                            for: UIControl.State());
-                        self.visibilitySlider.setMaximumTrackImage(UIImage(named: "channelSliderBarDefault"),
-                            for: UIControl.State());
-                    default:
-                        break;
+                    } else {
+                        switch self.channel.index {
+                        case 0:
+                            self.contentView.layer.borderColor = UIColor.init(red: 0, green: 174.0 / 255.0, blue: 239.0 / 255.0, alpha: 1).cgColor
+                            self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbBlue"),
+                                for: UIControl.State());
+                            self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbBlue"),
+                                for: .highlighted);
+                            self.visibilitySlider.setMinimumTrackImage(UIImage(named: "channelSliderBarBlue"),
+                                for: UIControl.State());
+                            self.visibilitySlider.setMaximumTrackImage(UIImage(named: "channelSliderBarDefault"),
+                                for: UIControl.State());
+                        case 1:
+                            self.contentView.layer.borderColor = UIColor.init(red: 247.0 / 255.0, green: 111.0 / 255.0, blue: 75.0 / 255.0, alpha: 1).cgColor
+                            self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbOrange"),
+                                for: UIControl.State());
+                            self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbOrange"),
+                                for: .highlighted);
+                            self.visibilitySlider.setMinimumTrackImage(UIImage(named: "channelSliderBarOrange"),
+                                for: UIControl.State());
+                            self.visibilitySlider.setMaximumTrackImage(UIImage(named: "channelSliderBarDefault"),
+                                for: UIControl.State());
+                        case 2:
+                            self.contentView.layer.borderColor = UIColor.init(red: 37.0 / 255.0, green: 179.0 / 255.0, blue: 75.0 / 255.0, alpha: 1).cgColor
+                            self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGreen"),
+                                for: UIControl.State());
+                            self.visibilitySlider.setThumbImage(UIImage(named: "channelSliderThumbGreen"),
+                                for: .highlighted);
+                            self.visibilitySlider.setMinimumTrackImage(UIImage(named: "channelSliderBarGreen"),
+                                for: UIControl.State());
+                            self.visibilitySlider.setMaximumTrackImage(UIImage(named: "channelSliderBarDefault"),
+                                for: UIControl.State());
+                        default:
+                            break;
+                        }
                     }
                 }
             }
         })
         
         disposables.add(self.reactive.producer(forKeyPath: #keyPath(channel.currentPattern.name)).startWithValues { [unowned self] (_) in
-            if self.channel != nil {
-                self.nameLabel.text = self.channel.currentPattern?.name
+            DispatchQueue.main.async {
+                if self.channel != nil {
+                    self.nameLabel.text = self.channel.currentPattern?.name
+                }
             }
         })
         
         disposables.add(self.reactive.producer(forKeyPath: #keyPath(currentlySelected)).startWithValues { [unowned self] (_) in
-            if self.channel != nil && self.currentlySelected {
-                print("index \(self.channel.index) currently selected")
-                self.contentView.layer.borderWidth = 5
-            } else {
-                print("index not selected")
-                self.contentView.layer.borderWidth = 0
+            DispatchQueue.main.async {
+                if self.channel != nil && self.currentlySelected {
+                    print("index \(self.channel.index) currently selected")
+                    self.contentView.layer.borderWidth = 5
+                } else {
+                    print("index not selected")
+                    self.contentView.layer.borderWidth = 0
+                }
             }
         })
         
         disposables.add(self.reactive.producer(forKeyPath: #keyPath(channel.visibility)).startWithValues { [unowned self] (_) in
-            if self.channel != nil {
-                self.visibilitySlider.value = self.channel.visibility
+            DispatchQueue.main.async {
+                if self.channel != nil {
+                    self.visibilitySlider.value = self.channel.visibility
+                }
             }
         })
         
         disposables.add(SignalProducer.merge([self.reactive.producer(forKeyPath: #keyPath(channel.currentPattern.name)), self.reactive.producer(forKeyPath: #keyPath(currentlySelected)), self.reactive.producer(forKeyPath: #keyPath(channel.currentPattern))]).startWithValues { [unowned self] (_) in
-            if self.channel != nil {
-                self.nameLabel.isHidden = true
-                self.channelLabel.isHidden = true
-                self.tapAPatternLabel.isHidden = true
-                self.visibilitySlider.isUserInteractionEnabled = false
-                if self.channel.currentPattern != nil {
-                    self.nameLabel.isHidden = false
-                    self.visibilitySlider.isUserInteractionEnabled = true
-                } else if self.currentlySelected {
-                    self.tapAPatternLabel.isHidden = false
-                } else {
-                    self.channelLabel.isHidden = false
+            DispatchQueue.main.async {
+                if self.channel != nil {
+                    self.nameLabel.isHidden = true
+                    self.channelLabel.isHidden = true
+                    self.tapAPatternLabel.isHidden = true
+                    self.visibilitySlider.isUserInteractionEnabled = false
+                    if self.channel.currentPattern != nil {
+                        self.nameLabel.isHidden = false
+                        self.visibilitySlider.isUserInteractionEnabled = true
+                    } else if self.currentlySelected {
+                        self.tapAPatternLabel.isHidden = false
+                    } else {
+                        self.channelLabel.isHidden = false
+                    }
                 }
             }
         })

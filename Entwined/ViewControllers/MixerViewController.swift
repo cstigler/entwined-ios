@@ -54,19 +54,27 @@ class MixerViewController: UIViewController {
         })
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.brightness)).startWithValues { [unowned self] (_) in
-            self.brightnessSlider.value = Model.sharedInstance.brightness
+            DispatchQueue.main.async {
+                self.brightnessSlider.value = Model.sharedInstance.brightness
+            }
         })
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.speed)).startWithValues { [unowned self] (_) in
-            self.speedSlider.value = Model.sharedInstance.speed
+            DispatchQueue.main.async {
+                self.speedSlider.value = Model.sharedInstance.speed
+            }
         })
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.spin)).startWithValues { [unowned self] (_) in
-            self.spinSlider.value = Model.sharedInstance.spin
+            DispatchQueue.main.async {
+                self.spinSlider.value = Model.sharedInstance.spin
+            }
         })
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.blur)).startWithValues { [unowned self] (_) in
-            self.blurSlider.value = Model.sharedInstance.blur
+            DispatchQueue.main.async {
+                self.blurSlider.value = Model.sharedInstance.blur
+            }
         })
         
         for slider in self.sliders {
@@ -101,29 +109,31 @@ class MixerViewController: UIViewController {
     }
     
     @objc func updateTimerLabel() {
-        let timeRemainingFormatted = formatCountdown(Float(Model.sharedInstance.secondsToNextStateChange))
+        DispatchQueue.main.async {
+            let timeRemainingFormatted = formatCountdown(Float(Model.sharedInstance.secondsToNextStateChange))
 
-        let compactFormatting = (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClass.compact)
-        
-        var periodLengthFormatted: String
-        var runState: String
-        if (Model.sharedInstance.state == "run") {
-            runState = compactFormatting ? "RUN" : "RUNNING"
-            periodLengthFormatted = formatCountdown(Model.sharedInstance.runSeconds)
-        } else {
-            runState = "BREAK"
-            periodLengthFormatted = formatCountdown(Model.sharedInstance.pauseSeconds)
-        }
+            let compactFormatting = (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClass.compact)
+            
+            var periodLengthFormatted: String
+            var runState: String
+            if (Model.sharedInstance.state == "run") {
+                runState = compactFormatting ? "RUN" : "RUNNING"
+                periodLengthFormatted = formatCountdown(Model.sharedInstance.runSeconds)
+            } else {
+                runState = "BREAK"
+                periodLengthFormatted = formatCountdown(Model.sharedInstance.pauseSeconds)
+            }
 
-        if (compactFormatting) {
-            timerLabel.text = "\(runState): \(timeRemainingFormatted) of \(periodLengthFormatted)"
-        } else {
-            timerLabel.text = "\(runState) - \(timeRemainingFormatted) of \(periodLengthFormatted) remaining"
-        }
-        
-        // if the seconds to next state change was negative, we're overdue for a refresh. so do that
-        if (Model.sharedInstance.secondsToNextStateChange < 0) {
-            ServerController.sharedInstance.loadPauseTimer()
+            if (compactFormatting) {
+                self.timerLabel.text = "\(runState): \(timeRemainingFormatted) of \(periodLengthFormatted)"
+            } else {
+                self.timerLabel.text = "\(runState) - \(timeRemainingFormatted) of \(periodLengthFormatted) remaining"
+            }
+            
+            // if the seconds to next state change was negative, we're overdue for a refresh. so do that
+            if (Model.sharedInstance.secondsToNextStateChange < 0 && Model.sharedInstance.loaded) {
+                ServerController.sharedInstance.loadPauseTimer()
+            }
         }
     }
     
@@ -145,7 +155,9 @@ class MixerViewController: UIViewController {
         confirmationAlert.addAction(cancel)
         
         // Present dialog message to user
-        self.present(confirmationAlert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(confirmationAlert, animated: true, completion: nil)
+        }
     }
     
     @objc func userActivityTimeout(notification: NSNotification){

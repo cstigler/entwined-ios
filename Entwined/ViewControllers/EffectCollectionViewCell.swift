@@ -20,13 +20,17 @@ class EffectCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         
         disposables.add(self.reactive.producer(forKeyPath: #keyPath(effect.name)).startWithValues { [unowned self] (name: Any?) in
-            if let name = name as? String {
-                self.nameLabel.text! = name
+            DispatchQueue.main.async {
+                if let name = name as? String {
+                    self.nameLabel.text! = name
+                }
             }
         })
         disposables.add(SignalProducer.merge([self.reactive.producer(forKeyPath: #keyPath(effect)), Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.activeColorEffect))]).startWithValues { [unowned self] (_) in
-            if self.effect != nil {
-                self.enabledIndicatorView.alpha = Model.sharedInstance.activeColorEffect == self.effect ? 1 : 0
+            DispatchQueue.main.async {
+                if self.effect != nil {
+                    self.enabledIndicatorView.alpha = Model.sharedInstance.activeColorEffect == self.effect ? 1 : 0
+                }
             }
         })
     }

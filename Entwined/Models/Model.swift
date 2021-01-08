@@ -121,19 +121,34 @@ class Model: NSObject {
             
             // reset the state change timer so we remember to check when the state's supposed to change next
             stateChangeTimer?.invalidate()
-            stateChangeTimer = Timer.scheduledTimer(withTimeInterval: secondsToNextStateChange, repeats: false) {_ in
-                ServerController.sharedInstance.loadPauseTimer()
+            if (breakTimerEnabled) {
+                stateChangeTimer = Timer.scheduledTimer(withTimeInterval: secondsToNextStateChange, repeats: false) {_ in
+                    ServerController.sharedInstance.loadPauseTimer()
+                }
             }
         }
     }
     @objc dynamic var timeRemainingFetched: Date?;
     @objc dynamic var nextStateChangeDate: Date {
         let fetchedDate = timeRemainingFetched ?? Date()
+        
+        // if there is no break timer,
+        // the state change will happen... never
+        if (!breakTimerEnabled) {
+            return Date.distantFuture
+        }
 
         return fetchedDate.addingTimeInterval(TimeInterval(timeRemaining))
     }
     @objc dynamic var secondsToNextStateChange: Double {
         let endDate = nextStateChangeDate
+                
         return endDate.timeIntervalSince(Date())
+    }
+    @objc dynamic var breakTimerEnabled: Bool {
+        // if we haven't loaded the timer from the server yet,
+        // or we aren't running with breaks,
+        // there is no break timer.
+        return timeRemainingFetched != nil && runSeconds != 0 && pauseSeconds != 0
     }
 }

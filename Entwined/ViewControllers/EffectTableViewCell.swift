@@ -20,14 +20,18 @@ class EffectTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         disposables.add(self.reactive.producer(forKeyPath: #keyPath(effect.name)).startWithValues { [unowned self] (name: Any?) in
-            if let name = name as? String {
-                self.nameLabel.text = name
-            } else {
-                self.nameLabel.text = "None"
+            DispatchQueue.main.async {
+                if let name = name as? String {
+                    self.nameLabel.text = name
+                } else {
+                    self.nameLabel.text = "None"
+                }
             }
         })
         disposables.add(SignalProducer.merge([self.reactive.producer(forKeyPath: #keyPath(effect)), Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.activeColorEffect))]).startWithValues { [unowned self] (_) in
-            self.enabledIndicatorView.alpha = Model.sharedInstance.activeColorEffect == self.effect ? 1 : 0
+            DispatchQueue.main.async {
+                self.enabledIndicatorView.alpha = Model.sharedInstance.activeColorEffect == self.effect ? 1 : 0
+            }
         })
     }
 

@@ -17,7 +17,6 @@
 		0146D029257C977C001D10CF /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 0146D025257C977C001D10CF /* icon-120.png */; };
 		0177A0B62581C60E00C5DC5F /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177A0B52581C60E00C5DC5F /* StartViewController.swift */; };
 		019FC59825A5A1AC006FBF70 /* EntwinedUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019FC59725A5A1AC006FBF70 /* EntwinedUtilities.swift */; };
-		01C9F09325842E7C00F99B50 /* BreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C9F09225842E7C00F99B50 /* BreakViewController.swift */; };
 		056358B580EFAE6AA9075E37 /* Pods_Entwined_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C4F6612D84592E03756E31 /* Pods_Entwined_iOS.framework */; };
 		271B8DDB19FF9B8F005C166C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271B8DD919FF9B8F005C166C /* Model.swift */; };
 		271B8DDC19FF9B8F005C166C /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271B8DDA19FF9B8F005C166C /* Pattern.swift */; };
@@ -55,7 +54,6 @@
 		0146D025257C977C001D10CF /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
 		0177A0B52581C60E00C5DC5F /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		019FC59725A5A1AC006FBF70 /* EntwinedUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntwinedUtilities.swift; sourceTree = "<group>"; };
-		01C9F09225842E7C00F99B50 /* BreakViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakViewController.swift; sourceTree = "<group>"; };
 		271B8DD919FF9B8F005C166C /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		271B8DDA19FF9B8F005C166C /* Pattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
 		271B8DDD1A005BED005C166C /* Effect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				0177A0B52581C60E00C5DC5F /* StartViewController.swift */,
-				01C9F09225842E7C00F99B50 /* BreakViewController.swift */,
 				27BB0A4A1A03A7C100D37664 /* DisplayState.swift */,
 				27B556931A05D2FB00CEE159 /* MixerViewController.swift */,
 				2721BA291A01A6DC00B905B7 /* PatternsCollectionViewController.swift */,
@@ -396,7 +393,6 @@
 				271B8DDB19FF9B8F005C166C /* Model.swift in Sources */,
 				0177A0B62581C60E00C5DC5F /* StartViewController.swift in Sources */,
 				27BB0A4F1A03CBB300D37664 /* EffectCollectionViewCell.swift in Sources */,
-				01C9F09325842E7C00F99B50 /* BreakViewController.swift in Sources */,
 				27A3962619FC8D4B0030B940 /* AppDelegate.swift in Sources */,
 				278800021A09AF0800B3BEB9 /* ChannelsCollectionViewController.swift in Sources */,
 				2721BA261A01A6D800B905B7 /* ServerController.swift in Sources */,

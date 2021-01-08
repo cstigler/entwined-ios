@@ -54,39 +54,51 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         connectingLabel.isUserInteractionEnabled = true
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.loaded)).startWithValues { [unowned self] (_) in
-            self.connectingLabel.isHidden = Model.sharedInstance.loaded
-            self.resetToPauseButton.isHidden = !Model.sharedInstance.loaded
-            self.resetToRunButton.isHidden = !Model.sharedInstance.loaded
+            // all UI stuff should happen on main thread
+            DispatchQueue.main.async {
+                self.connectingLabel.isHidden = Model.sharedInstance.loaded
+                self.resetToPauseButton.isHidden = !Model.sharedInstance.loaded
+                self.resetToRunButton.isHidden = !Model.sharedInstance.loaded
+                self.timerLabel.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
 
-            if (Model.sharedInstance.loaded) {
-                if (!self.startControllingButton.isEnabled && !Model.sharedInstance.autoplay) {
-                    // when we connect, immediately turn on autoplay if it was off
-                    Model.sharedInstance.autoplay = true
+                if (Model.sharedInstance.loaded) {
+                    if (!self.startControllingButton.isEnabled && !Model.sharedInstance.autoplay) {
+                        // when we connect, immediately turn on autoplay if it was off
+                        Model.sharedInstance.autoplay = true
+                    }
+
+                    self.startControllingButton.setTitle("START CONTROLLING", for: UIControl.State.normal)
+                    self.startControllingButton.backgroundColor = UIColor(red: 0.656078, green: 0.382225, blue: 0.606485, alpha: 1)
+                    self.startControllingButton.isEnabled = true
+                } else {
+                    self.startControllingButton.setTitle("CONNECTING", for: UIControl.State.normal)
+                    self.startControllingButton.backgroundColor = UIColor.lightGray
+                    self.startControllingButton.isEnabled = false
                 }
-
-                self.startControllingButton.setTitle("START CONTROLLING", for: UIControl.State.normal)
-                self.startControllingButton.backgroundColor = UIColor(red: 0.656078, green: 0.382225, blue: 0.606485, alpha: 1)
-                self.startControllingButton.isEnabled = true
-            } else {
-                self.startControllingButton.setTitle("CONNECTING", for: UIControl.State.normal)
-                self.startControllingButton.backgroundColor = UIColor.lightGray
-                self.startControllingButton.isEnabled = false
             }
         })
         
-        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.state)).startWithValues { [unowned self] (_) in
-            if (Model.sharedInstance.state == "run") {
-                self.resetToPauseButton.setTitle("Start Break Immediately", for: .normal)
-                self.resetToRunButton.setTitle("Reset Run Timer", for: .normal)
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.breakTimerEnabled)).startWithValues { [unowned self] (_) in
+            DispatchQueue.main.async {
+                self.timerLabel.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
+            }
+        })
 
-                self.stopBreakAboveResetBreakConstraint.isActive = false
-                self.startBreakAboveResetRunConstraint.isActive = true
-            } else {
-                self.resetToRunButton.setTitle("End Break Immediately", for: .normal)
-                self.resetToPauseButton.setTitle("Reset Break Timer", for: .normal)
-    
-                self.stopBreakAboveResetBreakConstraint.isActive = true
-                self.startBreakAboveResetRunConstraint.isActive = false
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.state)).startWithValues { [unowned self] (_) in
+            DispatchQueue.main.async {
+                if (Model.sharedInstance.state == "run") {
+                    self.resetToPauseButton.setTitle("Start Break Immediately", for: .normal)
+                    self.resetToRunButton.setTitle("Reset Run Timer", for: .normal)
+
+                    self.stopBreakAboveResetBreakConstraint.isActive = false
+                    self.startBreakAboveResetRunConstraint.isActive = true
+                } else {
+                    self.resetToRunButton.setTitle("End Break Immediately", for: .normal)
+                    self.resetToPauseButton.setTitle("Reset Break Timer", for: .normal)
+        
+                    self.stopBreakAboveResetBreakConstraint.isActive = true
+                    self.startBreakAboveResetRunConstraint.isActive = false
+                }
             }
         })
         
@@ -98,29 +110,32 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
     }
     
     @objc func updateTimerLabel() {
-        let timeRemainingFormatted = formatCountdown(Float(Model.sharedInstance.secondsToNextStateChange))
+        DispatchQueue.main.async {
+            let timeRemainingFormatted = formatCountdown(Float(Model.sharedInstance.secondsToNextStateChange))
 
-        let compactFormatting = (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClass.compact)
-        
-        var periodLengthFormatted: String
-        var runState: String
-        if (Model.sharedInstance.state == "run") {
-            runState = compactFormatting ? "RUN" : "RUNNING"
-            periodLengthFormatted = formatCountdown(Model.sharedInstance.runSeconds)
-        } else {
-            runState = "BREAK"
-            periodLengthFormatted = formatCountdown(Model.sharedInstance.pauseSeconds)
-        }
+            let compactFormatting = (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClass.compact)
+            
+            var periodLengthFormatted: String
+            var runState: String
+            if (Model.sharedInstance.state == "run") {
+                runState = compactFormatting ? "RUN" : "RUNNING"
+                periodLengthFormatted = formatCountdown(Model.sharedInstance.runSeconds)
+            } else {
+                runState = "BREAK"
+                periodLengthFormatted = formatCountdown(Model.sharedInstance.pauseSeconds)
+            }
 
-        if (compactFormatting) {
-            timerLabel.text = "\(runState): \(timeRemainingFormatted) of \(periodLengthFormatted)"
-        } else {
-            timerLabel.text = "\(runState) - \(timeRemainingFormatted) of \(periodLengthFormatted) remaining"
-        }
-        
-        // if the seconds to next state change was negative, we're overdue for a refresh. so do that
-        if (Model.sharedInstance.secondsToNextStateChange < 0) {
-            ServerController.sharedInstance.loadPauseTimer()
+            if (compactFormatting) {
+                self.timerLabel.text = "\(runState): \(timeRemainingFormatted) of \(periodLengthFormatted)"
+            } else {
+                self.timerLabel.text = "\(runState) - \(timeRemainingFormatted) of \(periodLengthFormatted) remaining"
+            }
+            
+            // if the seconds to next state change was negative, we're overdue for a refresh. so do that
+            if (Model.sharedInstance.secondsToNextStateChange < 0 && Model.sharedInstance.loaded) {
+                print("sec to next state change less than 0 so load pause timer")
+                ServerController.sharedInstance.loadPauseTimer()
+            }
         }
     }
     
@@ -217,14 +232,35 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
     
     @IBAction func startControllingButtonPressed(_ sender: Any) {
         if Model.sharedInstance.loaded {
-            startControlPanel()
+            if (Model.sharedInstance.state == "pause") {
+                // warn the user before they interrupt the break!
+                let confirmationAlert = UIAlertController(title: "Confirm End Break", message: "A scheduled lighting break is currently ongoing. Are you sure you want to override that break and take control anyway?", preferredStyle: .alert)
+                
+                let ok = UIAlertAction(title: "Start Controlling", style: .default, handler: { (action) -> Void in
+                    self.startControlPanel()
+                })
+                
+                let cancel = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {
+                    (action : UIAlertAction!) -> Void in })
+
+                confirmationAlert.addAction(ok)
+                confirmationAlert.addAction(cancel)
+                
+                // Present dialog message to user
+                self.present(confirmationAlert, animated: true, completion: nil)
+            } else {
+                startControlPanel()
+            }
         }
     }
     
     func startControlPanel() {
         Model.sharedInstance.autoplay = false;
 
-        performSegue(withIdentifier: "show-controls-segue", sender: self)
+        // UI stuff on main thread, always!
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "show-controls-segue", sender: self)
+        }
     }
     
     func reloadCollectionView() {
@@ -235,9 +271,6 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         
         // Below, for each 3.5 seconds MyViewController's 'autoScrollImageSlider' would be fired
         self.imageGalleryTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(StartViewController.autoScrollImageSlider), userInfo: nil, repeats: true)
-        
-        //This will register the timer to the main run loop
-        RunLoop.main.add(self.imageGalleryTimer!, forMode: RunLoop.Mode.common)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
@@ -258,23 +291,20 @@ extension StartViewController : UICollectionViewDataSource{
     }
     
     @objc func autoScrollImageSlider() {
-        
-        DispatchQueue.global(qos: .background).async {
-            DispatchQueue.main.async {
-                let firstIndex = 0
-                let lastIndex = (self.imagesArr.count) - 1
-                
-                let visibleIndices = self.collectionView.indexPathsForVisibleItems
-                let nextIndex = visibleIndices[0].row + 1
-                
-                let nextIndexPath: IndexPath = IndexPath.init(item: nextIndex, section: 0)
-                let firstIndexPath: IndexPath = IndexPath.init(item: firstIndex, section: 0)
-                
-                if nextIndex > lastIndex {
-                    self.collectionView.scrollToItem(at: firstIndexPath, at: .centeredHorizontally, animated: true)
-                } else {
-                    self.collectionView.scrollToItem(at: nextIndexPath, at: .centeredHorizontally, animated: true)
-                }
+        DispatchQueue.main.async {
+            let firstIndex = 0
+            let lastIndex = (self.imagesArr.count) - 1
+            
+            let visibleIndices = self.collectionView.indexPathsForVisibleItems
+            let nextIndex = visibleIndices[0].row + 1
+            
+            let nextIndexPath: IndexPath = IndexPath.init(item: nextIndex, section: 0)
+            let firstIndexPath: IndexPath = IndexPath.init(item: firstIndex, section: 0)
+            
+            if nextIndex > lastIndex {
+                self.collectionView.scrollToItem(at: firstIndexPath, at: .centeredHorizontally, animated: true)
+            } else {
+                self.collectionView.scrollToItem(at: nextIndexPath, at: .centeredHorizontally, animated: true)
             }
         }
     }

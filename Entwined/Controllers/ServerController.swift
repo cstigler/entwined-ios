@@ -186,6 +186,9 @@ class ServerController: NSObject, PKJSONSocketDelegate {
     
     func setAutoplay(_ autoplay: Bool) {
         self.send("setAutoplay", params: ["autoplay": autoplay as AnyObject])
+        
+        // any time we're starting/stopping controlling, not a bad idea to refresh the block timer
+        // and make sure we've got the best info available
         self.loadPauseTimer()
     }
     
@@ -227,7 +230,7 @@ class ServerController: NSObject, PKJSONSocketDelegate {
         self.send("resetTimerPause")
 
         // get the new values after our request goes through
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 0.25) {
             self.loadPauseTimer()
         }
     }
@@ -236,7 +239,7 @@ class ServerController: NSObject, PKJSONSocketDelegate {
         self.send("resetTimerRun")
         
         // get the new values after our request goes through
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + 0.25) {
             self.loadPauseTimer()
         }
     }

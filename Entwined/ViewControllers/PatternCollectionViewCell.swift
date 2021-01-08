@@ -16,7 +16,7 @@ class PatternCollectionViewCell: UICollectionViewCell {
     var currentlySelected = false
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var deseletedImageView: UIImageView!
+    @IBOutlet weak var deselectedImageView: UIImageView!
     @IBOutlet weak var selectedBlueImageView: UIImageView!
     @IBOutlet weak var selectedGreenImageView: UIImageView!
     @IBOutlet weak var selectedOrangeImageView: UIImageView!
@@ -25,31 +25,35 @@ class PatternCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
                 
         disposables.add(self.reactive.producer(forKeyPath: #keyPath(pattern.name)).startWithValues { [unowned self] (name: Any?) in
-            if let name = name as? String {
-                self.nameLabel.text! = name
+            DispatchQueue.main.async {
+                if let name = name as? String {
+                    self.nameLabel.text! = name
+                }
             }
         })
         
         disposables.add(self.reactive.producer(forKeyPath: #keyPath(pattern.channelSelectedOn.index)).startWithValues { [unowned self] (_) in
-            if self.pattern != nil {
-                self.deseletedImageView.isHidden = true
-                self.selectedBlueImageView.isHidden = true
-                self.selectedGreenImageView.isHidden = true
-                self.selectedOrangeImageView.isHidden = true
-                
-                if let channel = self.pattern.channelSelectedOn {
-                    switch channel.index {
-                    case 0:
-                        self.selectedBlueImageView.isHidden = false
-                    case 1:
-                        self.selectedOrangeImageView.isHidden = false
-                    case 2:
-                        self.selectedGreenImageView.isHidden = false
-                    default:
-                        break;
+            DispatchQueue.main.async {
+                if self.pattern != nil {
+                    self.deselectedImageView.isHidden = true
+                    self.selectedBlueImageView.isHidden = true
+                    self.selectedGreenImageView.isHidden = true
+                    self.selectedOrangeImageView.isHidden = true
+                    
+                    if let channel = self.pattern.channelSelectedOn {
+                        switch channel.index {
+                        case 0:
+                            self.selectedBlueImageView.isHidden = false
+                        case 1:
+                            self.selectedOrangeImageView.isHidden = false
+                        case 2:
+                            self.selectedGreenImageView.isHidden = false
+                        default:
+                            break;
+                        }
+                    } else {
+                        self.deselectedImageView.isHidden = false
                     }
-                } else {
-                    self.deseletedImageView.isHidden = false
                 }
             }
         })

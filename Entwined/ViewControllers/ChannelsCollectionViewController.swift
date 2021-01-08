@@ -13,9 +13,11 @@ class ChannelsCollectionViewController: UICollectionViewController,UICollectionV
     override func viewDidLoad() {
         super.viewDidLoad()
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.channels)).startWithValues { [unowned self] (_) in
-            self.collectionView!.reloadData()
-            if self.collectionView!.indexPathsForSelectedItems?.first == nil {
-                self.setSelectedItem()
+            DispatchQueue.main.async {
+                self.collectionView!.reloadData()
+                if self.collectionView!.indexPathsForSelectedItems?.first == nil {
+                    self.setSelectedItem()
+                }
             }
         })
     }

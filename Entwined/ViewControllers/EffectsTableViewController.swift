@@ -16,7 +16,9 @@ class EffectsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.colorEffects)).startWithValues { [unowned self] (_) in
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         })
     }
     
