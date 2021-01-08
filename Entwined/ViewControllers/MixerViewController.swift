@@ -34,6 +34,12 @@ class MixerViewController: UIViewController {
             }
         })
         
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.breakTimerEnabled)).startWithValues { [unowned self] (_) in
+            DispatchQueue.main.async {
+                self.timerLabel.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
+            }
+        })
+        
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.autoplay)).startWithValues { [unowned self] (_) in
             print("AUTOPLAY CHANGED to \(Model.sharedInstance.autoplay)")
             if (Model.sharedInstance.autoplay) {
