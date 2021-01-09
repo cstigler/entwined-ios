@@ -30,7 +30,7 @@ class MixerViewController: UIViewController {
         // they made the choice to start during this period willingly - don't prompt them again
         breakPromptShown = true
 
-        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.loaded)).startWithValues { [unowned self] (_) in
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.loaded)).startWithValues { (_) in
             if (!Model.sharedInstance.loaded) {
                 Model.sharedInstance.autoplay = true
             }

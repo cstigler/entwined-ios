@@ -96,8 +96,8 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
                     self.resetToRunButton.setTitle("End Break Immediately", for: .normal)
                     self.resetToPauseButton.setTitle("Reset Break Timer", for: .normal)
         
-                    self.stopBreakAboveResetBreakConstraint.isActive = true
                     self.startBreakAboveResetRunConstraint.isActive = false
+                    self.stopBreakAboveResetBreakConstraint.isActive = true
                 }
             }
         })
@@ -248,7 +248,7 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         self.imageGalleryTimer?.invalidate()
         
         // Below, for each 3.5 seconds MyViewController's 'autoScrollImageSlider' would be fired
-        self.imageGalleryTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(StartViewController.autoScrollImageSlider), userInfo: nil, repeats: true)
+        self.imageGalleryTimer = Timer.scheduledTimer(timeInterval: 7.5, target: self, selector: #selector(StartViewController.autoScrollImageSlider), userInfo: nil, repeats: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
