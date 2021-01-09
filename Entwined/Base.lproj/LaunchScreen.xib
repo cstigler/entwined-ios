@@ -44,10 +44,12 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="9CP-aN-haP" secondAttribute="height" multiplier="688:437" id="h7K-GG-Nkr"/>
                     </constraints>
+                    <variation key="widthClass=compact" hidden="YES"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="PsD-hA-2DM" secondAttribute="bottom" constant="262" id="BlX-O0-v8b"/>
                 <constraint firstItem="Ghc-My-pbW" firstAttribute="centerX" secondItem="YDD-Bv-oS1" secondAttribute="centerX" id="EXp-4n-gyK"/>
                 <constraint firstItem="PsD-hA-2DM" firstAttribute="top" secondItem="9CP-aN-haP" secondAttribute="bottom" constant="70" id="Emv-lf-Bm7"/>
                 <constraint firstItem="ZHR-FE-9b6" firstAttribute="top" secondItem="Ghc-My-pbW" secondAttribute="bottom" constant="20" id="I7X-cq-dkW"/>
@@ -59,6 +61,17 @@
                 <constraint firstAttribute="trailing" secondItem="9CP-aN-haP" secondAttribute="trailing" constant="40" id="mAf-bp-JPN"/>
                 <constraint firstItem="ZHR-FE-9b6" firstAttribute="centerX" secondItem="YDD-Bv-oS1" secondAttribute="centerX" id="tzy-Y9-Ros"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="BlX-O0-v8b"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="constraints">
+                    <include reference="BlX-O0-v8b"/>
+                    <exclude reference="Emv-lf-Bm7"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="431.25" y="-50.390625"/>
         </view>
     </objects>
