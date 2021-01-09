@@ -9,6 +9,12 @@
 import UIKit
 import PKJSONSocket
 
+#if DEBUG
+let DEFAULT_HOSTNAME = "localhost"
+#else
+let DEFAULT_HOSTNAME = "10.0.0.3"
+#endif
+
 class ServerController: NSObject, PKJSONSocketDelegate {
     
     class var sharedInstance : ServerController {
@@ -36,7 +42,8 @@ class ServerController: NSObject, PKJSONSocketDelegate {
             print(connected ? "Connected" : "Disconnected")
         }
     }
-    var serverHostname: String = "localhost" {
+    
+    var serverHostname: String = DEFAULT_HOSTNAME {
         didSet {
             disconnect()
             connect()
