@@ -12,7 +12,7 @@ import PKJSONSocket
 #if DEBUG
 let DEFAULT_HOSTNAME = "localhost"
 #else
-let DEFAULT_HOSTNAME = "10.0.0.3"
+let DEFAULT_HOSTNAME = "10.0.0.10"
 #endif
 
 class ServerController: NSObject, PKJSONSocketDelegate {
