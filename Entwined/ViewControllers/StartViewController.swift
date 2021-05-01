@@ -57,8 +57,8 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
             // all UI stuff should happen on main thread
             DispatchQueue.main.async {
                 self.connectingLabel.isHidden = Model.sharedInstance.loaded
-                self.resetToPauseButton.isHidden = !Model.sharedInstance.loaded
-                self.resetToRunButton.isHidden = !Model.sharedInstance.loaded
+                self.resetToPauseButton.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
+                self.resetToRunButton.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
                 self.timerLabel.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
 
                 if (Model.sharedInstance.loaded) {
@@ -80,6 +80,8 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         
         disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.breakTimerEnabled)).startWithValues { [unowned self] (_) in
             DispatchQueue.main.async {
+                self.resetToPauseButton.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
+                self.resetToRunButton.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
                 self.timerLabel.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
             }
         })
