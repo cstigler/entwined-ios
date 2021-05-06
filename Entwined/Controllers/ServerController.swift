@@ -88,6 +88,9 @@ class ServerController: NSObject, PKJSONSocketDelegate {
                     if let autoplay = params["autoplay"] as? Bool {
                         Model.sharedInstance.autoplay = autoplay
                     }
+                    if let autoplayBrightness = params["autoplayBrightness"] as? Float {
+                        Model.sharedInstance.autoplayBrightness = autoplayBrightness
+                    }
                     if let brightness = params["brightness"] as? Float {
                         Model.sharedInstance.brightness = brightness
                     }
@@ -196,6 +199,10 @@ class ServerController: NSObject, PKJSONSocketDelegate {
         self.loadPauseTimer()
     }
     
+    func setAutoplayBrightness(_ autoplayBrightness: Float) {
+        self.send("setAutoplayBrightness", params: ["autoplayBrightness": autoplayBrightness as AnyObject])
+    }
+
     func setBrightness(_ brightness: Float) {
         self.send("setBrightness", params: ["brightness": brightness as AnyObject])
     }

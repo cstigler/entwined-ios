@@ -16,6 +16,9 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
     @IBOutlet weak var startControllingButton: UIButton!
     @IBOutlet weak var connectingLabel: UIView!
     @IBOutlet weak var timerLabel: UILabel!
+    
+    @IBOutlet weak var autoplayBrightnessLabel: UILabel!
+    @IBOutlet weak var autoplayBrightnessSlider: UISlider!
 
     @IBOutlet weak var resetToPauseButton: UIButton!
     @IBOutlet weak var resetToRunButton: UIButton!
@@ -41,7 +44,7 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         collectionView.delegate = self
         collectionView.dataSource = self
         reloadCollectionView()
@@ -57,6 +60,8 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
             // all UI stuff should happen on main thread
             DispatchQueue.main.async {
                 self.connectingLabel.isHidden = Model.sharedInstance.loaded
+                self.autoplayBrightnessLabel.isHidden = !Model.sharedInstance.loaded
+                self.autoplayBrightnessSlider.isHidden = !Model.sharedInstance.loaded
                 self.resetToPauseButton.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
                 self.resetToRunButton.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
                 self.timerLabel.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
@@ -70,6 +75,8 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
                     self.startControllingButton.setTitle("START CONTROLLING", for: UIControl.State.normal)
                     self.startControllingButton.backgroundColor = UIColor(red: 0.656078, green: 0.382225, blue: 0.606485, alpha: 1)
                     self.startControllingButton.isEnabled = true
+                    
+                    self.autoplayBrightnessSlider.maximumValue = Model.maxBrightness
                 } else {
                     self.startControllingButton.setTitle("CONNECTING", for: UIControl.State.normal)
                     self.startControllingButton.backgroundColor = UIColor.lightGray
@@ -83,6 +90,12 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
                 self.resetToPauseButton.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
                 self.resetToRunButton.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
                 self.timerLabel.isHidden = !(Model.sharedInstance.breakTimerEnabled && Model.sharedInstance.loaded)
+            }
+        })
+        
+        disposables.add(Model.sharedInstance.reactive.producer(forKeyPath: #keyPath(Model.autoplayBrightness)).startWithValues { [unowned self] (_) in
+            DispatchQueue.main.async {
+                self.autoplayBrightnessSlider.value = Model.sharedInstance.autoplayBrightness
             }
         })
 
@@ -210,6 +223,10 @@ class StartViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         self.present(confirmationAlert, animated: true, completion: nil)
     }
     
+    @IBAction func autoplayBrightnessChanged(_ sender: UISlider) {
+        Model.sharedInstance.autoplayBrightness = sender.value
+    }
+
     @IBAction func startControllingButtonPressed(_ sender: Any) {
         if Model.sharedInstance.loaded {
             if (Model.sharedInstance.state == "pause") {

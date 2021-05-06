@@ -52,6 +52,18 @@ class Model: NSObject {
         }
     }
     
+    @objc dynamic var autoplayBrightness: Float = 1.0 {
+        didSet {
+            if !self.isIniting {
+                ServerController.sharedInstance.setAutoplayBrightness(min(autoplayBrightness, Model.maxBrightness))
+            } else if (autoplayBrightness > Model.maxBrightness) {
+                // if ARE init'ing and the brightness is over max, set it down
+                self.autoplayBrightness = Model.maxBrightness
+                ServerController.sharedInstance.setAutoplayBrightness(Model.maxBrightness)
+            }
+        }
+    }
+    
     @objc dynamic var brightness: Float = Model.maxBrightness {
         didSet {
             if !self.isIniting {

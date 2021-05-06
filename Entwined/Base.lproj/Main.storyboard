@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XkK-v0-9WK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XkK-v0-9WK">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -343,7 +343,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="3uy-Fz-Mkf" customClass="EffectTableViewCell" customModule="Entwined_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="220" height="40"/>
+                                <rect key="frame" x="0.0" y="24.5" width="220" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3uy-Fz-Mkf" id="Q5o-UI-Rk0">
                                     <rect key="frame" x="0.0" y="0.0" width="220" height="40"/>
@@ -421,7 +421,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3o-cf-Atw">
-                                            <rect key="frame" x="15" y="60" width="110" height="20.5"/>
+                                            <rect key="frame" x="15" y="61.5" width="110" height="17"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" red="0.094117647060000004" green="0.094117647060000004" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -613,7 +613,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="KH8-rg-ZyW" customClass="CollectionViewCell" customModule="Entwined_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-0.5" width="583" height="438"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="583" height="438"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="583" height="438"/>
@@ -657,8 +657,19 @@
                                     <action selector="resetToPause:" destination="XkK-v0-9WK" eventType="touchUpInside" id="hqJ-pU-lkc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dm9-cl-PaC" userLabel="Autoplay Brightness Label">
+                                <rect key="frame" x="146.5" y="501" width="82" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jg1-ea-ygu" userLabel="Autoplay Brightness Slider">
+                                <rect key="frame" x="59" y="529" width="257" height="31"/>
+                                <connections>
+                                    <action selector="autoplayBrightnessChanged:" destination="XkK-v0-9WK" eventType="valueChanged" id="Jua-Ch-Y0A"/>
+                                </connections>
+                            </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting to Entwined Meadow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrC-8v-AIA">
-                                <rect key="frame" x="23.5" y="597" width="328" height="26"/>
+                                <rect key="frame" x="14.5" y="601" width="346" height="22"/>
                                 <fontDescription key="fontDescription" name="UniversLTStd" family="Univers LT Std" pointSize="22"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -701,13 +712,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="jg1-ea-ygu" firstAttribute="top" secondItem="Dm9-cl-PaC" secondAttribute="bottom" constant="7" id="16V-SK-BQM"/>
                             <constraint firstItem="rPV-pI-AAJ" firstAttribute="top" secondItem="XMS-2L-3hT" secondAttribute="bottom" constant="70" id="1z7-jA-8SL"/>
                             <constraint firstItem="XMS-2L-3hT" firstAttribute="top" secondItem="2Y6-su-ak8" secondAttribute="bottom" constant="30" id="2Nu-a2-c5D"/>
                             <constraint firstItem="oIc-vQ-9tX" firstAttribute="top" secondItem="nrC-8v-AIA" secondAttribute="bottom" constant="44" id="6jI-28-3bv"/>
                             <constraint firstItem="rPV-pI-AAJ" firstAttribute="centerX" secondItem="KE3-Ao-S3j" secondAttribute="centerX" id="9xJ-Xa-XlL"/>
                             <constraint firstItem="0h3-Dd-ofS" firstAttribute="centerX" secondItem="MpZ-eB-UXA" secondAttribute="centerX" id="AIl-Hl-Kyg"/>
                             <constraint firstItem="MpZ-eB-UXA" firstAttribute="centerX" secondItem="KE3-Ao-S3j" secondAttribute="centerX" id="EQj-ZR-2ZE"/>
+                            <constraint firstItem="jg1-ea-ygu" firstAttribute="centerX" secondItem="KE3-Ao-S3j" secondAttribute="centerX" id="G0o-fD-RRh"/>
                             <constraint firstItem="2Y6-su-ak8" firstAttribute="top" secondItem="x3o-4n-BdC" secondAttribute="bottom" constant="20" id="H68-Gm-8gp"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Dm9-cl-PaC" secondAttribute="trailing" constant="20" id="LzO-tO-cVU"/>
                             <constraint firstItem="oIc-vQ-9tX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MpZ-eB-UXA" secondAttribute="bottom" constant="25" id="MqL-Ns-WTp"/>
                             <constraint firstItem="0h3-Dd-ofS" firstAttribute="top" secondItem="MpZ-eB-UXA" secondAttribute="bottom" constant="10" identifier="start-break-above-reset-run" id="OQj-ei-jdH"/>
                             <constraint firstItem="x3o-4n-BdC" firstAttribute="centerX" secondItem="KE3-Ao-S3j" secondAttribute="centerX" id="P46-z3-2R3"/>
@@ -715,13 +729,16 @@
                             <constraint firstAttribute="trailing" secondItem="XMS-2L-3hT" secondAttribute="trailing" constant="40" id="SKZ-Bn-S8l"/>
                             <constraint firstItem="0h3-Dd-ofS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FJu-X5-zq6" secondAttribute="bottom" constant="100" id="Syl-wx-zWk"/>
                             <constraint firstItem="oIc-vQ-9tX" firstAttribute="top" secondItem="0h3-Dd-ofS" secondAttribute="bottom" priority="750" constant="25" id="TBX-pE-rAM"/>
+                            <constraint firstAttribute="trailing" secondItem="jg1-ea-ygu" secondAttribute="trailing" constant="61" id="UHU-zO-EJx"/>
                             <constraint firstItem="MpZ-eB-UXA" firstAttribute="top" secondItem="0h3-Dd-ofS" secondAttribute="bottom" constant="10" identifier="stop-break-above-reset-break" id="bIm-6C-Zz6"/>
                             <constraint firstItem="XMS-2L-3hT" firstAttribute="centerX" secondItem="KE3-Ao-S3j" secondAttribute="centerX" id="bda-s9-799"/>
+                            <constraint firstItem="MpZ-eB-UXA" firstAttribute="top" secondItem="jg1-ea-ygu" secondAttribute="bottom" constant="13" id="cL1-wP-bNy"/>
                             <constraint firstItem="XMS-2L-3hT" firstAttribute="leading" secondItem="KE3-Ao-S3j" secondAttribute="leading" constant="40" id="e4K-63-5Zq"/>
                             <constraint firstItem="FJu-X5-zq6" firstAttribute="top" secondItem="rPV-pI-AAJ" secondAttribute="bottom" constant="16" id="fI8-OX-Emf"/>
                             <constraint firstItem="nrC-8v-AIA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rPV-pI-AAJ" secondAttribute="bottom" constant="20" id="hTB-8d-1F2"/>
                             <constraint firstItem="x3o-4n-BdC" firstAttribute="top" secondItem="Epv-UQ-wTo" secondAttribute="bottom" constant="30" id="j01-Ku-enD"/>
                             <constraint firstItem="MpZ-eB-UXA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FJu-X5-zq6" secondAttribute="bottom" constant="100" id="qgc-5f-CeH"/>
+                            <constraint firstItem="Dm9-cl-PaC" firstAttribute="centerX" secondItem="KE3-Ao-S3j" secondAttribute="centerX" id="t6m-O3-uFu"/>
                             <constraint firstItem="nrC-8v-AIA" firstAttribute="centerX" secondItem="KE3-Ao-S3j" secondAttribute="centerX" id="t6p-m8-Vyp"/>
                             <constraint firstItem="oIc-vQ-9tX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rPV-pI-AAJ" secondAttribute="bottom" constant="80" id="tPu-nx-M9b"/>
                             <constraint firstItem="FJu-X5-zq6" firstAttribute="centerX" secondItem="rPV-pI-AAJ" secondAttribute="centerX" id="ti1-9H-dAs"/>
@@ -743,6 +760,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="KgN-0e-7we"/>
                     <connections>
+                        <outlet property="autoplayBrightnessLabel" destination="Dm9-cl-PaC" id="R7M-to-fef"/>
+                        <outlet property="autoplayBrightnessSlider" destination="jg1-ea-ygu" id="HkQ-ww-IKk"/>
                         <outlet property="collectionView" destination="XMS-2L-3hT" id="6WC-3h-FR5"/>
                         <outlet property="connectingLabel" destination="nrC-8v-AIA" id="bkI-UE-koT"/>
                         <outlet property="resetToPauseButton" destination="MpZ-eB-UXA" id="b02-gT-4re"/>
@@ -757,7 +776,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpz-fQ-RVl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204.8780487804878" y="-434.23728813559325"/>
+            <point key="canvasLocation" x="-205.59999999999999" y="-434.93253373313348"/>
         </scene>
     </scenes>
     <resources>
